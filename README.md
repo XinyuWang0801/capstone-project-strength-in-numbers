@@ -18,6 +18,70 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
 ## Git Setup
 
+It is recommended that you setup a separate remote from the cloned repository, this allows you to have a local repository that does not need to track the main repository. 
+
+To do this, first clone the main repository: 
+```
+git clone git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git
+```
+
+Then run the command:
+```
+git remote -v 
+```
+This will show you the urls of the remotes you are tracking locally. At this moment you should only see:
+```
+origin        git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git (fetch)
+origin        git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git (push)
+```
+Rename the **origin** repository to have a different name, 'upstream' is usually the preferred name. This is the name for the main repository from where you will pull nad keep a clone of your fork updated. To do this run the command:
+```
+git remote rename origin upstream
+```
+
+Now on the homepage of the git project we will make a fork from the main repository. To do this, click the button labelled **Fork** which is located right next to **Star** and **Watch**. Now you have your own copy of a repository, so lets setup our local to track this:
+```
+git remote add origin <ssh link>
+```
+The ssh link will be in some form: git@github.com:<Your username>/COMP3900-Strength-In-Numbers.git
+
+You can check that the remote has been setup properly by running the command:
+```
+git remote -v
+```
+Which will output:
+```
+upstream        git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git (fetch)
+upstream        git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git (push)
+
+origin        git@github.com:<Your username>/COMP3900-Strength-In-Numbers.git (fetch)
+origin        git@github.com:<Your username>/COMP3900-Strength-In-Numbers.git (push)
+```
+
+Now you can freely push to your repository without worrying about affecting the main repository.
+
+## Git Commit Messages
+
+Please try to follow the guidelines when writing the subject for git commits:
+> #
+> (Feature, Fix, Docs, Style, Refactor, Test, Chore): { Commit message }
+> #
+
+> ### Example:
+> Feature: Add login button for customers
+
+More info:
+<br>
+| **Type** | **Description** |
+| -- | -- |
+| Feature | A new feature or addition which generally relates to a user story |
+| Fix | A fix to an existing piece of code, without major refactors |
+| Docs | Annotation or work for documentation inlcuded with the source | 
+| Style | Asthetic front end work to resources such as CSS/SCSS or Images |
+| Refactor | A rework of an existing piece of code |
+| Test | Work done to create, fix or enable tests | 
+| Chore | Tidy ups, formatting, things which don't change functionality but improve code quality | 
+
 ## ESLint Rules:
 The linting rules have been set to follow [Airbnb javascript style guide](https://github.com/airbnb/javascript)
 
