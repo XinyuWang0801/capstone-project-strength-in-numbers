@@ -70,10 +70,8 @@ Please try to follow the guidelines when writing the subject for git commits:
 > ### Example:
 > Feature: Add login button for customers
 
-More info:
-<br>
-| **Type** | **Description** |
-| -- | -- |
+| Type | Description |
+| ------------- | ------------- |
 | Feature | A new feature or addition which generally relates to a user story |
 | Fix | A fix to an existing piece of code, without major refactors |
 | Docs | Annotation or work for documentation inlcuded with the source | 
