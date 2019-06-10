@@ -1,3 +1,5 @@
 Week 1
-- Team up a group
-- Choose a project topic to work on 
+- Team up a group.
+- Choose a project topic to work on.
+- Got familiar with React framework.
+- Got started with the student proposal.
