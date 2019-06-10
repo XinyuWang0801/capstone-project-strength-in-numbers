@@ -16,49 +16,8 @@ Linting has also been setup in this project to ensure consistent code practices.
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
 
-## Git Setup
-
-It is recommended that you setup a separate remote from the cloned repository, this allows you to have a local repository that does not need to track the main repository. 
-
-To do this, first clone the main repository: 
-```
-git clone git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git
-```
-
-Then run the command:
-```
-git remote -v 
-```
-This will show you the urls of the remotes you are tracking locally. At this moment you should only see:
-```
-origin        git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git (fetch)
-origin        git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git (push)
-```
-Rename the **origin** repository to have a different name, 'upstream' is usually the preferred name. This is the name for the main repository from where you will pull nad keep a clone of your fork updated. To do this run the command:
-```
-git remote rename origin upstream
-```
-
-Now on the homepage of the git project we will make a fork from the main repository. To do this, click the button labelled **Fork** which is located right next to **Star** and **Watch**. Now you have your own copy of a repository, so lets setup our local to track this:
-```
-git remote add origin <ssh link>
-```
-The ssh link will be in some form: git@github.com:<Your username>/COMP3900-Strength-In-Numbers.git
-
-You can check that the remote has been setup properly by running the command:
-```
-git remote -v
-```
-Which will output:
-```
-upstream        git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git (fetch)
-upstream        git@github.com:ScientistCoco/COMP3900-Strength-In-Numbers.git (push)
-
-origin        git@github.com:<Your username>/COMP3900-Strength-In-Numbers.git (fetch)
-origin        git@github.com:<Your username>/COMP3900-Strength-In-Numbers.git (push)
-```
-
-Now you can freely push to your repository without worrying about affecting the main repository.
+## Git Guidelines
+When implementing new features please create a new branch, this will keep the master branch clean and free from conflicts. Pull requests will then be made to the master branch when pushing a new feature to be deployed.  
 
 ## Git Commit Messages
 
