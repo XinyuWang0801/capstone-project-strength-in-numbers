@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Build Status:
+[![Build Status](https://travis-ci.org/unsw-cse-comp3900-9900/capstone-project-strength-in-numbers.png?branch=master)](https://travis-ci.org/unsw-cse-comp3900-9900/capstone-project-strength-in-numbers)
+
 ## Setup
 
 NPM (node package manager) is required to install external dependencies for this project. You can download it at:
@@ -15,9 +18,10 @@ npm install
 Linting has also been setup in this project to ensure consistent code practices. If you are using VSCode you can install the ESLint extension so you can see the linting errors in the editor - will warn you of potential problems as you write code rather then have to run the script each time to check. [Extension Link](
 https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
-
 ## Git Guidelines
-When implementing new features please create a new branch, this will keep the master branch clean and free from conflicts. Pull requests will then be made to the master branch when pushing a new feature to be deployed.  
+When implementing new features please create a new branch, this will keep the master branch clean and free from conflicts. Pull requests will then be made to the master branch when pushing a new feature to be deployed. 
+<br/>
+This git repository has set the master branch has protected, this means that commits cannot be made to the master branch directly, a pull request is required.
 
 ## Git Commit Messages
 
@@ -43,6 +47,9 @@ Please try to follow the guidelines when writing the subject for git commits:
 The linting rules have been set to follow [Airbnb javascript style guide](https://github.com/airbnb/javascript)
 
 Extra rules have also been added as per the .eslintrc.js file
+
+## Continuous Integration/Continuous Delivery Infrastructure:
+This project has been setup to build with [TravisCI](https://travis-ci.org/unsw-cse-comp3900-9900/capstone-project-strength-in-numbers). The configuration file can be found [here](https://github.com/unsw-cse-comp3900-9900/capstone-project-strength-in-numbers/blob/master/.travis.yml).
 
 ## Available Scripts
 
@@ -71,3 +78,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run lint`
+
+Runs eslint against .js and .jsx files. Ensures consistent code practice for the project. For more information see this [link](https://eslint.org/). 
