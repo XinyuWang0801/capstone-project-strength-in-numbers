@@ -6,12 +6,13 @@ module.exports = {
     commonjs: true,
     node: true,
     jest: true
-  },
+  },  
   extends: "airbnb",
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
   },
+  parser: "babel-eslint",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -40,6 +41,8 @@ module.exports = {
     "linebreak-style": 0,
     "arrow-body-style": 0,
     "no-unused-vars": "error",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "max-len": 0,
+    "react/prop-types": 0
   },
 };

@@ -1,0 +1,28 @@
+.AccommodationForm {
+    height: 100%;
+    background-color: #E5E5E5;
+    
+    &__Footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}
+
+.ProgressBar {
+    position: relative;
+    height: 2rem;
+
+    &__Container {
+        height: inherit;
+        border-radius: 0;
+    }
+
+    &__Navigation {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-around
+    }
+}

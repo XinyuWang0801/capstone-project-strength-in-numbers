@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from './@components';
+import { AccommodationForm } from './AccommodationForm';
 import './App.scss';
 
 const App = () => (
   <div className="App">
-    <Button />
+    <AccommodationForm />
   </div>
 );
 
