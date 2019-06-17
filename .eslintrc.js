@@ -43,6 +43,9 @@ module.exports = {
     "no-unused-vars": "error",
     "import/prefer-default-export": "off",
     "max-len": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "quote-props": 0,
+    "react/no-did-update-set-state": 0,
+    "react/jsx-one-expression-per-line": 0
   },
 };

@@ -1,0 +1,33 @@
+.Panel {
+    position: absolute;
+    height: 100%;
+    margin: 0 300px;
+    padding: 250px 0;
+
+    &__Show {
+        animation: fadeIn 1.5s ease-in-out;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__ShouldHide {        
+        transform: translateX(-300px);
+        opacity: 0;        
+        -webkit-transition: transform 1s ease-in-out, opacity 0.5s ease-in-out, visibility 1s ease-in-out;
+        -moz-transition: transform 1s ease-in-out, opacity 0.5s ease-in-out, visibility 1s ease-in-out;
+        -ms-transition: transform 1s ease-in-out, opacity 0.5s ease-in-out, visibility 1s ease-in-out;
+        -o-transition: transform 1s ease-in-out, opacity 0.5s ease-in-out, visibility 1s ease-in-out;
+        transition: transform 1s ease-in-out, opacity 0.5s ease-in-out, visibility 1s ease-in-out;
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    100% { opacity: 1; }
+    0% { opacity : 0; }
+}

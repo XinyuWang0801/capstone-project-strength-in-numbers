@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button, TextField } from '../../@components';
 
 export const Price = (props) => {
   const { getNextSection } = props;
@@ -9,9 +10,13 @@ export const Price = (props) => {
   };
 
   return (
-    <div>
-      <h3>Price</h3>
-      <button type="button" onClick={handleClick}>Continue</button>
+    <div className="PriceSection">
+      <h3>Specify price</h3>
+      <TextField placeholder="Price" />
+      <Button onClick={handleClick}>
+        <p className="Button__Text">CONTINUE</p>
+        <i className="material-icons">navigate_next</i>
+      </Button>
     </div>
   );
 };

@@ -1,20 +1,23 @@
 import React from 'react';
+import {
+  Bed01, Book, House01, MapLocation, MoneyBag, PictureAdd,
+} from '../icons';
 import { Beds } from './Beds';
+import { BubbleIcon, Panel, ProgressBar } from '../@components';
 import { Description } from './Description';
 import { Location } from './Location';
 import { Name } from './Name';
 import { Photos } from './Photos';
 import { Price } from './Price';
-import { ProgressBar } from 'react-bootstrap';
 import './AccommodationForm.scss';
 
 const FORM_ORDER = [
-  { name: 'NAME', component: <Name /> },
-  { name: 'BEDS', component: <Beds /> },
-  { name: 'LOCATION', component: <Location /> },
-  { name: 'PRICE', component: <Price /> },
-  { name: 'PHOTOS', component: <Photos /> },
-  { name: 'DESCRIPTION', component: <Description /> },
+  { name: 'NAME', component: <Name />, icon: <House01 /> },
+  { name: 'BEDS', component: <Beds />, icon: <Bed01 /> },
+  { name: 'LOCATION', component: <Location />, icon: <MapLocation /> },
+  { name: 'PRICE', component: <Price />, icon: <MoneyBag /> },
+  { name: 'PHOTOS', component: <Photos />, icon: <PictureAdd /> },
+  { name: 'DESCRIPTION', component: <Description />, icon: <Book /> },
 ];
 
 export class AccommodationForm extends React.Component {
@@ -23,7 +26,6 @@ export class AccommodationForm extends React.Component {
 
     this.state = {
       progress: 0,
-      currentSection: <Name getNextSection={this.getNextSection} />,
     };
   }
 
@@ -32,7 +34,6 @@ export class AccommodationForm extends React.Component {
 
     this.setState({
       progress: currentSection + 1,
-      currentSection: React.cloneElement(FORM_ORDER[currentSection + 1].component, { getNextSection: this.getNextSection }),
     });
   }
 
@@ -45,31 +46,31 @@ export class AccommodationForm extends React.Component {
   }
 
   navigateToSection = (e) => {
-    const section = FORM_ORDER.findIndex(item => item.name === e.target.value);
+    const section = FORM_ORDER.findIndex(item => item.name === e.value);
 
     this.setState({
       progress: section,
-      currentSection: React.cloneElement(FORM_ORDER[section].component, { getNextSection: this.getNextSection }),
     });
   }
 
   render() {
-    const { currentSection } = this.state;
+    const { progress } = this.state;
 
     return (
       <div className="AccommodationForm">
-        {currentSection}
+        {FORM_ORDER.map((item, index) => (
+          <Panel isMounted={progress === index} getNextSection={this.getNextSection}>{item.component}</Panel>
+        ))}
         <div className="AccommodationForm__Footer">
-          <div className="ProgressBar">
-            <ProgressBar className="ProgressBar__Container" now={this.calculateProgress()} />
+          <ProgressBar now={this.calculateProgress()}>
             <div className="ProgressBar__Navigation">
-              {FORM_ORDER.map(item => (
-                <button type="button" onClick={this.navigateToSection} value={item.name}>
-                  {item.name}
-                </button>
+              {FORM_ORDER.map((item, index) => (
+                <BubbleIcon onClick={this.navigateToSection} value={item.name} toggled={index === progress}>
+                  {React.cloneElement(item.icon, { width: '35px', height: '35px' })}
+                </BubbleIcon>
               ))}
             </div>
-          </div>
+          </ProgressBar>
         </div>
       </div>
     );

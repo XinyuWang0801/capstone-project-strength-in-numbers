@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button, TextField } from '../../@components';
 
 export const Description = (props) => {
   const { getNextSection } = props;
@@ -9,9 +10,13 @@ export const Description = (props) => {
   };
 
   return (
-    <div>
+    <div className="DescriptionSection">
       <h3>Description</h3>
-      <button type="button" onClick={handleClick}>Continue</button>
+      <TextField placeholder="Description" />
+      <Button onClick={handleClick}>
+        <p className="Button__Text">CONTINUE</p>
+        <i className="material-icons">navigate_next</i>
+      </Button>
     </div>
   );
 };

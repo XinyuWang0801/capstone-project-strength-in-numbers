@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button, TextField } from '../../@components';
 
 export const Location = (props) => {
   const { getNextSection } = props;
@@ -9,9 +10,13 @@ export const Location = (props) => {
   };
 
   return (
-    <div>
-      <h3>Location</h3>
-      <button type="button" onClick={handleClick}>Continue</button>
+    <div className="LocationSection">
+      <h3>Specify Location</h3>
+      <TextField placeholder="Location" />
+      <Button onClick={handleClick}>
+        <p className="Button__Text">CONTINUE</p>
+        <i className="material-icons">navigate_next</i>
+      </Button>
     </div>
   );
 };
