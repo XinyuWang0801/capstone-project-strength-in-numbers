@@ -1,3 +1,8 @@
 .Button {
-    background: slategray;
+    display: flex;
+
+    &__Text {
+        display: inline;
+        margin: 0;
+    }
 }
