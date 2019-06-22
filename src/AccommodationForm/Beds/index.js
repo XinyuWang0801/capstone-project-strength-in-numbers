@@ -1,1 +1,1 @@
-export * from './Beds';
+export { default as Beds } from './Beds';
