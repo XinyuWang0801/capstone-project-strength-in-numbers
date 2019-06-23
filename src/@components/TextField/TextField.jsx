@@ -3,10 +3,10 @@ import React from 'react';
 import './TextField.scss';
 
 export const TextField = (props) => {
-  const { placeholder } = props;
+  const { placeholder, inputRef } = props;
 
   return (
-    <input className="TextField" type="text" placeholder={placeholder} />
+    <input className="TextField" type="text" placeholder={placeholder} ref={inputRef} />
   );
 };
 
