@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { BunkBed, House01, SingleBed } from '../../icons';
+import {
+  BunkBed, House01, SingleBed,
+} from '../../icons';
 import {
   Button, Dropdown, ErrorMessage, InputGroup, RadioInput,
 } from '../../@components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../../store/actions';
+import './Name.scss';
 
 class Name extends React.Component {
   constructor(props) {
@@ -86,7 +89,10 @@ class Name extends React.Component {
     return (
       <div className="NameSection">
         <br />
-        <h3>Lets get some details about the property</h3>
+        <div className="NameSection__Title">
+          <House01 width="50px" height="50px" className="NameSection__Icon" />
+          <h3 className="NameSection__Title--noMargin">Lets get some details about the property</h3>
+        </div>
         <h5>What would you classify your property as?</h5>
         <Dropdown onChange={this.onDropdownSelect}>
           <option value="" selected="selected" disabled>Select property type</option>
