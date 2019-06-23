@@ -1,0 +1,39 @@
+.RadioInput {
+  &__Container {
+    background-color: #DFECFF;
+    border: 1px solid #4786E3;
+    border-radius: 5%;
+    cursor: pointer;
+    height: 150px;
+    margin: 0 auto 0 0;
+    transition: background-color .2s ease-in-out;
+    width: 150px;
+
+    &:hover {
+      background-color: rgb(242, 248, 255);
+    }
+  }
+
+  &__Contents {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+input[type="radio"] {
+  height: 0;
+  opacity: 0;  
+  width: 0;
+
+  &:checked + .RadioInput__Container {
+    background-color: #A9C4F1;
+  }
+
+  &:focus + .RadioInput__Container {
+    outline: none;
+    border-width: 3px;
+  }
+}
