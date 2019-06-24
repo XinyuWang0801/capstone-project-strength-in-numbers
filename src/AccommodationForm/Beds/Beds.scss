@@ -1,0 +1,15 @@
+.BedSection {
+  &__Guests {
+    display: flex;
+    align-items: center;    
+    margin: 28px 0;
+
+    * {
+      margin: 0;
+    }
+  }
+
+  &__RoomTypes {
+    margin: 28px 0;
+  }
+}

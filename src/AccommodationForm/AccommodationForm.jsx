@@ -12,8 +12,8 @@ import { Price } from './Price';
 import './AccommodationForm.scss';
 
 const FORM_ORDER = [
-  { name: 'NAME', component: <Name />, icon: <House01 /> },
   { name: 'BEDS', component: <Beds />, icon: <Bed01 /> },
+  { name: 'NAME', component: <Name />, icon: <House01 /> },
   { name: 'LOCATION', component: <Location />, icon: <MapLocation /> },
   { name: 'PRICE', component: <Price />, icon: <MoneyBag /> },
   { name: 'PHOTOS', component: <Photos />, icon: <PictureAdd /> },

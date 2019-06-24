@@ -1,0 +1,16 @@
+.AddRoom {
+  display: flex;
+  align-items: center;
+
+  &__DeleteBtn {
+    color: #007bff;
+  }
+
+  &__Dropdown {
+    width: 200px;
+  }
+
+  &__Button {
+    margin: 0 20px;
+  }
+}

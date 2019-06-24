@@ -7,3 +7,5 @@ export * from './BubbleIcon';
 export * from './RadioInput';
 export * from './InputGroup';
 export * from './ErrorMessage';
+export * from './Heading';
+export * from './Counter';
