@@ -3,39 +3,64 @@ import React from 'react';
 import { Button, Counter, Dropdown } from '../../../@components';
 import './AddRoom.scss';
 
-export const AddRoom = (props) => {
-  const { addBed, deletable } = props;
+export class AddRoom extends React.Component {
+  constructor(props) {
+    super(props);
+    this.counterRef = React.createRef();
+    this.selectRef = React.createRef();
+  }
 
-  const getBedTypes = () => {
-    const options = ['Single Bed', 'Double Bed', 'Queen Bed', 'King Bed'];
+  getBedTypes = () => {
+    const { bedTypeOptions } = this.props;
 
-    return (options.map(item => <option value={item}>{item}</option>));
+    return (bedTypeOptions.map(item => <option value={item} key={item}>{item}</option>));
   };
 
-  return (
-    <div className="AddRoom">
-      <Dropdown className="AddRoom__Dropdown">
-        <option value="Bed Type" selected disabled>Bed Type</option>
-        {getBedTypes()}
-      </Dropdown>
-      <Counter />
-      { deletable && <i className="material-icons AddRoom__DeleteBtn">delete</i>}
-      { !deletable && (
-      <>
-        <Button className="AddRoom__Button" onClick={addBed}>Add Beds</Button>
-        <Button className="AddRoom__Button">Done</Button>
-      </>
-      )}
-    </div>
-  );
-};
+  onDeleteClicked = (e) => {
+    const { removeBed } = this.props;
+    removeBed(Number(e.target.value));
+  };
+
+  onAddBedClicked = () => {
+    const { addBed } = this.props;
+
+    const numBeds = this.counterRef.current.textContent;
+    const bedType = this.selectRef.current.value;
+    addBed(Number(numBeds), bedType);
+  };
+
+  onAddRoomClicked = () => {
+    const { addRoom } = this.props;
+
+    addRoom();
+  }
+
+  render() {
+    const { bedTypeOptions } = this.props;
+    return (
+      <div className="AddRoom">
+        {bedTypeOptions.length > 0 && (
+          <Dropdown className="AddRoom__Dropdown" selectRef={this.selectRef} defaultValue="">
+            <option value="" disabled>Bed Type</option>
+            {this.getBedTypes()}
+          </Dropdown>
+        ) }
+        {bedTypeOptions.length > 0 && <Counter valueRef={this.counterRef} min={0} />}
+        {bedTypeOptions.length > 0 && <Button className="AddRoom__Button" onClick={this.onAddBedClicked}>Add Beds</Button>}
+        <Button onClick={this.onAddRoomClicked} className="AddRoom__Button">Done</Button>
+      </div>
+    );
+  }
+}
 
 AddRoom.defaultProps = {
-  deletable: false,
   addBed: null,
+  removeBed: null,
 };
 
 AddRoom.propTypes = {
-  deletable: PropTypes.bool,
   addBed: PropTypes.func,
+  removeBed: PropTypes.func,
+  addRoom: PropTypes.isRequired,
+  bedTypeOptions: PropTypes.array.isRequired,
 };
