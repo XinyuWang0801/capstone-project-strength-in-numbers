@@ -46,6 +46,8 @@ module.exports = {
     "react/prop-types": 0,
     "quote-props": 0,
     "react/no-did-update-set-state": 0,
-    "react/jsx-one-expression-per-line": 0
+    "react/jsx-one-expression-per-line": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/label-has-for": 0,
   },
 };

@@ -1,0 +1,15 @@
+.Dropdown {
+  border: 1px solid #4786E3;
+  border-radius: 5px;
+
+  background-color: transparent;
+  color: #4786E3;
+  padding: 0 1rem;
+  width: 20rem;
+  height: 2.5rem;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px;
+  }
+}
