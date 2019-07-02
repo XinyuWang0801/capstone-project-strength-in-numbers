@@ -2,7 +2,7 @@ export const ACCOMMODATION_FORM_ORDER_UPDATED = 'ACCOMMODATION_FORM_ORDER_UPDATE
 
 export const sectionCompleted = (name) => {
   return (dispatch, getState) => {
-    const { accommodationFormState: { formOrder } } = getState(); 
+    const { accommodationFormState: { formOrder } } = getState();
     const currentSection = formOrder.findIndex(item => item.name === name);
 
     dispatch({ type: ACCOMMODATION_FORM_ORDER_UPDATED, payload: currentSection + 1 });
