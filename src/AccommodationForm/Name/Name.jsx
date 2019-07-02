@@ -56,6 +56,7 @@ class Name extends React.Component {
             name="RoomTypes"
             onChange={this.onRadioInputSelect}
             value={item.description}
+            key={item.description}
           >
             {React.cloneElement(item.icon, { width: '60px', height: '60px' })}
             <p> {item.description} </p>
@@ -72,11 +73,7 @@ class Name extends React.Component {
   getDropdownOptions = () => {
     const options = ['House', 'Apartment', 'Townhouse', 'Cottage'];
 
-    return (
-      <>
-        {options.map(item => <option value={item}>{item}</option>)}
-      </>
-    );
+    return (options.map(item => <option value={item} key={item}>{item}</option>));
   }
 
   onDropdownSelect = (e) => {
@@ -94,8 +91,8 @@ class Name extends React.Component {
           <h3 className="NameSection__Title--noMargin">Lets get some details about the property</h3>
         </div>
         <h5>What would you classify your property as?</h5>
-        <Dropdown onChange={this.onDropdownSelect}>
-          <option value="" selected="selected" disabled>Select property type</option>
+        <Dropdown defaultValue="" onChange={this.onDropdownSelect}>
+          <option value="" disabled>Select property type</option>
           {this.getDropdownOptions()}
         </Dropdown>
         {propertyTypeError && <ErrorMessage>Please provide a classification for your property</ErrorMessage>}

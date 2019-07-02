@@ -1,0 +1,24 @@
+$circleWidth: 40px;
+
+.Counter {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  width: 200px;
+
+  &__Button {
+    width: $circleWidth;
+    height: $circleWidth;
+    background: none;
+    border-radius: 50%;
+    border: 2px solid #4786E3;
+    color: #4786E3;
+    font-size: 1.5em;
+    line-height: 0.5em;
+    padding-bottom: 5px;
+  }
+
+  &__Value {
+    margin: 0;
+  }
+}
