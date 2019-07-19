@@ -1,0 +1,20 @@
+.BedListing {
+  display: flex;
+  align-content: center;
+
+  &--noMargin {
+    margin: 0;
+  }
+
+  &__Type {
+    margin: 0 20px;
+    flex: 1
+  }
+
+  &__DeleteBtn {
+    color: #007bff;
+    background: transparent;
+    outline: none;
+    border: none;
+  }
+}

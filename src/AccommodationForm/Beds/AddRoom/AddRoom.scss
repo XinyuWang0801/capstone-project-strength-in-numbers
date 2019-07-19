@@ -1,0 +1,12 @@
+.AddRoom {
+  display: flex;
+  align-items: center;
+  
+  &__Dropdown {
+    width: 200px;
+  }
+
+  &__Button {
+    margin: 0 20px;
+  }
+}

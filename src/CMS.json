@@ -1,0 +1,11 @@
+{
+  "roomSection": {
+    "roomTypeHeader": "Sleeping arrangements",
+    "roomTypeDescription": "Provide the types of beds that are available in each room to help people understand the sleeping arrangements",
+    "bedNumbersError": "Please provide the number of beds of this type",
+    "bedTypeError": "Please provide the type of bed to add",
+    "roomAdditionError": "Please provide details about this room arrangement",
+    "guestNumberError": "Please provide the number of guests that can be accommodated for",
+    "roomArrangementsError": "Please provide details about the rooms in this accommodation"
+  }
+}

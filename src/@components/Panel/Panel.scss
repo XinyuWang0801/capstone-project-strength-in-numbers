@@ -1,8 +1,6 @@
 .Panel {
-    position: absolute;
-    height: 100%;
-    margin: 0 300px;
-    padding: 250px 0;
+    margin: 0;    
+    padding: 250px 400px;
 
     &__Show {
         animation: fadeIn 1.5s ease-in-out;
@@ -19,6 +17,7 @@
         -o-transition: transform 1s ease-in-out, opacity 0.5s ease-in-out, visibility 1s ease-in-out;
         transition: transform 1s ease-in-out, opacity 0.5s ease-in-out, visibility 1s ease-in-out;
         visibility: hidden;
+        display: none;
     }
 }
 

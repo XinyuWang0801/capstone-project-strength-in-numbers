@@ -1,0 +1,12 @@
+.Heading {
+  display: flex;
+  align-items: center;
+
+  &--h3 {
+    margin: 0;
+  }
+
+  &__Icon {
+    margin-right: 10px;
+  }
+}

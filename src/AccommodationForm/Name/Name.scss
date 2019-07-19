@@ -1,0 +1,15 @@
+.NameSection {
+  &__Title {
+    display: flex;
+    align-items: center;
+
+    &--noMargin {
+      margin: 0;
+    }
+  }
+
+  &__Icon {
+    margin-right: 10px;
+    margin-bottom: 18px;
+  }
+}

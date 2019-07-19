@@ -1,1 +1,1 @@
-export * from './AccommodationForm';
+export { default as AccommodationForm } from './AccommodationForm';

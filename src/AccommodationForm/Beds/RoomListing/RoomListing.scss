@@ -1,0 +1,30 @@
+.RoomListing {
+  border-bottom: 1px solid #007bff;
+  padding: 8px 0;
+  margin: 8px 0;
+
+  &__HeaderSection {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__DeleteBtn {
+    color: #007bff;
+    background: transparent;
+    outline: none;
+    border: none;
+  }
+
+  &__DeletePanel {
+    text-align: center;
+
+    &__Buttons {
+      display: flex;
+      justify-content: center;
+
+      * {
+        margin: 8px 16px;
+      }
+    }
+  }
+}
