@@ -1,0 +1,24 @@
+.LocationSection {
+    &__wrapper {
+        list-style-type: none;
+    }
+
+    &__form-row {
+        display: flex;
+        justify-content: flex-end;
+        padding: .5em;
+        .State__Dropdown {
+            flex: 2;
+        }
+    }
+
+    &__form-row > label {
+        padding: .5em 1em .5em 0;
+        flex: 1;
+    }
+
+    &__form-row > input {
+        flex: 2;
+    }
+
+}
