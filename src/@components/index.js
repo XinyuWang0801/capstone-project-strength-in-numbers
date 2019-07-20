@@ -9,3 +9,4 @@ export * from './InputGroup';
 export * from './ErrorMessage';
 export * from './Heading';
 export * from './Counter';
+export * from './TextArea';
