@@ -7,5 +7,15 @@
     "roomAdditionError": "Please provide details about this room arrangement",
     "guestNumberError": "Please provide the number of guests that can be accommodated for",
     "roomArrangementsError": "Please provide details about the rooms in this accommodation"
+  },
+  "LandingPage": {
+    "welcomeTitle": "Book unique homes and experience",
+    "welcomeIntroduction": "Unforgettable travel experiences start with StayIn right now. Find adventures and new places with .... Rent unique places to stay",
+    "validation": {
+      "locationRequired": "Please enter a location",
+      "daysRequired": "Please provide the number of days you will be staying",
+      "guestNumberRequired": "Please provide the number of guests",
+      "validDateRange": "Check in date must be before the check out date."
+    }
   }
 }

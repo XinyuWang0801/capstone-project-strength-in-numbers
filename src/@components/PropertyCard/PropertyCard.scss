@@ -1,0 +1,51 @@
+.PropertyCard {
+  border: 1px solid rgb(156, 170, 184);
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  cursor: pointer;
+
+  &__Image {
+    object-fit: cover;
+    height: 65%;
+  }
+
+  &__Info {
+    margin-left: 20px;
+    font-family: 'Roboto', sans-serif;    
+
+    p {      
+      padding: 0;
+      margin: 0;
+      margin-top: 3px;
+    }
+
+    &__Extras {
+      display: flex;
+      align-items: center;
+
+      p {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+        margin-top: 10px;
+        font-size: .8em;
+      }
+    }  
+  }
+
+  &__Name {
+    font-size: .9em;
+  }
+
+  &__Price {
+    font-weight: 500;
+  }
+
+  &__Address {
+    font-size: .8em;
+  }
+}

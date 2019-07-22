@@ -11,3 +11,7 @@ export { default as PriceTag } from './PriceTag';
 export { default as PriceTag01 } from './PriceTag01';
 export { default as Bathroom } from './Bathroom';
 export { default as SingleBed } from './SingleBed';
+export { default as LandingPageVector } from './LandingPageVector';
+export { default as Key } from './Key';
+export { default as Key01 } from './Key01';
+export { default as CurvedImage } from './CurvedImage';

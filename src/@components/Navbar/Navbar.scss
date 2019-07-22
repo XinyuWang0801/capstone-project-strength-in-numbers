@@ -1,0 +1,47 @@
+.Navbar {
+  grid-column-start: 2;
+  font-family: 'Roboto', sans-serif;  
+  
+  &__Ol {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    
+    :first-child {
+      flex: 3;
+    }
+
+    li:not(:first-child) {
+      flex: 0.5;
+      color: black;
+    }
+
+    li {
+      font-weight: 500;
+    }
+  }
+
+  &__Item {
+    cursor: pointer;
+  }
+}
+
+.StayIn {
+  &--White {
+    color: white;
+    fill: white;
+  }
+
+  &--Blue {
+    color: #4786E3;
+    fill: #4786E3;
+  }
+  
+  &__Name {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5em;    
+    cursor: default;
+  }
+}

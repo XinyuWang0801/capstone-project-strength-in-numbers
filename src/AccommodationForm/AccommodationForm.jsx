@@ -26,8 +26,8 @@ class AccommodationForm extends React.Component {
 
   render() {
     const { formOrder, progress } = this.props;
-
-    return (
+    
+    return (      
       <div className="AccommodationForm">
         {formOrder.map((item, index) => (
           <Panel isMounted={progress === index} getNextSection={this.getNextSection}>{item.component}</Panel>

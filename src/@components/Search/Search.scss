@@ -1,0 +1,21 @@
+.Search {
+  color: #4786E3;
+  
+  &__Input {
+    display: flex;
+  }
+
+  .Dropdown {
+    background-color: white;
+    height: 56px;
+    border-radius: 3px;
+    width: 150px;
+  }
+
+  .btn {
+    margin-left: 5px;
+    display: flex;
+    width: fit-content;
+    height: 56px;
+  }
+}
