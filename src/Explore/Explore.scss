@@ -1,0 +1,60 @@
+.Explore {
+  height: 100%;
+  background-color: #E5E5E5;
+  display: grid;
+  grid-template-rows: 0.5fr 0.5fr 6fr; 
+  grid-template-columns: 0.2fr 0.9fr 5fr;
+  grid-template-areas:
+    "header header header"
+    "space search search"
+    "space nav main";
+
+  &__Nav {    
+    background-color: #2F58F7;
+    padding: calc(1% - 10px) 0; 
+    padding-left: calc(4% - 10px);
+    grid-area: header;    
+  }
+
+  &__Search {
+    grid-area: search;        
+    padding: 16px 0;   
+
+    .Search {
+      display: inline;      
+      &__Input > * {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__Filter {    
+    display: flex;
+    flex-direction: column;
+    grid-area: nav;
+
+    &__Select {
+      .Dropdown {
+        background-color: white;
+        height: 56px;
+        margin-bottom: 10px;
+        min-width: 280px;
+        width: auto;
+      }
+    }
+  }
+
+  &__Results {
+    grid-area: main;
+    margin-left: calc(2% - 10px);
+
+    &__Properties {
+      display: flex;
+
+      &__Item {
+        margin-right: 10px;
+        margin-top: 20px;
+      }
+    }
+  }
+}

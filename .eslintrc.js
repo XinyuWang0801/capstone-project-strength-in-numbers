@@ -49,6 +49,8 @@ module.exports = {
     "react/jsx-one-expression-per-line": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
     "react/forbid-prop-types": 0,
     "object-curly-newline": "off"
   },

@@ -2,3 +2,4 @@
 // this can be retrieving or making updates
 export * from './Service.Accommodation';
 export * from './Service.Photos';
+export * from './Service.Explore';

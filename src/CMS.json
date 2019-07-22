@@ -41,6 +41,16 @@
   "photosSection": {
     "photoHeader": "Do you have any photos you want to include?",
     "photoUploadText": "Drop your photo here...",
-    "photoUploadingInProgress": "Please wait for the photos to finish uploading"
+    "photoUploadingInProgress": "Please wait for the photos to finish uploading",
+  },
+  "LandingPage": {
+    "welcomeTitle": "Book unique homes and experience",
+    "welcomeIntroduction": "Unforgettable travel experiences start with StayIn right now. Find adventures and new places with .... Rent unique places to stay",
+    "validation": {
+      "locationRequired": "Please enter a location",
+      "daysRequired": "Please provide the number of days you will be staying",
+      "guestNumberRequired": "Please provide the number of guests",
+      "validDateRange": "Check in date must be before the check out date."
+    }
   }
 }

@@ -1,0 +1,33 @@
+.Textbox {
+  position: relative;
+  margin-bottom:  10px; 
+  color: #4786E3;
+
+  &__Input {
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #4786E3;    
+    padding: 20px 10px;
+    height: 56px;
+    min-width: 280px;
+    transition: all .3s linear;
+  }
+
+  &__Input:not(:placeholder-shown) {
+    padding: 28px 10px 12px 10px
+  }
+
+  &__Input:not(:placeholder-shown) + &__Label {
+    transform: translateY(-10px);
+    opacity: .7;
+  }
+
+  &__Label {
+    position: absolute;
+    top: calc(35% - 7px);
+    left: 10px;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    font-weight: bold;
+  }
+}
