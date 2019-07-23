@@ -5,12 +5,12 @@ import './PropertyCard.scss';
 
 export const PropertyCard = (props) => {
   const {
-    className, name, price, address, beds, bathrooms, onClick,
+    id, className, name, price, address, beds, bathrooms, onClick,
   } = props;
 
   const handleClick = () => {
     if (onClick === undefined) { return; }
-    onClick();
+    onClick(id);
   };
 
   return (

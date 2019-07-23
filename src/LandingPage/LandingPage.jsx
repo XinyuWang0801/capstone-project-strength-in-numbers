@@ -37,8 +37,8 @@ class LandingPage extends React.Component {
         <div className="LandingPage__Form">
           <Search CMS={validation} searchFunc={this.handleSearch} />
         </div>
-        <LandingPageVector width={500} className="LandingPage__Vector" />
-        <CurvedImage className="LandingPage__CurvedBG" width={600} />
+        <LandingPageVector width="25%" className="LandingPage__Vector" />
+        <CurvedImage className="LandingPage__CurvedBG" width="30%" />
       </div>
     );
   }
