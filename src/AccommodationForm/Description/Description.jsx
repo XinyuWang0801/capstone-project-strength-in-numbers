@@ -16,13 +16,11 @@ class Description extends React.Component {
   handleClick = () => {
     const { getNextSection, updateAccommodationModel } = this.props;
     this.addDescription();
-    console.log(this.state);
     updateAccommodationModel();
     getNextSection('DESCRIPTION');
   };
 
   onDescriptionChange = (e) => {
-    console.log(e.target.value);
     this.setState({
       description: e.target.value,
     })
