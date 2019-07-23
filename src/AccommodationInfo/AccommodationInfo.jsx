@@ -11,7 +11,20 @@ class AccommodationInfo extends React.Component {
     };
   }
 
+  formatLocation = () => {
+    const { location } = this.props;
+    if (!location.street) return '';
+
+    return `${location.street}, ${location.city} ${location.state} ${location.zipCode}`;
+  };
+
   render() {
+    const {
+      accommodationInfo: {
+        beds, bathrooms, name, price,
+      },
+    } = this.props;
+
     return (
       <div className="AccommodationInfo">
         <div className="Explore__Nav"><Navbar /></div>
@@ -34,16 +47,16 @@ class AccommodationInfo extends React.Component {
               <span className="AccommodationInfo__InformationNav--inactive">Location</span>
             </div>
             <hr />
-            <p className="AccommodationInfo__Property">34 Alexander Street, Alexandria NSW 2015</p>
-            <h3 className="AccommodationInfo__Name">Crescent Crest</h3>
+            <p className="AccommodationInfo__Property">{this.formatLocation}</p>
+            <h3 className="AccommodationInfo__Name">{name}</h3>
             <div className="AccommodationInfo__FeaturesContainer">
-              <span className="AccommodationInfo__Features"><i className="material-icons">hotel</i>4 beds</span>
-              <span className="AccommodationInfo__Features"><i className="material-icons">accessibility</i>2 bathrooms</span>
+              <span className="AccommodationInfo__Features"><i className="material-icons">hotel</i>{beds} beds</span>
+              <span className="AccommodationInfo__Features"><i className="material-icons">accessibility</i>{bathrooms} bathrooms</span>
             </div>
             <p>Boasting a Golden Triangle address, an elegant makeover blends contemporary style and Victorian charm over three spacious levels. Behind the classic terrace facade, high ceilings and hardwood floors unravel into the quintessential in/outdoor design. The Caesarstone kitchen is equipped for the gourmet host with Miele induction and connects to open-plan interiors via striking Concertina bifold doors. Escape the vibrancy just footsteps away in the privacy of your very own urban oasis with a timber entertainer's deck and built-benches set against a landscaped backdrop and neighbouring trees. Nestled in one of Alexandria's most distinguished streetscapes, explore a lifestyle of rich diversity on your doorstep. Enjoy just footsteps to Erskineville village and Alexandria's dining precinct, and stroll to Newtown, Enmore, dog-friendly parks, esteemed schools, and superior transport.</p>
           </div>
           <div className="AccommodationInfo__BookingContainer">
-            <BookingCard />
+            <BookingCard price={price} />
           </div>
         </div>
       </div>
@@ -54,7 +67,7 @@ class AccommodationInfo extends React.Component {
 const mapStateToProps = (state) => {
   return {
     CMS: state.CMS.Explore,
-    accommodations: state.exploreState.accommodations,
+    accommodationInfo: state.exploreState.accommodationInfo,
   };
 };
 

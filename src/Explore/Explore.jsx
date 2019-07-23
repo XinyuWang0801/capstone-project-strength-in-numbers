@@ -26,6 +26,7 @@ class Explore extends React.Component {
     return accommodations.map(item => (
       <PropertyCard
         className="Explore__Results__Properties__Item"
+        id={item.id}
         name={item.name}
         price={item.price}
         address={`${item.location.street}, ${item.location.city}, ${item.location.state}`}
@@ -36,15 +37,16 @@ class Explore extends React.Component {
     ));
   }
 
-  handleAccommodationListingClicked = () => {
-    const { history } = this.props;
+  handleAccommodationListingClicked = (id) => {
+    const { history, showAccommodationInfo } = this.props;
 
+    showAccommodationInfo(id);
     history.push('accommodation-info');
   }
 
   handleSearch = (location, checkIn, guestNumber) => {
     const { getAccommodationListings } = this.props;
-
+    debugger;
     getAccommodationListings(location);
   }
 
@@ -104,6 +106,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getAccommodationListings: Actions.getAccommodationListings,
+  showAccommodationInfo: Actions.showAccommodationInfo,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Explore);

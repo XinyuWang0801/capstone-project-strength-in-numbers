@@ -2,7 +2,7 @@
   border: 2px solid #c9c9c9;
   border-radius: 10px;
   width: 100%;
-  height: 100%;
+  height: fit-content;
   padding: 30px 20px;
 
   &--bold {
@@ -11,6 +11,7 @@
 
   &__CheckInOut {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 

@@ -13,7 +13,16 @@
     background-color: #2F58F7;
     padding: calc(1% - 10px) 0; 
     padding-left: calc(4% - 10px);
-    grid-area: header;    
+    grid-area: header;   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .Navbar {
+    &__Item {
+      color: white;
+    }
   }
 
   &__Search {
@@ -50,6 +59,7 @@
 
     &__Properties {
       display: flex;
+      flex-wrap: wrap;
 
       &__Item {
         margin-right: 10px;
