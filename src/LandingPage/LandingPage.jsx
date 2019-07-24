@@ -25,7 +25,7 @@ class LandingPage extends React.Component {
   }
 
   render() {
-    const { CMS: { welcomeTitle, welcomeIntroduction, validation } } = this.props;
+    const { CMS: { welcomeTitle, welcomeIntroduction }, SearchCMS } = this.props;
 
     return (
       <div className="LandingPage">
@@ -35,7 +35,7 @@ class LandingPage extends React.Component {
           <p>{welcomeIntroduction}</p>
         </div>
         <div className="LandingPage__Form">
-          <Search CMS={validation} searchFunc={this.handleSearch} />
+          <Search CMS={SearchCMS} searchFunc={this.handleSearch} />
         </div>
         <LandingPageVector width="25%" className="LandingPage__Vector" />
         <CurvedImage className="LandingPage__CurvedBG" width="30%" />
@@ -47,6 +47,7 @@ class LandingPage extends React.Component {
 const mapStateToProps = (state) => {
   return {
     CMS: state.CMS.LandingPage,
+    SearchCMS: state.CMS.MainSearch,
   };
 };
 

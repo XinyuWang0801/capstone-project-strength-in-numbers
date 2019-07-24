@@ -1,16 +1,15 @@
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import React from 'react';
-import Select from '@material-ui/core/Select';
+import { Button, Input, Select } from 'antd';
 import {
-  Button, Dropdown, Navbar, PropertyCard, Search, Textbox,
+  Dropdown, Navbar, PropertyCard, Search, Textbox,
 } from '../@components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../store/actions';
 import './Explore.scss';
+import 'antd/dist/antd.css';
+
+const { Option } = Select;
 
 class Explore extends React.Component {
   constructor(props) {
@@ -46,7 +45,6 @@ class Explore extends React.Component {
 
   handleSearch = (location, checkIn, guestNumber) => {
     const { getAccommodationListings } = this.props;
-    debugger;
     getAccommodationListings(location);
   }
 
@@ -54,21 +52,25 @@ class Explore extends React.Component {
     return (
       <div className="Explore__Filter">
         <p className="Explore__Filter__Item1">Refine search: </p>
-        <Textbox label="Min price" />
-        <Textbox label="Max price" />
-        <div className="Explore__Filter__Select">
-          <Dropdown>
-            <option value="" disabled>Bathrooms</option>
-            {[...Array(7).keys()].map(item => <option value={item + 1}>{item + 1}</option>)}
-          </Dropdown>
-        </div>
-        <div className="Explore__Filter__Select">
-          <Dropdown>
-            <option value="" disabled>Property type</option>
-            {[...Array(7).keys()].map(item => <option value={item + 1}>{item + 1}</option>)}
-          </Dropdown>
-        </div>
-        <Button className="Explore__Filter__Item1">Search</Button>
+        <Input size="large" id="min-price-input" placeholder="Min price" />
+        <Input size="large" id="min-price-input" placeholder="Max price" />
+        <Select defaultValue="Bathrooms" size="large">
+          <Option value="Bathrooms" disabled>Bathrooms</Option>
+          {[...Array(7).keys()].map(item => <Option value={item + 1}>{item + 1}</Option>)}
+        </Select>
+        <Select defaultValue="Property type" size="large">
+          <Option value="Property type" disabled>Property type</Option>
+          {[...Array(7).keys()].map(item => <Option value={item + 1}>{item + 1}</Option>)}
+        </Select>
+        <Button
+          type="primary"
+          icon="search"
+          size="large"
+          className="Search__Button"
+          onClick={this.handleSearchClicked}
+        >
+            Search
+        </Button>
       </div>
     );
   }
@@ -79,11 +81,13 @@ class Explore extends React.Component {
   }
 
   render() {
+    const { SearchCMS } = this.props;
+
     return (
       <div className="Explore">
         <div className="Explore__Nav"><Navbar /></div>
         <div className="Explore__Search">
-          <Search searchFunc={this.handleSearch} />
+          <Search searchFunc={this.handleSearch} CMS={SearchCMS} />
         </div>
         {this.displayFilterSection()}
         <div className="Explore__Results">
@@ -100,6 +104,7 @@ class Explore extends React.Component {
 const mapStateToProps = (state) => {
   return {
     CMS: state.CMS.Explore,
+    SearchCMS: state.CMS.MainSearch,
     accommodations: state.exploreState.accommodations,
   };
 };
