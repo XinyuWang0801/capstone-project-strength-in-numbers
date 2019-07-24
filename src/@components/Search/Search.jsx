@@ -1,70 +1,132 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  Button, Datepicker, Dropdown, ErrorMessage, Textbox,
-} from '../../@components';
+import { Button, DatePicker, Input, Select } from 'antd';
+import { ErrorMessage } from '..';
+import * as algoliaPlaces from 'places.js';
 import './Search.scss';
+import 'antd/dist/antd.css';
+
+const { RangePicker } = DatePicker;
+const { Option } = Select;
 
 export class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       errorMessage: null,
+      administrativeRegion: null,
+      city: null,
+      country: null,
+      fullLocation: null,
+      guestNumber: null,
+      checkInDate: null,
+      checkOutDate: null,
     };
-    this.locationInputRef = React.createRef();
-    this.checkInInputRef = React.createRef();
-    this.checkOutInputRef = React.createRef();
-    this.guestNumberRef = React.createRef();
   }
 
-  validateDateRange = (start, end) => {
-    return Date.parse(start) < Date.parse(end);
+  componentDidMount() {
+    const placesAutocomplete = algoliaPlaces({
+      appId: 'pl5GIZH93TG1',
+      apiKey: 'ddba8174f4fa9530ebcd22bef118dba5',
+      container: document.getElementById('location-input'),
+      type: 'city',
+      aroundLatLngViaIP: false,
+    });
+
+    placesAutocomplete.on('change', (e) => {
+      this.handleSearchSuggestionCompleted(e);
+    });
+
+    placesAutocomplete.on('suggestions', (e) => {
+      this.updateLocationValue(e);
+    });
+  }
+
+  updateLocationValue = (e) => {
+    this.setState({
+      fullLocation: e.query,
+    });
   }
 
   handleSearchClicked = () => {
-    const {
-      CMS: {
-        locationRequired, daysRequired, guestNumberRequired, validDateRange,
-      }, searchFunc,
-    } = this.props;
+    const { CMS: { validation: { locationRequired, daysRequired, guestNumberRequired } }, searchFunc } = this.props;
+    const { administrativeRegion, city, country, checkInDate, checkOutDate, guestNumber } = this.state;
 
-    if (!this.locationInputRef.current.value) {
+    if (!city) {
       this.setState({ errorMessage: locationRequired });
       return;
     }
 
-    if (!this.checkInInputRef.current.value || !this.checkOutInputRef.current.value) {
+    if (!checkInDate || !checkOutDate) {
       this.setState({ errorMessage: daysRequired });
       return;
     }
-    if (!this.validateDateRange(this.checkInInputRef.current.value, this.checkOutInputRef.current.value)) {
-      this.setState({ errorMessage: validDateRange });
-      return;
-    }
 
-    if (!this.guestNumberRef.current.value) {
+    if (!guestNumber) {
       this.setState({ errorMessage: guestNumberRequired });
       return;
     }
 
     this.setState({ errorMessage: null });
-    searchFunc(this.locationInputRef.current.value, this.checkInInputRef.current.value, this.guestNumberRef.current.value);
+
+    const location = {
+      administrativeRegion,
+      city,
+      country,
+    };
+
+    searchFunc(location, checkInDate, guestNumber);
+  }
+
+  handleSearchSuggestionCompleted = (e) => {
+    this.setState({
+      administrativeRegion: e.suggestion.administrative,
+      city: e.suggestion.name,
+      country: e.suggestion.country,
+      fullLocation: e.suggestion.value,
+    });
+  }
+
+  updateGuestNumber = (value) => {
+    this.setState({
+      guestNumber: value,
+    });
+  }
+
+  updateDates = (dates) => {
+    // eslint-disable-next-line no-underscore-dangle
+    const checkInDate = dates[0] ? dates[0]._d.toLocaleDateString() : null;
+    // eslint-disable-next-line no-underscore-dangle
+    const checkOutDate = dates[1] ? dates[1]._d.toLocaleDateString() : null;
+
+    this.setState({
+      checkInDate,
+      checkOutDate,
+    });
   }
 
   render() {
-    const { errorMessage } = this.state;
+    const { CMS: { searchPlaceholder } } = this.props;
+    const { errorMessage, fullLocation } = this.state;
 
     return (
       <div className="Search">
         <div className="Search__Input">
-          <Textbox label="Location" inputRef={this.locationInputRef} />
-          <Datepicker label="Check in" id="check-in" inputRef={this.checkInInputRef} />
-          <Datepicker label="Check out" id="check-out" inputRef={this.checkOutInputRef} />
-          <Dropdown selectRef={this.guestNumberRef}>
-            <option value="" disabled>Guests</option>
-            {[...Array(7).keys()].map(item => <option value={item + 1}>{item + 1}</option>)}
-          </Dropdown>
-          <Button onClick={this.handleSearchClicked}><i className="material-icons">search</i></Button>
+          <Input size="large" id="location-input" value={fullLocation} placeholder={searchPlaceholder} />
+          <RangePicker size="large" onCalendarChange={this.updateDates} format="DD-MM-YYYY" placeholder={['Check in', 'Check out']} />
+          <Select defaultValue="Guests" onSelect={this.updateGuestNumber} size="large" className="Search__Dropdown">
+            <Option value="Guests" disabled>Guests</Option>
+            {[...Array(7).keys()].map(item => <Option value={item + 1}>{item + 1}</Option>)}
+          </Select>
+          <Button
+            type="primary"
+            icon="search"
+            size="large"
+            className="Search__Button"
+            onClick={this.handleSearchClicked}
+          >
+            Search
+          </Button>
         </div>
         <div className="Search_Error">
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}

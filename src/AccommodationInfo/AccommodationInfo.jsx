@@ -1,7 +1,12 @@
 import React from 'react';
+import { Bed02, Toilet } from '../icons';
 import { BookingCard, Navbar } from '../@components';
+import { Icon } from 'antd';
 import { connect } from 'react-redux';
 import './AccommodationInfo.scss';
+
+const BedIcon = props => <Icon component={Bed02} {...props} />;
+const ToiletIcon = props => <Icon component={Toilet} {...props} />;
 
 class AccommodationInfo extends React.Component {
   constructor(props) {
@@ -50,8 +55,8 @@ class AccommodationInfo extends React.Component {
             <p className="AccommodationInfo__Property">{this.formatLocation}</p>
             <h3 className="AccommodationInfo__Name">{name}</h3>
             <div className="AccommodationInfo__FeaturesContainer">
-              <span className="AccommodationInfo__Features"><i className="material-icons">hotel</i>{beds} beds</span>
-              <span className="AccommodationInfo__Features"><i className="material-icons">accessibility</i>{bathrooms} bathrooms</span>
+              <span className="AccommodationInfo__Features"><BedIcon style={{ fontSize: '2em', color: '#007bff' }} />{beds} beds</span>
+              <span className="AccommodationInfo__Features"><ToiletIcon style={{ fontSize: '2em', color: '#007bff' }} />{bathrooms} bathrooms</span>
             </div>
             <p>Boasting a Golden Triangle address, an elegant makeover blends contemporary style and Victorian charm over three spacious levels. Behind the classic terrace facade, high ceilings and hardwood floors unravel into the quintessential in/outdoor design. The Caesarstone kitchen is equipped for the gourmet host with Miele induction and connects to open-plan interiors via striking Concertina bifold doors. Escape the vibrancy just footsteps away in the privacy of your very own urban oasis with a timber entertainer's deck and built-benches set against a landscaped backdrop and neighbouring trees. Nestled in one of Alexandria's most distinguished streetscapes, explore a lifestyle of rich diversity on your doorstep. Enjoy just footsteps to Erskineville village and Alexandria's dining precinct, and stroll to Newtown, Enmore, dog-friendly parks, esteemed schools, and superior transport.</p>
           </div>

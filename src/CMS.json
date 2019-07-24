@@ -10,12 +10,15 @@
   },
   "LandingPage": {
     "welcomeTitle": "Book unique homes and experience",
-    "welcomeIntroduction": "Unforgettable travel experiences start with StayIn right now. Find adventures and new places with .... Rent unique places to stay",
+    "welcomeIntroduction": "Unforgettable travel experiences start with StayIn right now. Find adventures and new places with .... Rent unique places to stay"
+  },
+  "MainSearch": {
     "validation": {
       "locationRequired": "Please enter a location",
       "daysRequired": "Please provide the number of days you will be staying",
       "guestNumberRequired": "Please provide the number of guests",
       "validDateRange": "Check in date must be before the check out date."
-    }
+    },
+    "searchPlaceholder": "Which city do you want to stay at?"
   }
 }

@@ -46,6 +46,11 @@
   &__Features {
     display: flex;
     align-items: center;
+    margin-right: 15px;
+
+    .anticon {
+      margin-right: 5px;
+    }
   }
 
   &__BookingContainer {
