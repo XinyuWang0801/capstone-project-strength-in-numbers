@@ -14,5 +14,16 @@
   },
   "descriptionSection": {
     "descriptionHeader": "Any other further details can be added here"
+  },
+  "bathroomSection": {
+    "bathroomHeader": "How many bathrooms?",
+    "bathroomDescription": "Bathrooms that do not have a shower or a bathtub should be counted as half a bathroom",
+    "bathroomNumberError": "Please provide the number of bathrooms in the accommodation"
+  },
+  "priceSection": {
+    "priceHeader": "How much will it cost per night?",
+    "emptyError": "Please enter how much it costs to stay per night",
+    "nonNumericError": "Please enter only numeric values",
+    "negativeError": "Please enter only positive amounts"
   }
 }
