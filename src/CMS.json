@@ -7,5 +7,9 @@
     "roomAdditionError": "Please provide details about this room arrangement",
     "guestNumberError": "Please provide the number of guests that can be accommodated for",
     "roomArrangementsError": "Please provide details about the rooms in this accommodation"
+  },
+  "locationSection": {
+    "locationHeader": "Where is the place located?",
+    "addressError": "Please provide the location address"
   }
 }
