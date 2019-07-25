@@ -50,5 +50,6 @@ module.exports = {
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/label-has-for": 0,
     "react/forbid-prop-types": 0,
+    "object-curly-newline": "off"
   },
 };

@@ -24,3 +24,20 @@ code {
     align-items: center;
   }
 }
+
+.antd__CurrencyContainer {
+  position: relative;
+
+  &--input {
+    padding-left: 20px !important;
+  }
+
+  &::after {
+    content: '$';
+    position: absolute;
+    height: 100%;
+    top: 10px;
+    left: 10px;
+    font-weight: bold;
+  }
+}

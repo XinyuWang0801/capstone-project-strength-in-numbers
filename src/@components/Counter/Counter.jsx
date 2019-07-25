@@ -12,19 +12,19 @@ export class Counter extends React.Component {
   }
 
   increment = () => {
-    const { max } = this.props;
+    const { incrementBy, max } = this.props;
     const { value } = this.state;
 
-    if (max && value + 1 > max) { return; }
-    this.setState({ value: value + 1 });
+    if (max && value + incrementBy > max) { return; }
+    this.setState({ value: value + incrementBy });
   }
 
   decrement = () => {
-    const { min } = this.props;
+    const { incrementBy, min } = this.props;
     const { value } = this.state;
 
-    if (min !== undefined && min > value - 1) { return; }
-    this.setState({ value: value - 1 });
+    if (min !== undefined && min > value - incrementBy) { return; }
+    this.setState({ value: value - incrementBy });
   }
 
   render() {
@@ -45,6 +45,7 @@ Counter.defaultProps = {
   min: undefined,
   max: undefined,
   valueRef: undefined,
+  incrementBy: 1,
 };
 
 Counter.propTypes = {
@@ -54,4 +55,5 @@ Counter.propTypes = {
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]),
+  incrementBy: PropTypes.number,
 };
