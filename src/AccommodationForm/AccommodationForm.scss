@@ -1,4 +1,11 @@
 .AccommodationForm {
+    display: grid;
+    grid-template-rows: 0.2fr 0.8fr 0.2fr; 
+    grid-template-columns: 0.2fr 0.8fr 0.2fr;
+    grid-template-areas:
+      "header header header"
+      "left main right"
+      "bottom bottom bottom";
     height: 100%;
     background-color: #E5E5E5;
     

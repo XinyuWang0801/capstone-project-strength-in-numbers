@@ -1,6 +1,6 @@
 .Panel {
+    grid-area: main;
     margin: 0;    
-    padding: 250px 400px;
 
     &__Show {
         animation: fadeIn 1.5s ease-in-out;
