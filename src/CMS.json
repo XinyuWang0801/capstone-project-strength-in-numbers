@@ -11,5 +11,8 @@
   "locationSection": {
     "locationHeader": "Where is the place located?",
     "addressError": "Please provide the location address"
+  },
+  "descriptionSection": {
+    "descriptionHeader": "Any other further details can be added here"
   }
 }

@@ -1,56 +1,68 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, TextField, TextArea } from '../../@components';
+import { Book } from '../../icons';
+import { Button, Icon, Input } from 'antd';
+import { Heading } from '../../@components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../../store/actions';
 
+import './Description.scss';
+
+const { TextArea } = Input;
+
 class Description extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      description: '',
-    };
-  };
+    this.descriptionRef = React.createRef();
+  }
 
   handleClick = () => {
-    const { getNextSection, updateAccommodationModel } = this.props;
-    this.addDescription();
-    updateAccommodationModel();
+    const { addDescription, getNextSection } = this.props;
+    const description = this.descriptionRef.current.textAreaRef.value;
+
+    addDescription(description);
+    // updateAccommodationModel();
     getNextSection('DESCRIPTION');
   };
 
-  onDescriptionChange = (e) => {
-    this.setState({
-      description: e.target.value,
-    })
-  }
-
-  addDescription = () => {
-    const { addDescription } = this.props;
-    addDescription(this.state.description);
-  }
-
   render() {
+    const { CMS } = this.props;
+
     return (
       <div className="DescriptionSection">
-        <h3>You can add more details about the place...</h3>
-        <TextArea placeholder="Description" onChange={(e) => this.onDescriptionChange(e)} />
-        <Button onClick={this.handleClick}>
-          <p className="Button__Text">CONTINUE</p>
-          <i className="material-icons">navigate_next</i>
+        <Heading
+          title={CMS.descriptionHeader}
+          icon={<Book />}
+        />
+        <TextArea
+          autosize={{ minRows: 6, maxRows: 6 }}
+          placeholder="Description"
+          size="large"
+          className="DescriptionSection__TextArea"
+          ref={this.descriptionRef}
+        />
+        <Button onClick={this.handleClick} type="primary" className="antd__Button--centered" size="large">
+          CONTINUE
+          <Icon type="right" />
         </Button>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    CMS: state.CMS.descriptionSection,
+  };
+};
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   updateAccommodationModel: Actions.updateAccommodationModel,
   addDescription: Actions.addDescription,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Description);
+export default connect(mapStateToProps, mapDispatchToProps)(Description);
 
 Description.defaultProps = {
   getNextSection: null,
