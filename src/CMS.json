@@ -6,12 +6,10 @@
     "bedTypeError": "Please provide the type of bed to add",
     "roomAdditionError": "Please provide details about this room arrangement",
     "guestNumberError": "Please provide the number of guests that can be accommodated for",
-    "roomArrangementsError": "Please provide details about the rooms in this accommodation",
+    "roomArrangementsError": "Please provide details about the rooms in this accommodation"
   },
   "locationSection": {
-    "streetFillError": "Street No. and Street cannot be empty",
-    "cityFillError": "City cannot be empty",
-    "stateSelectError": "State needs to be selected",
-    "postcodeFillError": "Postal Code cannot be empty"
+    "locationHeader": "Where is the place located?",
+    "addressError": "Please provide the location address"
   }
 }

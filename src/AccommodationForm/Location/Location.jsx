@@ -1,131 +1,132 @@
+import MapGL, { Marker } from 'react-map-gl';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, TextField, Heading, ErrorMessage, Dropdown } from '../../@components';
+import { Button, Icon, Input } from 'antd';
+import { ErrorMessage, Heading } from '../../@components';
 import { MapLocation } from '../../icons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../../store/actions';
+import * as algoliaPlaces from 'places.js';
+
 import './Location.scss';
-import { throwError } from 'rxjs';
+
+const mapboxToken = 'pk.eyJ1Ijoic2NpZW50aXN0Y29jbyIsImEiOiJjanlpYnRyb2kwOHN6M2lxbHpjandsdnJwIn0.jPLI15Qhk8gOqpSwIxEpLQ';
 
 export class Location extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userAddress: {
-        street: '',
-        city: '',
-        state: '',
-        postcode: '',
+        city: null,
+        country: null,
+        state: null,
+        street: null,
+        zipCode: null,
       },
-      streetFillError: false,
-      cityFillError: false,
-      stateSelectedError: false,
-      postcodeFillError: false,
-    }
-  };
-  
+      viewport: {
+        latitude: 37.785164,
+        longitude: -120,
+        zoom: 15,
+        bearing: 0,
+        pitch: 0,
+        width: '100%',
+        height: '100%',
+      },
+      addressError: null,
+    };
+  }
+
+  componentDidMount() {
+    const configs = {
+      appId: 'pl5GIZH93TG1',
+      apiKey: 'ddba8174f4fa9530ebcd22bef118dba5',
+      aroundLatLngViaIP: false,
+    };
+
+    const addressAutocomplete = algoliaPlaces({
+      ...configs,
+      container: document.getElementById('address-input'),
+      type: 'address',
+    });
+
+    addressAutocomplete.on('change', (e) => {
+      this.handleSearchSuggestionCompleted(e);
+    });
+  }
+
   handleClick = () => {
-    const { getNextSection } = this.props;
-    
-    try {
-      this.validateInputFilled();
-    } catch(e) {
-    return;
+    const { userAddress } = this.state;
+    const { addAddress, getNextSection } = this.props;
+
+    if (!userAddress.city) {
+      this.setState({ addressError: true });
+      return;
     }
-    const { addAddress } = this.props;
-    addAddress(this.state.userAddress);
+
+    this.setState({ addressError: false });
+
+    addAddress(userAddress);
+
     getNextSection('LOCATION');
   };
 
-  validateInputFilled = () => {
-    const { userAddress } = this.state;
-    // console.log(userAddress.street.length);
-    if (userAddress.street.length === 0) {
-      this.setState({ streetFillError: true });
-      // throw Error;
-    } else {
-      this.setState({ streetFillError: false });
-    }
+  handleSearchSuggestionCompleted = (e) => {
+    const { viewport } = this.state;
 
-    if (userAddress.city.length === 0) {
-      this.setState({ cityFillError: true });
-      // throw Error;
-    } else {
-      this.setState({ cityFillError: false });
-    }
+    const nViewport = {
+      ...viewport,
+      latitude: e.suggestion.latlng.lat,
+      longitude: e.suggestion.latlng.lng,
+    };
 
-    if (userAddress.postcode.length === 0) {
-      this.setState({ postcodeFillError: true });
-      throw Error;
-    } else {
-      this.setState({ postcodeFillError: false });
-    }
-  }
-
-  onChangeAddrInput = (e) => {
-    const { id, value } = e.target;
-
-    this.setState(prevState => ({
+    this.setState({
+      viewport: nViewport,
       userAddress: {
-        ...prevState.userAddress,
-        [id]: [value]
-      }
-    }));
+        city: e.suggestion.city,
+        country: e.suggestion.country,
+        street: e.suggestion.name,
+        state: e.suggestion.administrative,
+        zipCode: e.suggestion.postcode,
+      },
+    });
   }
-  
+
   render() {
+    const { viewport, addressError } = this.state;
     const { CMS } = this.props;
-    const { userAddress, streetFillError, cityFillError, stateSelectedError, postcodeFillError } = this.state;
-    return (  
+
+    return (
       <div className="LocationSection">
         <Heading
-          title="Where is you place?"
+          title={CMS.locationHeader}
           icon={<MapLocation />}
         />
-        <ul className="LocationSection__wrapper">
-          <li className="LocationSection__form-row">
-            <label htmlFor="street">Street</label>
-            <input type="text" id="street" value={userAddress.street} onChange={(e) => this.onChangeAddrInput(e)} />
-          </li>
-          {streetFillError && <ErrorMessage>{CMS.streetFillError}</ErrorMessage>}
-          <li className="LocationSection__form-row">
-            <label htmlFor="city">City</label>
-            <input type="text" id="city" value={userAddress.city} onChange={(e) => this.onChangeAddrInput(e)} />
-          </li>
-          {cityFillError && <ErrorMessage>{CMS.cityFillError}</ErrorMessage>}
-          <li className="LocationSection__form-row">
-            <label htmlFor="postcode">Postal Code</label>
-            <input type="text" id="postcode" value={userAddress.postcode} onChange={(e) => this.onChangeAddrInput(e)} />
-          </li>
-          {postcodeFillError && <ErrorMessage>{CMS.postcodeFillError}</ErrorMessage>}
-          <li className="LocationSection__form-row">
-            <label htmlFor="state">State</label>
-            <Dropdown className="State__Dropdown" id="state" value={userAddress.state} onChange={(e) => this.onChangeAddrInput(e)}>
-              <option value="" disabled>Select</option>
-              <option value="NSW">NSW</option>
-              <option value="QLD">QLD</option>
-              <option value="VIC">VIC</option>
-              <option value="WA">WA</option>
-              <option value="SA">SA</option>
-              <option value="NT">NT</option>
-              <option value="NT">TAS</option>
-            </Dropdown>
-          </li>
-        </ul>
-        <Button onClick={this.handleClick}>
-          <p className="Button__Text">CONTINUE</p>
-          <i className="material-icons">navigate_next</i>
+        <Input id="address-input" />
+        {addressError && <ErrorMessage>{CMS.addressError}</ErrorMessage>}
+        <div className="LocationSection__Map">
+          <MapGL
+            {...viewport}
+            mapboxApiAccessToken={mapboxToken}
+            mapStyle="mapbox://styles/mapbox/streets-v11"
+          >
+            <Marker {...viewport}>
+              <Icon type="environment" theme="twoTone" style={{ fontSize: '2em' }} />
+            </Marker>
+          </MapGL>
+        </div>
+        <Button onClick={this.handleClick} type="primary" className="antd__Button--centered" size="large">
+          CONTINUE
+          <Icon type="right" />
         </Button>
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => {
   return {
     CMS: state.CMS.locationSection,
-    address: state.locationState.address,
   };
 };
 
