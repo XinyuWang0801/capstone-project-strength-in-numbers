@@ -1,37 +1,68 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, TextField } from '../../@components';
+import { Book } from '../../icons';
+import { Button, Icon, Input } from 'antd';
+import { Heading } from '../../@components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../../store/actions';
 
-class Description extends React.Component {
-  handleClick = () => {
-    const { getNextSection, updateAccommodationModel } = this.props;
+import './Description.scss';
 
-    updateAccommodationModel();
+const { TextArea } = Input;
+
+class Description extends React.Component {
+  constructor(props) {
+    super(props);
+    this.descriptionRef = React.createRef();
+  }
+
+  handleClick = () => {
+    const { addDescription, getNextSection } = this.props;
+    const description = this.descriptionRef.current.textAreaRef.value;
+
+    addDescription(description);
+    // updateAccommodationModel();
     getNextSection('DESCRIPTION');
   };
 
   render() {
+    const { CMS } = this.props;
+
     return (
       <div className="DescriptionSection">
-        <h3>Description</h3>
-        <TextField placeholder="Description" />
-        <Button onClick={this.handleClick}>
-          <p className="Button__Text">CONTINUE</p>
-          <i className="material-icons">navigate_next</i>
+        <Heading
+          title={CMS.descriptionHeader}
+          icon={<Book />}
+        />
+        <TextArea
+          autosize={{ minRows: 6, maxRows: 6 }}
+          placeholder="Description"
+          size="large"
+          className="DescriptionSection__TextArea"
+          ref={this.descriptionRef}
+        />
+        <Button onClick={this.handleClick} type="primary" className="antd__Button--centered" size="large">
+          CONTINUE
+          <Icon type="right" />
         </Button>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    CMS: state.CMS.descriptionSection,
+  };
+};
+
 const mapDispatchToProps = dispatch => bindActionCreators({
   updateAccommodationModel: Actions.updateAccommodationModel,
+  addDescription: Actions.addDescription,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Description);
+export default connect(mapStateToProps, mapDispatchToProps)(Description);
 
 Description.defaultProps = {
   getNextSection: null,
