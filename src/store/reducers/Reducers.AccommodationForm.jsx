@@ -12,13 +12,13 @@ import { Photos } from '../../AccommodationForm/Photos';
 import { Price } from '../../AccommodationForm/Price';
 
 const FORM_ORDER = [
-  { name: 'DESCRIPTION', component: <Description />, icon: <Book /> },
   { name: 'NAME', component: <Name />, icon: <House01 /> },
   { name: 'BEDS', component: <Beds />, icon: <Bed01 /> },
   { name: 'BATHROOM', component: <Bathrooms />, icon: <Bathroom /> },
   { name: 'LOCATION', component: <Location />, icon: <MapLocation /> },
   { name: 'PRICE', component: <Price />, icon: <MoneyBag /> },
-  { name: 'PHOTOS', component: <Photos />, icon: <PictureAdd /> }
+  { name: 'PHOTOS', component: <Photos />, icon: <PictureAdd /> },
+  { name: 'DESCRIPTION', component: <Description />, icon: <Book /> },
 ];
 
 export const initialState = {
