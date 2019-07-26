@@ -1,4 +1,16 @@
 {
+  "accommodationForm": {
+    "completedHeader": "Congratulations your property has just been registered!"
+  },
+  "nameSection": {
+    "nameHeader": "Lets get some details about the property",
+    "nameQuestion": "Provide a name for the property:",
+    "propertyClassification": "What would you classify your property as?",
+    "guestSpace": "The guests will have:",
+    "propertyTypeError": "Please provide a classification for your property",
+    "propertyNameError": "Please provide a name for the property",
+    "spaceTypeError": "Please select the type of space your guests will have"
+  },
   "roomSection": {
     "roomTypeHeader": "Sleeping arrangements",
     "roomTypeDescription": "Provide the types of beds that are available in each room to help people understand the sleeping arrangements",
@@ -25,5 +37,10 @@
     "emptyError": "Please enter how much it costs to stay per night",
     "nonNumericError": "Please enter only numeric values",
     "negativeError": "Please enter only positive amounts"
+  },
+  "photosSection": {
+    "photoHeader": "Do you have any photos you want to include?",
+    "photoUploadText": "Drop your photo here...",
+    "photoUploadingInProgress": "Please wait for the photos to finish uploading"
   }
 }
