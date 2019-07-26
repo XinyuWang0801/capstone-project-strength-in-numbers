@@ -1,5 +1,5 @@
 import React from 'react';
-import { ACCOMMODATION_FORM_ORDER_UPDATED } from '../actions';
+import { ACCOMMODATION_FORM_COMPLETED, ACCOMMODATION_FORM_ORDER_UPDATED } from '../actions';
 import {
   Bathroom, Bed01, Book, House01, MapLocation, MoneyBag, PictureAdd,
 } from '../../icons';
@@ -24,6 +24,7 @@ const FORM_ORDER = [
 export const initialState = {
   progress: 0,
   formOrder: FORM_ORDER,
+  disableProgressBar: false,
 };
 
 export default (state = initialState, action) => {
@@ -31,6 +32,10 @@ export default (state = initialState, action) => {
   case ACCOMMODATION_FORM_ORDER_UPDATED:
     return Object.assign({}, state, {
       progress: action.payload,
+    });
+  case ACCOMMODATION_FORM_COMPLETED:
+    return Object.assign({}, state, {
+      disableProgressBar: true,
     });
   default:
     return state;

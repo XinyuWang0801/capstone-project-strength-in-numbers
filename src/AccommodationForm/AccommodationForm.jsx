@@ -1,5 +1,6 @@
 import React from 'react';
 import { BubbleIcon, Panel, ProgressBar } from '../@components';
+import { Communities } from '../icons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../store/actions';
@@ -7,7 +8,9 @@ import './AccommodationForm.scss';
 
 class AccommodationForm extends React.Component {
   getNextSection = (name) => {
-    const { sectionCompleted } = this.props;
+    const { sectionCompleted, disableProgressBar } = this.props;
+
+    if (disableProgressBar) { return; }
     sectionCompleted(name);
   }
 
@@ -20,18 +23,27 @@ class AccommodationForm extends React.Component {
   }
 
   navigateToSection = (e) => {
-    const { navigateToSection } = this.props;
+    const { navigateToSection, disableProgressBar } = this.props;
+
+    if (disableProgressBar) { return; }
     navigateToSection(e.value);
   }
 
   render() {
-    const { formOrder, progress } = this.props;
+    const { CMS, formOrder, progress, disableProgressBar } = this.props;
 
     return (
       <div className="AccommodationForm">
         {formOrder.map((item, index) => (
           <Panel isMounted={progress === index} getNextSection={this.getNextSection}>{item.component}</Panel>
         ))}
+        {disableProgressBar
+          && (
+            <div className="AccommodationForm__Completed">
+              <h3>{CMS.completedHeader}</h3>
+              <Communities />
+            </div>
+          )}
         <div className="AccommodationForm__Footer">
           <ProgressBar now={this.calculateProgress()}>
             <div className="ProgressBar__Navigation">
@@ -50,8 +62,10 @@ class AccommodationForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    CMS: state.CMS.accommodationForm,
     progress: state.accommodationFormState.progress,
     formOrder: state.accommodationFormState.formOrder,
+    disableProgressBar: state.accommodationFormState.disableProgressBar,
   };
 };
 
