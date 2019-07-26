@@ -1,11 +1,10 @@
-
 import { storage } from '../../firebase';
 
 const userUID = '123'; // change this later when user accounts get created
 
 export const uploadPhoto = async (option) => {
   const { onSuccess, onError, file, onProgress } = option;
-  // const index = database.ref().child('accommodations').orderByKey('userId');  
+  // const index = database.ref().child('accommodations').orderByKey('userId');
   try {
     const uploadTask = storage.ref().child(`${userUID}/${file.uid}`).put(file);
 

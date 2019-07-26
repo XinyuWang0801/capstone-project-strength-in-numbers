@@ -29,6 +29,7 @@ const formCompleted = (dispatch, getState) => {
 
   // Check if there is anything that has not been defined
   if (Object.values(payload).some(item => item === null || item === undefined)) {
+    // eslint-disable-next-line no-console
     console.error('undefined values in payload');
     return;
   }
