@@ -1,4 +1,5 @@
 import {
+  BED_SECTION_GUEST_NUMBER_ADDED,
   BED_SECTION_OPTIONS_RESETTED,
   BED_SECTION_OPTIONS_UPDATED,
   BED_SECTION_ROOM_LISTING_UPDATED,
@@ -13,7 +14,9 @@ const defaultOptions = [SINGLE_BED, DOUBLE_BED, QUEEN_BED, KING_BED].sort();
 
 const initialState = {
   bedOptions: defaultOptions,
-  roomArrangements: [],
+  guestNumber: null,
+  roomArrangementsComp: [], // contains the components
+  roomArrangements: [], // contains the data to be sent
 };
 
 export default (state = initialState, action) => {
@@ -28,8 +31,13 @@ export default (state = initialState, action) => {
     });
   case BED_SECTION_ROOM_LISTING_UPDATED:
     return (Object.assign({}, state, {
-      roomArrangements: action.payload,
+      roomArrangementsComp: action.payload.newRoomArrangementsComp,
+      roomArrangements: action.payload.newRoomArrangements,
     }));
+  case BED_SECTION_GUEST_NUMBER_ADDED:
+    return Object.assign({}, state, {
+      guestNumber: action.payload,
+    });
   default:
     return state;
   }

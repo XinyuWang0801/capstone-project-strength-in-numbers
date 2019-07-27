@@ -3,13 +3,14 @@ import React from 'react';
 import {
   BunkBed, House01, SingleBed,
 } from '../../icons';
-import {
-  Button, Dropdown, ErrorMessage, InputGroup, RadioInput,
-} from '../../@components';
+import { Button, Icon, Input, Select } from 'antd';
+import { ErrorMessage, Heading, InputGroup, RadioInput } from '../../@components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../../store/actions';
 import './Name.scss';
+
+const { Option } = Select;
 
 class Name extends React.Component {
   constructor(props) {
@@ -19,27 +20,30 @@ class Name extends React.Component {
       propertyTypeError: null,
       spaceType: null,
       spaceTypeError: null,
+      propertyName: null,
+      propertyNameError: null,
     };
   }
 
   handleClick = () => {
-    const { getNextSection } = this.props;
-    const { propertyType, spaceType } = this.state;
+    const { getNextSection, completeNameSection } = this.props;
+    const { propertyType, propertyName, spaceType } = this.state;
 
-    if (propertyType) {
-      this.setState({ propertyTypeError: false });
-    } else {
-      this.setState({ propertyTypeError: true });
+    const hasPropertyTypeError = !propertyType;
+    const hasSpaceTypeError = !spaceType;
+    const hasPropertyNameError = !propertyName;
+
+    this.setState({
+      propertyTypeError: hasPropertyTypeError,
+      spaceTypeError: hasSpaceTypeError,
+      propertyNameError: hasPropertyNameError,
+    });
+
+    if (hasPropertyTypeError || hasSpaceTypeError || hasPropertyNameError) {
       return;
     }
 
-    if (spaceType) {
-      this.setState({ spaceTypeError: false });
-    } else {
-      this.setState({ spaceTypeError: true });
-      return;
-    }
-
+    completeNameSection({ propertyType, spaceType, propertyName });
     getNextSection('NAME');
   };
 
@@ -73,51 +77,66 @@ class Name extends React.Component {
   getDropdownOptions = () => {
     const options = ['House', 'Apartment', 'Townhouse', 'Cottage'];
 
-    return (options.map(item => <option value={item} key={item}>{item}</option>));
+    return (options.map(item => <Option value={item} key={item}>{item}</Option>));
   }
 
-  onDropdownSelect = (e) => {
-    this.setState({ propertyType: e.target.value });
+  onDropdownSelect = (value) => {
+    this.setState({ propertyType: value });
+  }
+
+  onInputChanged = (e) => {
+    this.setState({ propertyName: e.target.value });
   }
 
   render() {
-    const { propertyTypeError, spaceTypeError } = this.state;
+    const { CMS } = this.props;
+    const { propertyTypeError, propertyNameError, spaceTypeError } = this.state;
 
     return (
       <div className="NameSection">
         <br />
-        <div className="NameSection__Title">
-          <House01 width="50px" height="50px" className="NameSection__Icon" />
-          <h3 className="NameSection__Title--noMargin">Lets get some details about the property</h3>
-        </div>
-        <h5>What would you classify your property as?</h5>
-        <Dropdown defaultValue="" onChange={this.onDropdownSelect}>
-          <option value="" disabled>Select property type</option>
+        <Heading
+          title={CMS.nameHeader}
+          icon={<House01 />}
+        />
+        <h5>{CMS.propertyClassification}</h5>
+        <Select
+          onChange={this.onDropdownSelect}
+          size="large"
+          style={{ width: 400 }}
+          defaultValue="Select property type"
+        >
+          <Option value="" disabled>Select property type</Option>
           {this.getDropdownOptions()}
-        </Dropdown>
-        {propertyTypeError && <ErrorMessage>Please provide a classification for your property</ErrorMessage>}
-        <br />
-        <h5>The guests will have:</h5>
+        </Select>
+        {propertyTypeError && <ErrorMessage>{CMS.propertyTypeError}</ErrorMessage>}
+        <div className="NameSection__PropertyName">
+          <h5>{CMS.nameQuestion}</h5>
+          <Input size="large" placeholder="Property name..." style={{ width: 400 }} onChange={this.onInputChanged} />
+          {propertyNameError && <ErrorMessage>{CMS.propertyNameError}</ErrorMessage>}
+        </div>
+        <h5>{CMS.guestSpace}</h5>
         {this.getRadioInputs()}
-        {spaceTypeError && <ErrorMessage>Please select the type of space your guests will have</ErrorMessage>}
+        {spaceTypeError && <ErrorMessage>{CMS.spaceTypeError}</ErrorMessage>}
         <br />
-        <Button onClick={this.handleClick}>
-          <p className="Button__Text">CONTINUE</p>
-          <i className="material-icons">navigate_next</i>
+        <Button onClick={this.handleClick} type="primary" className="antd__Button--centered" size="large">
+          CONTINUE
+          <Icon type="right" />
         </Button>
       </div>
     );
   }
 }
 
-const mapStateToProps = (exampleState) => {
+const mapStateToProps = (state) => {
   return {
-    ...exampleState,
+    CMS: state.CMS.nameSection,
   };
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   addAccommodationName: Actions.addAccommodationName,
+  completeNameSection: Actions.completeNameSection,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Name);
