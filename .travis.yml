@@ -11,6 +11,8 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: ./.travisDeploy.sh
+    github_token: $GITHUB_TOKEN
+    local_dir: build
+    target_branch: gh-pages
     on:
       branch: master
