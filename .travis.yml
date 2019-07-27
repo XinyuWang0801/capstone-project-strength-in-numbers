@@ -8,11 +8,11 @@ script:
   - npm run lint
   - npm test
   - npm run build
-  - npm run deploy
 deploy:
   - provider: script
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
-    script: ./.travisDeploy.sh
+    local_dir: build
+    target_branch: gh-pages
     on:
       branch: master
