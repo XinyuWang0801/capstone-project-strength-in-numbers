@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, DatePicker, Select } from 'antd';
-import { ErrorMessage, StarRating } from '..';
+import { ErrorMessage, StarRating } from '../../@components';
 import * as Services from '../../store/services';
 
 import './BookingCard.scss';

@@ -56,5 +56,8 @@ module.exports = {
     "no-plusplus": "off",
     "no-prototype-builtins": "off",
     "no-param-reassign": "off",
+    "no-useless-path-segments": "off",
+    "import/no-cycle": "off",
+    "import/no-useless-path-segments": "off",
   },
 };

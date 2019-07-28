@@ -11,7 +11,7 @@ const SvgLandingPageVector = props => (
   >
     <style>
       {
-        ".LandingPageVector_svg__st171{fill:#ffba77}.LandingPageVector_svg__st457{fill:#fdf6ef}.LandingPageVector_svg__st461{opacity:.22}.LandingPageVector_svg__st485{fill:#fff}.LandingPageVector_svg__st591{fill:#eee1d5}"
+        '.LandingPageVector_svg__st171{fill:#ffba77}.LandingPageVector_svg__st457{fill:#fdf6ef}.LandingPageVector_svg__st461{opacity:.22}.LandingPageVector_svg__st485{fill:#fff}.LandingPageVector_svg__st591{fill:#eee1d5}'
       }
     </style>
     <linearGradient
