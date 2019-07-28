@@ -1,0 +1,45 @@
+.LoginPage {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.082);
+  display: grid;
+  grid-template-columns: 15% auto 15%;
+  grid-template-rows: 30% 100px auto;
+
+  &__Form {
+    display: flex;
+
+    // Sizing
+    width: 350px;
+    height: 420px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    position: absolute;
+    padding: 70px 30px;
+
+    // Aesthetics
+    border-width: 2px;
+    border-style: solid;
+    border-color: #F2F6FA;
+    border-radius: 25px;
+    background-color: white;
+
+    flex-flow: row wrap;
+
+    &__Buttons {
+      display: flex;
+      // background: #202D4A;
+      justify-content: space-around;
+      width: 250px;
+      height: 40px;
+    }
+    
+    h1 {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-weight: bold;
+      color: #202D4A;
+    }
+  }
+  
+}

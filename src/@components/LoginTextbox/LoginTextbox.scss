@@ -1,0 +1,25 @@
+.LoginTextbox {
+  display: flex;
+  position: relative;
+  margin-bottom:  10px; 
+  background-color: rgba(242, 246, 250, 0.541);
+  box-sizing: border-box;
+  flex-flow: column wrap;
+  width: 300px;
+  height: 75px;
+  border-radius: 10px;
+  padding: 5px 10px;
+
+  &__Input {
+    border: none;
+    background: none;
+  }
+
+  &__Label {
+    font-weight: bold;
+  }
+}
+
+.LoginTextbox:hover {
+  background-color: #F2F6FA;
+}

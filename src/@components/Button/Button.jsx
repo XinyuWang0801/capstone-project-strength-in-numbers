@@ -5,10 +5,10 @@ import classnames from 'classnames';
 import './Button.scss';
 
 export const Button = (props) => {
-  const { onClick, className, children } = props;
+  const { onClick, className, children, variant } = props;
 
   return (
-    <ButtonBootStrap variant="primary" onClick={onClick} className={classnames('Button', className)}>
+    <ButtonBootStrap variant={variant} onClick={onClick} className={classnames('Button', className)}>
       {children}
     </ButtonBootStrap>
   );
@@ -19,10 +19,12 @@ Button.defaultProps = {
   onClick: null,
   children: null,
   className: '',
+  variant: "primary",
 };
 
 Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
   className: PropTypes.string,
+  variant: PropTypes.string,
 };
