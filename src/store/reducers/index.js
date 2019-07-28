@@ -3,6 +3,7 @@ import accommodationFormState from './Reducers.AccommodationForm';
 import bathroomState from './Reducers.Bathrooms';
 import bedsState from './Reducers.Beds';
 import descriptionState from './Reducers.Description';
+import exploreState from './Reducers.Explore';
 import locationState from './Reducers.Location';
 import nameState from './Reducers.Name';
 import photosState from './Reducers.Photos';
@@ -12,6 +13,7 @@ import { combineReducers } from 'redux';
 const reducer = combineReducers({
   nameState,
   locationState,
+  exploreState,
   bedsState,
   CMS,
   accommodationFormState,

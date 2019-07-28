@@ -1,5 +1,5 @@
 import React from 'react';
-import { BubbleIcon, Panel, ProgressBar } from '../@components';
+import { BubbleIcon, Navbar, Panel, ProgressBar } from '../@components';
 import { Communities } from '../icons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -34,6 +34,7 @@ class AccommodationForm extends React.Component {
 
     return (
       <div className="AccommodationForm">
+        <Navbar />
         {formOrder.map((item, index) => (
           <Panel isMounted={progress === index} getNextSection={this.getNextSection}>{item.component}</Panel>
         ))}

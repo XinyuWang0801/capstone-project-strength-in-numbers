@@ -49,7 +49,15 @@ module.exports = {
     "react/jsx-one-expression-per-line": 0,
     "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
     "react/forbid-prop-types": 0,
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "no-plusplus": "off",
+    "no-prototype-builtins": "off",
+    "no-param-reassign": "off",
+    "no-useless-path-segments": "off",
+    "import/no-cycle": "off",
+    "import/no-useless-path-segments": "off",
   },
 };

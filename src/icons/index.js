@@ -1,5 +1,6 @@
 export { default as Bed } from './Bed';
 export { default as Bed01 } from './Bed01';
+export { default as Bed02 } from './Bed02';
 export { default as Book } from './Book';
 export { default as BunkBed } from './BunkBed';
 export { default as House } from './House';
@@ -12,3 +13,8 @@ export { default as PriceTag01 } from './PriceTag01';
 export { default as Bathroom } from './Bathroom';
 export { default as SingleBed } from './SingleBed';
 export { default as Communities } from './Communities';
+export { default as Toilet } from './Toilet';
+export { default as LandingPageVector } from './LandingPageVector';
+export { default as Key } from './Key';
+export { default as Key01 } from './Key01';
+export { default as CurvedImage } from './CurvedImage';

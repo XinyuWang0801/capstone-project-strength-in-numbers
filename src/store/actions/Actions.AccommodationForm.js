@@ -23,7 +23,8 @@ const formCompleted = (dispatch, getState) => {
     },
     price: priceState.price,
     description: descriptionState.description,
-    photos: [...photosState.photos],
+    photos: photosState.photos.length === 0 ? [null] : photosState.photos,
+    bookedDates: [],
     userId: 123, // Change this later when account creation is done
   };
 
