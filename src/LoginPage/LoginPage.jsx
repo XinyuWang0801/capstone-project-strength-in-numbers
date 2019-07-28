@@ -1,24 +1,76 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Button, LoginTextbox } from '../@components';
+import { Button, LoginTextbox, ErrorMessage } from '../@components';
+import Alert from 'react-bootstrap/Alert';
 import * as Action from '../store/actions';
 import './LoginPage.scss';
 
 class LoginPage extends React.Component {
 	constructor(props) {
-		super(props)
-	}
+    super(props)
+    this.state = {
+      username: '',
+      password: '',
+      loggedIn: false,
+      usernameError: false,
+      passwordError: false,
+    }
+  }
+
+
+  
+  handleClick = (e) => {
+    try {
+      this.validateInputFilled()
+    } catch(e) {
+      return
+    }
+  }
+
+  validateInputFilled = () => {
+    const { username, password } = this.state
+    if (username.length != 0) {
+      this.setState({
+        usernameError: false
+      })
+    } else {
+      this.setState({
+        usernameError: true
+      })
+      throw Error
+    }
+    if (password.length != 0) {
+      this.setState({
+        passwordError: false
+      })
+    } else {
+      this.setState({
+        passwordError: true
+      })
+      throw Error
+    }
+  }
+
+  onChangeInput = (e) => {
+    const { id, value } = e.target
+    this.setState({
+      [id]: value,
+    })
+  }
 
 	render() {
+    const { username, password, usernameError, passwordError } = this.state
 		return (
 			<div className="LoginPage">
 				<div className="LoginPage__Form">
           <h1>Log In</h1>
-          <LoginTextbox label="Email" exampleLabel="email@example.com" type="email" />
-          <LoginTextbox label="Password" exampleLabel="Hopefully something secure" type="password" />
+          {usernameError && <Alert variant='danger' className="LoginPage__Form__Alert">Username cannot be empty</Alert>}
+          <LoginTextbox id="username" label="Email" exampleLabel="email@example.com" type="email" value={username} onChange={(e) => this.onChangeInput(e)} />
+          {passwordError && <Alert variant='danger' className="LoginPage__Form__Alert">Password cannot be empty</Alert>}
+          <LoginTextbox id="password" label="Password" exampleLabel="Hopefully something secure" type="password" value={password} onChange={(e) => this.onChangeInput(e)} />
           <div className="LoginPage__Form__Buttons">
-            <Button>
+            <Button onClick={this.handleClick}>
               <p className="Button__TextLogIn">Log In</p>
             </Button>
             <Button variant="secondary">
@@ -32,9 +84,9 @@ class LoginPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-		return {
+    return {
 
-		}
+    }
 	}
 
 const mapDispatchToProps = dispatch => bindActionCreators({
