@@ -41,7 +41,7 @@
   "photosSection": {
     "photoHeader": "Do you have any photos you want to include?",
     "photoUploadText": "Drop your photo here...",
-    "photoUploadingInProgress": "Please wait for the photos to finish uploading",
+    "photoUploadingInProgress": "Please wait for the photos to finish uploading"
   },
   "LandingPage": {
     "welcomeTitle": "Book unique homes and experience",
@@ -55,5 +55,10 @@
       "validDateRange": "Check in date must be before the check out date."
     },
     "searchPlaceholder": "Which city do you want to stay at?"
+  },
+  "accommodationBooking": {
+    "guestCapacityError": "The accommodation is unable to accommodate for the amount of guests requested",
+    "emptyGuestNumberError": "Please state the number of guests that will be staying",
+    "bookingDateError": "Please provide the dates for which you will be staying"
   }
 }

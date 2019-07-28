@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button, Input, Select } from 'antd';
-import {
-  Dropdown, Navbar, PropertyCard, Search, Textbox,
-} from '../@components';
+import { Navbar, PropertyCard, Search } from '../@components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../store/actions';
@@ -45,6 +43,7 @@ class Explore extends React.Component {
 
   handleSearch = (location, checkIn, guestNumber) => {
     const { getAccommodationListings } = this.props;
+    console.log(checkIn, guestNumber);
     getAccommodationListings(location);
   }
 
@@ -85,7 +84,7 @@ class Explore extends React.Component {
 
     return (
       <div className="Explore">
-        <div className="Explore__Nav"><Navbar /></div>
+        <Navbar className="Navbar" />
         <div className="Explore__Search">
           <Search searchFunc={this.handleSearch} CMS={SearchCMS} />
         </div>

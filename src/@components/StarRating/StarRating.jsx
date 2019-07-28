@@ -5,7 +5,7 @@ import './StarRating.scss';
 const FILLED_STAR = 1;
 const UNFILLED_STAR = 0;
 
-export const StarRating = (props) => {
+const StarRating = (props) => {
   const { ratingNum } = props;
 
   const generateStars = () => {
@@ -33,3 +33,5 @@ StarRating.defaultProps = {
 StarRating.propTypes = {
   ratingNum: PropTypes.number,
 };
+
+export default StarRating;

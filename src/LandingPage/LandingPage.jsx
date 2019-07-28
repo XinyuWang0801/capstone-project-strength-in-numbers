@@ -29,7 +29,7 @@ class LandingPage extends React.Component {
 
     return (
       <div className="LandingPage">
-        <Navbar />
+        <Navbar className="Navbar--nobg" />
         <div className="LandingPage__Heading">
           <h1>{welcomeTitle}</h1>
           <p>{welcomeIntroduction}</p>

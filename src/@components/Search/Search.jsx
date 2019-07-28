@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button, DatePicker, Input, Select } from 'antd';
-import { ErrorMessage } from '..';
+import { ErrorMessage } from '../ErrorMessage';
 import * as algoliaPlaces from 'places.js';
 import './Search.scss';
 import 'antd/dist/antd.css';
@@ -17,7 +17,6 @@ export class Search extends React.Component {
       administrativeRegion: null,
       city: null,
       country: null,
-      fullLocation: null,
       guestNumber: null,
       checkInDate: null,
       checkOutDate: null,
@@ -29,22 +28,12 @@ export class Search extends React.Component {
       appId: 'pl5GIZH93TG1',
       apiKey: 'ddba8174f4fa9530ebcd22bef118dba5',
       container: document.getElementById('location-input'),
-      type: 'city',
+      type: 'address',
       aroundLatLngViaIP: false,
     });
 
     placesAutocomplete.on('change', (e) => {
       this.handleSearchSuggestionCompleted(e);
-    });
-
-    placesAutocomplete.on('suggestions', (e) => {
-      this.updateLocationValue(e);
-    });
-  }
-
-  updateLocationValue = (e) => {
-    this.setState({
-      fullLocation: e.query,
     });
   }
 
@@ -81,9 +70,8 @@ export class Search extends React.Component {
   handleSearchSuggestionCompleted = (e) => {
     this.setState({
       administrativeRegion: e.suggestion.administrative,
-      city: e.suggestion.name,
+      city: e.suggestion.city,
       country: e.suggestion.country,
-      fullLocation: e.suggestion.value,
     });
   }
 
@@ -107,12 +95,12 @@ export class Search extends React.Component {
 
   render() {
     const { CMS: { searchPlaceholder } } = this.props;
-    const { errorMessage, fullLocation } = this.state;
+    const { errorMessage } = this.state;
 
     return (
       <div className="Search">
         <div className="Search__Input">
-          <Input size="large" id="location-input" value={fullLocation} placeholder={searchPlaceholder} />
+          <Input size="large" id="location-input" placeholder={searchPlaceholder} />
           <RangePicker size="large" onCalendarChange={this.updateDates} format="DD-MM-YYYY" placeholder={['Check in', 'Check out']} />
           <Select defaultValue="Guests" onSelect={this.updateGuestNumber} size="large" className="Search__Dropdown">
             <Option value="Guests" disabled>Guests</Option>

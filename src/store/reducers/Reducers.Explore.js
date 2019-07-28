@@ -9,6 +9,7 @@ const initialState = {
     location: {},
     name: '',
     price: '',
+    bookedDates: [],
   },
 };
 
@@ -21,6 +22,20 @@ export default (state = initialState, action) => {
   case ACCOMMODATION_INFO_RETRIEVED:
     return Object.assign({}, state, {
       accommodationInfo: action.payload,
+    });
+  case 'ACCOMMODATION_DATE_BOOKED':
+    return Object.assign({}, state, {
+      accommodationInfo: {
+        ...state.accommodationInfo,
+        id: action.payload,
+      },
+    });
+  case 'ACCOMMODATION_ADD_DATES':
+    return Object.assign({}, state, {
+      accommodationInfo: {
+        ...state.accommodationInfo,
+        bookedDates: action.payload,
+      },
     });
   default:
     return state;

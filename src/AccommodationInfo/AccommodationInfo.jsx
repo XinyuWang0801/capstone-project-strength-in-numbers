@@ -2,7 +2,9 @@ import React from 'react';
 import { Bed02, Toilet } from '../icons';
 import { BookingCard, Navbar } from '../@components';
 import { Icon } from 'antd';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as Actions from '../store/actions';
 import './AccommodationInfo.scss';
 
 const BedIcon = props => <Icon component={Bed02} {...props} />;
@@ -23,12 +25,14 @@ class AccommodationInfo extends React.Component {
     return `${location.street}, ${location.city} ${location.state} ${location.zipCode}`;
   };
 
+  handleRequestToBook = (dates, guests) => {
+    const { bookAccommodation } = this.props;
+    bookAccommodation(dates, guests);
+  }
+
   render() {
-    const {
-      accommodationInfo: {
-        beds, bathrooms, name, price,
-      },
-    } = this.props;
+    const { accommodationInfo: { beds, bathrooms, name, price, bookedDates, guests } } = this.props;
+    const { accommodationBooking } = this.props;
 
     return (
       <div className="AccommodationInfo">
@@ -61,7 +65,13 @@ class AccommodationInfo extends React.Component {
             <p>Boasting a Golden Triangle address, an elegant makeover blends contemporary style and Victorian charm over three spacious levels. Behind the classic terrace facade, high ceilings and hardwood floors unravel into the quintessential in/outdoor design. The Caesarstone kitchen is equipped for the gourmet host with Miele induction and connects to open-plan interiors via striking Concertina bifold doors. Escape the vibrancy just footsteps away in the privacy of your very own urban oasis with a timber entertainer's deck and built-benches set against a landscaped backdrop and neighbouring trees. Nestled in one of Alexandria's most distinguished streetscapes, explore a lifestyle of rich diversity on your doorstep. Enjoy just footsteps to Erskineville village and Alexandria's dining precinct, and stroll to Newtown, Enmore, dog-friendly parks, esteemed schools, and superior transport.</p>
           </div>
           <div className="AccommodationInfo__BookingContainer">
-            <BookingCard price={price} />
+            <BookingCard
+              price={price}
+              bookingFunc={this.handleRequestToBook}
+              bookedDates={bookedDates}
+              maximumGuests={guests}
+              CMS={accommodationBooking}
+            />
           </div>
         </div>
       </div>
@@ -71,9 +81,13 @@ class AccommodationInfo extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    CMS: state.CMS.Explore,
     accommodationInfo: state.exploreState.accommodationInfo,
+    accommodationBooking: state.CMS.accommodationBooking,
   };
 };
 
-export default connect(mapStateToProps)(AccommodationInfo);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  bookAccommodation: Actions.bookAccommodation,
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccommodationInfo);

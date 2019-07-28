@@ -1,6 +1,6 @@
 .AccommodationForm {
     display: grid;
-    grid-template-rows: 0.2fr 0.8fr 0.2fr; 
+    grid-template-rows: auto 0.8fr 0.2fr; 
     grid-template-columns: 0.2fr 0.8fr 0.2fr;
     grid-template-areas:
       "header header header"

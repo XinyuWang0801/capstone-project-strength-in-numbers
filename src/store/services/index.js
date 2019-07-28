@@ -3,3 +3,4 @@
 export * from './Service.Accommodation';
 export * from './Service.Photos';
 export * from './Service.Explore';
+export * from './Service.AccommodationBooking';
