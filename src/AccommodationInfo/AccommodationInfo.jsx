@@ -30,23 +30,34 @@ class AccommodationInfo extends React.Component {
     bookAccommodation(dates, guests);
   }
 
+  getNumberOfBeds = () => {
+    const { accommodationInfo: { roomArrangement } } = this.props;
+    return roomArrangement ? roomArrangement.reduce((acc, room) => acc + room.reduce((_acc, bed) => _acc + bed.numberOfBeds, 0), 0) : '';
+  }
+
+  getPhotos = () => {
+    const { accommodationInfo: { photos } } = this.props;
+
+    if (!photos) { return ''; }
+
+    return photos.map((photo) => {
+      return (
+        <div className="AccommodationInfo__ImageWrapper">
+          <img src={photo} alt="Accommodation" />
+        </div>
+      );
+    });
+  }
+
   render() {
-    const { accommodationInfo: { beds, bathrooms, name, price, bookedDates, guests } } = this.props;
+    const { accommodationInfo: { bathrooms, description, name, price, bookedDates, guests } } = this.props;
     const { accommodationBooking } = this.props;
 
     return (
       <div className="AccommodationInfo">
         <div className="Explore__Nav"><Navbar /></div>
         <div className="AccommodationInfo__Images">
-          <div className="AccommodationInfo__ImageWrapper">
-            <img src="https://rimh2.domainstatic.com.au/3V0S73D5OjMzAZ4x9Fd9akRyMcw=/fit-in/1920x1080/filters:format(jpeg):quality(80):no_upscale()/http://b.domainstatic.com.au.s3-website-ap-southeast-2.amazonaws.com/2015446486_2_1_190715_050200-w4600-h3067" alt="Accommodation" />
-          </div>
-          <div className="AccommodationInfo__ImageWrapper">
-            <img src="https://rimh2.domainstatic.com.au/TCn1k_i9G3TyC2i2K9wf7xGNXAs=/fit-in/1920x1080/filters:format(jpeg):quality(80):no_upscale()/http://b.domainstatic.com.au.s3-website-ap-southeast-2.amazonaws.com/2015446486_7_1_190715_050200-w4600-h3067" alt="Living room" />
-          </div>
-          <div className="AccommodationInfo__ImageWrapper">
-            <img src="https://rimh2.domainstatic.com.au/eLvIhr_TTkA0C7sdwDhR1ttHyf4=/fit-in/1920x1080/filters:format(jpeg):quality(80):no_upscale()/http://b.domainstatic.com.au.s3-website-ap-southeast-2.amazonaws.com/2015446486_1_1_190715_050200-w4600-h3067" alt="Bedroom" />
-          </div>
+          {this.getPhotos()}
         </div>
         <div className="AccommodationInfo__Information">
           <div className="AccommodationInfo__InformationContainer">
@@ -59,10 +70,10 @@ class AccommodationInfo extends React.Component {
             <p className="AccommodationInfo__Property">{this.formatLocation}</p>
             <h3 className="AccommodationInfo__Name">{name}</h3>
             <div className="AccommodationInfo__FeaturesContainer">
-              <span className="AccommodationInfo__Features"><BedIcon style={{ fontSize: '2em', color: '#007bff' }} />{beds} beds</span>
+              <span className="AccommodationInfo__Features"><BedIcon style={{ fontSize: '2em', color: '#007bff' }} />{this.getNumberOfBeds()} beds</span>
               <span className="AccommodationInfo__Features"><ToiletIcon style={{ fontSize: '2em', color: '#007bff' }} />{bathrooms} bathrooms</span>
             </div>
-            <p>Boasting a Golden Triangle address, an elegant makeover blends contemporary style and Victorian charm over three spacious levels. Behind the classic terrace facade, high ceilings and hardwood floors unravel into the quintessential in/outdoor design. The Caesarstone kitchen is equipped for the gourmet host with Miele induction and connects to open-plan interiors via striking Concertina bifold doors. Escape the vibrancy just footsteps away in the privacy of your very own urban oasis with a timber entertainer deck and built-benches set against a landscaped backdrop and neighbouring trees. Nestled in one of Alexandria most distinguished streetscapes, explore a lifestyle of rich diversity on your doorstep. Enjoy just footsteps to Erskineville village and Alexandria dining precinct, and stroll to Newtown, Enmore, dog-friendly parks, esteemed schools, and superior transport.</p>
+            <p>{description || accommodationBooking.defaultDescription}</p>
           </div>
           <div className="AccommodationInfo__BookingContainer">
             <BookingCard

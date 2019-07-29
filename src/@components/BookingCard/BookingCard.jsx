@@ -89,6 +89,7 @@ export class BookingCard extends React.Component {
             disabledDate={this.getBookedDates}
             disabledTime={Services.getDisabledDateTime}
             placeholder={['Check in', 'Check out']}
+            style={{ width: '100%', margin: '10px 0' }}
             showTime={{
               hideDisabledOptions: true,
             }}
@@ -100,7 +101,6 @@ export class BookingCard extends React.Component {
           </Select>
           {guestCapacityError && <ErrorMessage>{CMS.guestCapacityError}</ErrorMessage>}
           {emptyGuestNumberError && <ErrorMessage>{CMS.emptyGuestNumberError}</ErrorMessage>}
-          <br />
           <Button
             type="primary"
             icon="search"
