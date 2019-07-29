@@ -1,0 +1,36 @@
+.LoginTextbox {
+  display: flex;
+  position: relative;
+  margin-bottom:  10px; 
+  // background-color: rgba(242, 246, 250, 0.541);
+  background-color: #F2F6FA;
+  box-sizing: border-box;
+  flex-flow: column wrap;
+  width: 300px;
+  height: 75px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  box-shadow: 0 5px 10px rgba(78, 91, 141, 0.03), 0 15px 40px rgba(242, 246, 250, 0.377);
+
+  &__Fail {
+    @extend .LoginTextbox;
+    border: 2px solid #ff2d37bd; 
+    box-shadow: 0 5px 10px rgba(78, 91, 141, 0.03), 0 15px 40px #ff2d3715;
+  }
+
+  &__Input {
+    border: none;
+    background: none;
+
+    
+  }
+
+  &__Label {
+    font-weight: bold;
+  }
+}
+
+.LoginTextbox:hover {
+  // background-color: #F2F6FA;
+  background-color: #EBF1F7;
+}
