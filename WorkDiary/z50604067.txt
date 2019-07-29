@@ -1,0 +1,22 @@
+Week 1:
+Group formed. Created the github repository and added team members in as collaborators. We did a bit of research into what interesting features we can implement - looking at what other travel websites did well.
+Wrote the background section for the proposal. 
+Discussed possible epics with team, wrote out the ideas into the proposal.
+
+Week 2:
+Set up CI/CD pipeline - integrating travis ci with github pull requests so that builds get automatically checked and deployed when they have been merged. 
+Set up linting (for consistent code practices), initialized the react framework for the project and created the folder structure for easier development. 
+
+Week 3:
+Created base structure for the accommodation form, separating each question into their individual sections so that they can be worked on separately. 
+Started work on the first section of the form, i.e. providing name of property, number of guests and the type of accommodation it is. Also worked on the 
+second section which defines the number of rooms in the property.
+
+Week 4: 
+No work done related to project.
+
+Week 5-7: 
+Worked on the landing page for the application, integrating a search function which returns results from the firebase db. Continuing on from that I integrated 
+the subsequent page from landing page which shows the results of the search in the UI, also worked on the page which shows further information of a specific accommodation.
+In particular this page shows photos of the accommodation, further descriptions and the ability to book as well. 
+Did a bit more work on the accommodation form, allowing users to add photos of the accommodation, provide a price and to add further details if desired. 
