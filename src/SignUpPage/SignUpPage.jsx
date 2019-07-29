@@ -11,6 +11,8 @@ class SignUpPage extends React.Component {
     super(props)
     this.usernameRef = React.createRef()
     this.state = {
+      firstnameEmptyError: false,
+      lastnameEmptyError: false,
       usernameEmptyError: false,
       passwordEmptyError: false,
       retypeEmptyError: false,
@@ -24,11 +26,14 @@ class SignUpPage extends React.Component {
   }
 
   render() {
-    const { usernameEmptyError, passwordEmptyError, retypeEmptyError } = this.state
+    const { firstnameEmptyError, lastnameEmptyError, usernameEmptyError, passwordEmptyError, retypeEmptyError } = this.state
     return (
       <div className="SignUpPage">
         <div className="SignUpPage__Form">
           <h1>Sign Up</h1>
+          <div className="placeholder"></div> {/* Need to remove this*/}
+          <LoginTextbox id="firstname" className={firstnameEmptyError ? "LoginTextbox__Fail":"LoginTextbox"} label="First name" exampleLabel="Stevie" type="text" />
+          <LoginTextbox id="lastnmae" className={lastnameEmptyError ? "LoginTextbox__Fail":"LoginTextbox"} label="Last name" exampleLabel="Wonder" type="text" />
           {usernameEmptyError && <Alert variant='danger' className="LoginPage__Form__Alert">Username cannot be empty</Alert>}
           <LoginTextbox id="username" className={usernameEmptyError ? "LoginTextbox__Fail":"LoginTextbox"} label="Email" exampleLabel="email@example.com" type="email" ref={this.usernameRef} />
           {passwordEmptyError && <Alert variant='danger' className="LoginPage__Form__Alert">Password cannot be empty</Alert>}
