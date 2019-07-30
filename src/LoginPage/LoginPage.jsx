@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Button, LoginTextbox, ErrorMessage } from '../@components';
+import { Button, LoginTextbox } from '../@components';
 import Alert from 'react-bootstrap/Alert';
 import * as Action from '../store/actions';
 import './LoginPage.scss';
@@ -15,6 +15,9 @@ class LoginPage extends React.Component {
       loggedIn: false,
       usernameError: false,
       passwordError: false,
+    }
+    this.style = {
+      blueButton: '{box-shadow: 0 5px 10px rgba(78, 91, 141, 0.05), 0 15px 40px #007BFF}',
     }
   }
 
@@ -30,7 +33,7 @@ class LoginPage extends React.Component {
 
   validateInputFilled = () => {
     const { username, password } = this.state
-    if (username.length != 0) {
+    if (username.length !== 0) {
       this.setState({
         usernameError: false
       })
@@ -40,7 +43,7 @@ class LoginPage extends React.Component {
       })
       throw Error
     }
-    if (password.length != 0) {
+    if (password.length !== 0) {
       this.setState({
         passwordError: false
       })
@@ -70,10 +73,10 @@ class LoginPage extends React.Component {
           {passwordError && <Alert variant='danger' className="LoginPage__Form__Alert">Password cannot be empty</Alert>}
           <LoginTextbox id="password" className={passwordError ? "LoginTextbox__Fail":"LoginTextbox"} label="Password" exampleLabel="Hopefully something secure" type="password" value={password} onChange={(e) => this.onChangeInput(e)} />
           <div className="LoginPage__Form__Buttons">
-            <Button onClick={this.handleClick}>
+            <Button onClick={this.handleClick} className="Button__Login">
               <p className="Button__TextLogIn">Log In</p>
             </Button>
-            <Button variant="secondary">
+            <Button variant="secondary" className="Button__Signup">
               <p className="Button__TextSignUp">Sign up</p>
             </Button>
           </div>
