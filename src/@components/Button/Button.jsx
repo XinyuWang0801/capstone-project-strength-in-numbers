@@ -19,7 +19,7 @@ Button.defaultProps = {
   onClick: null,
   children: null,
   className: '',
-  variant: "primary",
+  variant: 'primary',
   block: false,
 };
 

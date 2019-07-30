@@ -7,11 +7,11 @@ export const LoginTextbox = (props) => {
 
   return (
     <div className={className}>
-      <label className="LoginTextbox__Label" htmlFor={`login-textbox-${label}`} >{label}</label>
+      <label className="LoginTextbox__Label" htmlFor={`login-textbox-${label}`}>{label}</label>
       <input
         id={id}
         name={`login-textbox-${label}`}
-        className='LoginTextbox__Input'
+        className="LoginTextbox__Input"
         placeholder={exampleLabel}
         type={type}
         ref={inputRef}
