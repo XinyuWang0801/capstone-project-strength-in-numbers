@@ -22,7 +22,6 @@ class Description extends React.Component {
     const description = this.descriptionRef.current.textAreaRef.value;
 
     addDescription(description);
-    // updateAccommodationModel();
     getNextSection('DESCRIPTION');
   };
 
@@ -58,7 +57,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  updateAccommodationModel: Actions.updateAccommodationModel,
   addDescription: Actions.addDescription,
 }, dispatch);
 

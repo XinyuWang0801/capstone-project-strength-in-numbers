@@ -1,0 +1,64 @@
+.Navbar {
+  font-family: 'Roboto', sans-serif;  
+  width: 100%;
+  background-color: #2F58F7;
+  padding: calc(1% - 10px) 0; 
+  padding-left: calc(4% - 10px);
+  grid-area: header;   
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60px;
+
+  &--nobg {
+    background-color: transparent;
+
+    .Navbar__Item {
+      color: black;
+    }
+  }
+
+  &__Ol {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    
+    :first-child {
+      flex: 3;
+    }
+
+    li:not(:first-child) {
+      flex: 0.5;
+      color: black;      
+    }
+
+    li {
+      font-weight: 500;
+    }
+  }
+
+  &__Item {
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.StayIn {
+  &--White {
+    color: white;
+    fill: white;
+  }
+
+  &--Blue {
+    color: #4786E3;
+    fill: #4786E3;
+  }
+  
+  &__Name {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5em;    
+    cursor: pointer;
+  }
+}

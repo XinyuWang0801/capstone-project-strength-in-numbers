@@ -1,0 +1,44 @@
+::-webkit-clear-button
+{
+    display: none; /* Hide the button */
+    -webkit-appearance: none; /* turn off default browser styling */
+}
+
+::-webkit-inner-spin-button { 
+  display: none;
+  -webkit-appearance: none; /* turn off default browser styling */
+}
+
+.Datepicker {
+  position: relative;
+  margin-bottom:  10px; 
+
+  &__Input { 
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #4786E3;  
+    height: 56px;
+    min-width: 250px;
+    padding: 20px 10px;
+    transition: all .3s linear;
+  }
+
+  &__Input:not(:placeholder-shown) {
+    padding: 28px 10px 12px 10px
+  }
+
+  &__Input:not(:placeholder-shown) + &__Label {
+    transform: translateY(-10px);
+    opacity: .7;
+  }
+
+  &__Label {
+    position: absolute;
+    top: calc(35% - 7px);
+    left: 10px;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    font-weight: bold;
+  }
+  
+}

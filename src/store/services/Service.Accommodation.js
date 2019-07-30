@@ -1,4 +1,4 @@
-import database from '../../firebase';
+import { database } from '../../firebase';
 
 export const getAccommodationModel = async () => {
   let accommodationModel = null;
@@ -11,14 +11,13 @@ export const getAccommodationModel = async () => {
 };
 
 export const updateAccommodationModel = async (model) => {
-  const accommodationRef = await database.ref('/accommodation');
-  const prevAccommodationSnapshot = await accommodationRef.once('value');
-  const prevAccommodationModel = prevAccommodationSnapshot.val();
+  const accommodationRef = await database.ref('/accommodations');
 
-  // Docs for PUT / POST:
-  // https://firebase.google.com/docs/database/web/read-and-write
-  await accommodationRef.set({
-    ...prevAccommodationModel,
-    ...model,
-  });
+  // eslint-disable-next-line no-unused-vars
+  const key = await accommodationRef.push(model).getKey();
 };
+
+// export const createNewEntryInDB = async () => {
+//   const indexRef = database.ref().child('accommodations').push();
+//   indexRef.set({ id: indexRef.key() });
+// };

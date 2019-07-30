@@ -1,0 +1,21 @@
+.Search {
+  color: #4786E3;
+  
+  &__Input {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .algolia-places {
+    max-width: 500px;
+  }
+
+  &__Dropdown {
+    width: 120px;
+  }
+
+  &__Button {
+    display: flex !important;
+    align-items: center !important;
+  }
+}

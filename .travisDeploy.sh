@@ -1,4 +1,3 @@
-
 #!/bin/sh
 set -e
 
@@ -8,5 +7,4 @@ openssl aes-256-cbc -K $encrypted_dc4c0df7bb33_key -iv $encrypted_dc4c0df7bb33_i
 chmod 600 id_ed25519
 ssh-add id_ed25519
 
-# commit the assets in build/ to the gh-pages branch and push to GitHub using SSH
-./node_modules/.bin/gh-pages -d build/ -b gh-pages -r git@github.com:${TRAVIS_REPO_SLUG}.git
+./node_modules/.bin/gh-pages -d build/ -b gh-pages -r git@github.com:${TRAVIS_REPO_SLUG}.git 

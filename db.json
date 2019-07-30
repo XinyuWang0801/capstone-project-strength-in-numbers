@@ -1,0 +1,139 @@
+{
+  "accommodations": [
+    {
+      "id": 1,
+      "name": "Upper east side", 
+      "price": 3500,
+      "beds": 4,
+      "bathrooms": 2,
+      "propertyType": "House",
+      "location": {
+        "street": "4 Raglan Street",
+        "city": "Tingoora",
+        "state": "Queensland",
+        "zipCode": 4608,
+        "country": "Australia"
+      } 
+    },    
+    {
+      "id": 2,
+      "name": "Woerdens Place", 
+      "price": 2310,
+      "beds": 2,
+      "bathrooms": 1,
+      "propertyType": "Apartment",
+      "location": {
+        "street": "45 Woerdens Road",
+        "city": "Tahlee",
+        "state": "New South Wales",
+        "zipCode": 2324,
+        "country": "Australia"
+      } 
+    },
+    {
+      "id": 3,
+      "name": "Harris House", 
+      "price": 300,
+      "beds": 2,
+      "bathrooms": 1,
+      "propertyType": "Studio",
+      "location": {
+        "street": "86 Harris Street",
+        "city": "Delatite",
+        "state": "Victoria",
+        "zipCode": 3723,
+        "country": "Australia"
+      } 
+    },
+    {
+      "id": 4,
+      "name": "Boulevard Staying", 
+      "price": 328,
+      "beds": 2,
+      "bathrooms": 1,
+      "propertyType": "Studio",
+      "location": {
+        "street": "65 South Molle Boulevard",
+        "city": "Merryburn",
+        "state": "Queensland",
+        "zipCode": 4854,
+        "country": "Australia"
+      } 
+    },
+    {
+      "id": 5,
+      "name": "Taylors Place", 
+      "price": 428,
+      "beds": 3,
+      "bathrooms": 1,
+      "propertyType": "Studio",
+      "location": {
+        "street": "30 Taylor Street",
+        "city": "Shepparton North",
+        "state": "Victoria",
+        "zipCode": 3631,
+        "country": "Australia"
+      } 
+    },
+    {
+      "id": 6,
+      "name": "Crescent Crest", 
+      "price": 352,
+      "beds": 2,
+      "bathrooms": 1,
+      "propertyType": "Apartment",
+      "location": {
+        "street": "51 Berambing Crescent",
+        "city": "Emerton",
+        "state": "New South Wales",
+        "zipCode": 2770,
+        "country": "Australia"
+      } 
+    },
+    {
+      "id": 7,
+      "name": "Hickeys Pl", 
+      "price": 528,
+      "beds": 3,
+      "bathrooms": 2,
+      "propertyType": "Apartment",
+      "location": {
+        "street": "53 Grandis Road",
+        "city": "Hickeys Creek",
+        "state": "New South Wales",
+        "zipCode": 2440,
+        "country": "Australia"
+      } 
+    },
+    {
+      "id": 8,
+      "name": "Baileys", 
+      "price": 123,
+      "beds": 2,
+      "bathrooms": 1,
+      "propertyType": "Studio",
+      "location": {
+        "street": "59 Bailey Street",
+        "city": "Byaduk North",
+        "state": "Victoria",
+        "zipCode": 3300,
+        "country": "Australia"
+      } 
+    },
+    {
+      "id": 9,
+      "name": "Moruya", 
+      "price": 233,
+      "beds": 2,
+      "bathrooms": 1,
+      "propertyType": "Studio",
+      "location": {
+        "street": "92 Moruya Street",
+        "city": "Cedar Creek",
+        "state": "New South Wales",
+        "zipCode": 2484,
+        "country": "Australia"
+      } 
+    }
+  ]
+}
