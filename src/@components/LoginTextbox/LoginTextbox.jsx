@@ -12,7 +12,7 @@ export class LoginTextbox extends React.Component {
 
     return (
       <div className={className}>
-        <label className="LoginTextbox__Label" htmlFor={`login-textbox-${label}`} >{label}</label>
+        <label className="LoginTextbox__Label" htmlFor={id} >{label}</label>
         <input
           id={id}
           name={`login-textbox-${label}`}
