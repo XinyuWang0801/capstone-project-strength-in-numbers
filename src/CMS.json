@@ -1,4 +1,16 @@
 {
+  "accommodationForm": {
+    "completedHeader": "Congratulations your property has just been registered!"
+  },
+  "nameSection": {
+    "nameHeader": "Lets get some details about the property",
+    "nameQuestion": "Provide a name for the property:",
+    "propertyClassification": "What would you classify your property as?",
+    "guestSpace": "The guests will have:",
+    "propertyTypeError": "Please provide a classification for your property",
+    "propertyNameError": "Please provide a name for the property",
+    "spaceTypeError": "Please select the type of space your guests will have"
+  },
   "roomSection": {
     "roomTypeHeader": "Sleeping arrangements",
     "roomTypeDescription": "Provide the types of beds that are available in each room to help people understand the sleeping arrangements",
@@ -25,5 +37,29 @@
     "emptyError": "Please enter how much it costs to stay per night",
     "nonNumericError": "Please enter only numeric values",
     "negativeError": "Please enter only positive amounts"
+  },
+  "photosSection": {
+    "photoHeader": "Do you have any photos you want to include?",
+    "photoUploadText": "Drop your photo here...",
+    "photoUploadingInProgress": "Please wait for the photos to finish uploading"
+  },
+  "LandingPage": {
+    "welcomeTitle": "Book unique homes and experience",
+    "welcomeIntroduction": "Unforgettable travel experiences start with StayIn right now. Find adventures and new places with .... Rent unique places to stay"
+  },
+  "MainSearch": {
+    "validation": {
+      "locationRequired": "Please enter a location",
+      "daysRequired": "Please provide the number of days you will be staying",
+      "guestNumberRequired": "Please provide the number of guests",
+      "validDateRange": "Check in date must be before the check out date."
+    },
+    "searchPlaceholder": "Which city do you want to stay at?"
+  },
+  "accommodationBooking": {
+    "guestCapacityError": "The accommodation is unable to accommodate for the amount of guests requested",
+    "emptyGuestNumberError": "Please state the number of guests that will be staying",
+    "bookingDateError": "Please provide the dates for which you will be staying",
+    "defaultDescription": "Boasting a Golden Triangle address, an elegant makeover blends contemporary style and Victorian charm over three spacious levels. Behind the classic terrace facade, high ceilings and hardwood floors unravel into the quintessential in/outdoor design. The Caesarstone kitchen is equipped for the gourmet host with Miele induction and connects to open-plan interiors via striking Concertina bifold doors. Escape the vibrancy just footsteps away in the privacy of your very own urban oasis with a timber entertainer deck and built-benches set against a landscaped backdrop and neighbouring trees. Nestled in one of Alexandria most distinguished streetscapes, explore a lifestyle of rich diversity on your doorstep. Enjoy just footsteps to Erskineville village and Alexandria dining precinct, and stroll to Newtown, Enmore, dog-friendly parks, esteemed schools, and superior transport."
   }
 }

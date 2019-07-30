@@ -12,4 +12,14 @@
     margin-right: 10px;
     margin-bottom: 18px;
   }
+
+  &__PropertyName {
+    margin: 20px 0;
+  }
+  
+  .ant-select-selection {
+    background-color: transparent;
+    border-color: #4786E3;
+    color: #4786E3;
+  }
 }

@@ -1,0 +1,25 @@
+.BookingCard {
+  border: 2px solid #c9c9c9;
+  border-radius: 10px;
+  width: 100%;
+  height: fit-content;
+  padding: 30px 20px;
+
+  &--bold {
+    font-weight: bold;
+  }
+
+  &--large {
+    font-size: 1.3em;
+  }
+
+  &__Dropdown {
+    margin: 20px 0;
+    width: 100%;
+  }
+
+  &__Button {
+    width: 100%;
+    margin: 20px 0;
+  }
+}

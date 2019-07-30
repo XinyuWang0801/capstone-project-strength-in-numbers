@@ -1,0 +1,61 @@
+.AccommodationInfo {
+  &__Images {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__ImageWrapper {
+    max-width: 500px;
+    margin: 0 8px;
+
+    > * {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__Information {
+    display: grid;
+    grid-template-columns: 1fr 3fr 0.2fr 1.5fr 1fr;
+    grid-template-areas:
+      "left main space booking right";
+    padding: 20px 0;
+  }
+
+  &__InformationContainer {    
+    grid-area: main;
+  }
+
+  &__InformationNav {
+    > * {
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    &--active {
+      color: #007bff;
+      font-weight: bold;
+    }
+  }
+
+  &__FeaturesContainer {
+    display: flex;
+    margin: 10px 0;
+  }
+
+  &__Features {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+
+    .anticon {
+      margin-right: 5px;
+    }
+  }
+
+  &__BookingContainer {
+    grid-area: booking;
+  }
+}

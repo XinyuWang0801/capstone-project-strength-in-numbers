@@ -3,9 +3,8 @@ import React from 'react';
 import { AddRoom } from './AddRoom';
 import { Bed } from '../../icons';
 import { BedListing } from './BedListing';
-import {
-  Button, Counter, ErrorMessage, Heading,
-} from '../../@components';
+import { Button, Icon } from 'antd';
+import { Counter, ErrorMessage, Heading } from '../../@components';
 import { RoomListing } from './RoomListing';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -48,7 +47,7 @@ class Beds extends React.Component {
   }
 
   handleClick = () => {
-    const { getNextSection } = this.props;
+    const { addGuestNumber, getNextSection } = this.props;
 
     try {
       this.validateGuestNumberAndRoomArrangements();
@@ -56,6 +55,7 @@ class Beds extends React.Component {
       return;
     }
 
+    addGuestNumber(this.counterRef.current.textContent);
     getNextSection('BEDS');
   };
 
@@ -176,9 +176,9 @@ class Beds extends React.Component {
           {roomAdditionError && <ErrorMessage>{CMS.roomAdditionError}</ErrorMessage>}
         </div>
         {roomArrangementsError && <ErrorMessage>{CMS.roomArrangementsError}</ErrorMessage>}
-        <Button onClick={this.handleClick}>
-          <p className="Button__Text">CONTINUE</p>
-          <i className="material-icons">navigate_next</i>
+        <Button onClick={this.handleClick} type="primary" className="antd__Button--centered" size="large">
+          CONTINUE
+          <Icon type="right" />
         </Button>
       </div>
     );
@@ -189,7 +189,7 @@ const mapStateToProps = (state) => {
   return {
     CMS: state.CMS.roomSection,
     bedTypeOptions: state.bedsState.bedOptions,
-    roomArrangements: state.bedsState.roomArrangements,
+    roomArrangements: state.bedsState.roomArrangementsComp,
   };
 };
 
@@ -199,6 +199,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   addRoom: Actions.addRoom,
   resetOptions: Actions.resetOptions,
   deleteRoomListing: Actions.deleteRoomListing,
+  addGuestNumber: Actions.addGuestNumber,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Beds);

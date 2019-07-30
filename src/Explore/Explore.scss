@@ -1,0 +1,48 @@
+.Explore {
+  height: 100%;
+  background-color: #E5E5E5;
+  display: grid;
+  grid-template-rows: 0.5fr 0.5fr 6fr; 
+  grid-template-columns: 0.2fr 0.9fr 5fr;
+  grid-template-areas:
+    "header header header"
+    "space search search"
+    "space nav main";
+
+  &__Search {
+    grid-area: search;        
+    padding: 16px 0;   
+
+    .Search {
+      display: inline;      
+      &__Input > * {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__Filter {    
+    display: flex;
+    flex-direction: column;
+    grid-area: nav;
+
+    > * {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__Results {
+    grid-area: main;
+    margin-left: calc(2% - 10px);
+
+    &__Properties {
+      display: flex;
+      flex-wrap: wrap;
+
+      &__Item {
+        margin-right: 10px;
+        margin-top: 20px;
+      }
+    }
+  }
+}
