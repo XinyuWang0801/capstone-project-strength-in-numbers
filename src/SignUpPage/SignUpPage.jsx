@@ -23,6 +23,7 @@ class SignUpPage extends React.Component {
     // Need to implement error checking with Refs
     // Have to change LoginTextbox from a functional --> class component
     // As refs don't work with functional components
+    console.log(this.usernameRef.current.value)
   }
 
   render() {
@@ -35,7 +36,7 @@ class SignUpPage extends React.Component {
           <LoginTextbox id="firstname" className={firstnameEmptyError ? "LoginTextbox__Fail":"LoginTextbox"} label="First name" exampleLabel="Stevie" type="text" />
           <LoginTextbox id="lastnmae" className={lastnameEmptyError ? "LoginTextbox__Fail":"LoginTextbox"} label="Last name" exampleLabel="Wonder" type="text" />
           {usernameEmptyError && <Alert variant='danger' className="LoginPage__Form__Alert">Username cannot be empty</Alert>}
-          <LoginTextbox id="username" className={usernameEmptyError ? "LoginTextbox__Fail":"LoginTextbox"} label="Email" exampleLabel="email@example.com" type="email" ref={this.usernameRef} />
+          <LoginTextbox id="username" className={usernameEmptyError ? "LoginTextbox__Fail":"LoginTextbox"} label="Email" exampleLabel="email@example.com" type="email" inputRef={this.usernameRef} />
           {passwordEmptyError && <Alert variant='danger' className="LoginPage__Form__Alert">Password cannot be empty</Alert>}
           <LoginTextbox id="password" className={passwordEmptyError ? "LoginTextbox__Fail":"LoginTextbox"} label="Password" exampleLabel="Hopefully something secure" type="password" />
           {retypeEmptyError && <Alert variant='danger' className="LoginPage__Form__Alert">Passwords didn't match</Alert>}

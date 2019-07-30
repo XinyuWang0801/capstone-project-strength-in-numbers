@@ -2,24 +2,31 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './LoginTextbox.scss';
 
-export const LoginTextbox = (props) => {
-  const { id, label, exampleLabel, className, inputRef, type, value, onChange } = props;
+export class LoginTextbox extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-  return (
-    <div className={className}>
-      <label className="LoginTextbox__Label" htmlFor={`login-textbox-${label}`} >{label}</label>
-      <input
-        id={id}
-        name={`login-textbox-${label}`}
-        className='LoginTextbox__Input'
-        placeholder={exampleLabel}
-        type={type}
-        ref={inputRef}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  );
+  render() {
+    const { id, label, exampleLabel, className, inputRef, type, value, onChange } = this.props;
+
+    return (
+      <div className={className}>
+        <label className="LoginTextbox__Label" htmlFor={`login-textbox-${label}`} >{label}</label>
+        <input
+          id={id}
+          name={`login-textbox-${label}`}
+          className='LoginTextbox__Input'
+          placeholder={exampleLabel}
+          type={type}
+          ref={inputRef}
+          value={value}
+          onChange={onChange}
+        />
+      </div>
+    );
+  }
+  
 };
 
 LoginTextbox.defaultProps = {
@@ -28,7 +35,6 @@ LoginTextbox.defaultProps = {
   exampleLabel: '',
   inputRef: null,
   type: 'text',
-  // value: '',
 };
 
 LoginTextbox.propTypes = {
