@@ -10,6 +10,7 @@ export * from './ErrorMessage';
 export * from './Heading';
 export * from './Counter';
 export * from './Textbox';
+export * from './LoginTextbox';
 export * from './Datepicker';
 export * from './Search';
 export * from './PropertyCard';
