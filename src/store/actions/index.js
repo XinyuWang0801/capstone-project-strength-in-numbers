@@ -8,3 +8,4 @@ export * from './Actions.Bathrooms';
 export * from './Actions.Photos';
 export * from './Actions.Explore';
 export * from './Actions.AccommodationBooking';
+export * from './Actions.Account';

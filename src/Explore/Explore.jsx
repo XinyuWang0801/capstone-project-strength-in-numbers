@@ -80,13 +80,13 @@ class Explore extends React.Component {
   }
 
   render() {
-    const { SearchCMS } = this.props;
+    const { SearchCMS, searchLocation } = this.props;
 
     return (
       <div className="Explore">
         <Navbar className="Navbar" />
         <div className="Explore__Search">
-          <Search searchFunc={this.handleSearch} CMS={SearchCMS} />
+          <Search searchFunc={this.handleSearch} CMS={SearchCMS} location={searchLocation} />
         </div>
         {this.displayFilterSection()}
         <div className="Explore__Results">
@@ -105,6 +105,7 @@ const mapStateToProps = (state) => {
     CMS: state.CMS.Explore,
     SearchCMS: state.CMS.MainSearch,
     accommodations: state.exploreState.accommodations,
+    searchLocation: state.exploreState.searchLocation,
   };
 };
 

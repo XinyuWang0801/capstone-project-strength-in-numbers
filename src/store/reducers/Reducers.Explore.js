@@ -1,4 +1,4 @@
-import { ACCOMMODATION_INFO_RETRIEVED, ACCOMMODATION_LISTINGS_RETRIEVED } from '../actions';
+import { ACCOMMODATION_BOOKED, ACCOMMODATION_INFO_RETRIEVED, ACCOMMODATION_LISTINGS_RETRIEVED, ACCOMMODATION_SEARCH_LOCATION_UPDATED } from '../actions';
 
 const initialState = {
   accommodations: [],
@@ -9,8 +9,9 @@ const initialState = {
     location: {},
     name: '',
     price: '',
-    bookedDates: [],
+    bookedDates: {},
   },
+  searchLocation: '',
 };
 
 export default (state = initialState, action) => {
@@ -22,6 +23,17 @@ export default (state = initialState, action) => {
   case ACCOMMODATION_INFO_RETRIEVED:
     return Object.assign({}, state, {
       accommodationInfo: action.payload,
+    });
+  case ACCOMMODATION_BOOKED:
+    return Object.assign({}, state, {
+      accommodationInfo: {
+        ...state.accommodationInfo,
+        bookedDates: { ...state.accommodationInfo.bookedDates, ...action.payload },
+      },
+    });
+  case ACCOMMODATION_SEARCH_LOCATION_UPDATED:
+    return Object.assign({}, state, {
+      searchLocation: action.payload,
     });
   default:
     return state;

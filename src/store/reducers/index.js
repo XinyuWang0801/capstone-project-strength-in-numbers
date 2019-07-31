@@ -1,5 +1,6 @@
 import CMS from './Reducers.CMS';
 import accommodationFormState from './Reducers.AccommodationForm';
+import accountState from './Reducers.Account';
 import bathroomState from './Reducers.Bathrooms';
 import bedsState from './Reducers.Beds';
 import descriptionState from './Reducers.Description';
@@ -11,6 +12,7 @@ import priceState from './Reducers.Price';
 import { combineReducers } from 'redux';
 
 const reducer = combineReducers({
+  accountState,
   nameState,
   locationState,
   exploreState,
