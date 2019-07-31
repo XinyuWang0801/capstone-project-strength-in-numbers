@@ -27,6 +27,12 @@ export const bookAccommodation = async (id, dates) => {
     .set(oDates);
 };
 
+export const bookAccommodationForUser = async (accommodationId, userId, dates) => {
+  const bookingsRef = await database.ref('/bookings');
+
+  await bookingsRef.push({ userId, accommodationId, dates });
+};
+
 const range = (start, end) => {
   const result = [];
   for (let i = start; i < end; i++) {

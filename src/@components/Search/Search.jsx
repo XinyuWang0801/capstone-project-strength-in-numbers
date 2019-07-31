@@ -83,7 +83,7 @@ export class Search extends React.Component {
   handleSearchSuggestionCompleted = (e) => {
     this.setState({
       administrativeRegion: e.suggestion.administrative,
-      city: e.suggestion.city,
+      city: e.suggestion.city ? e.suggestion.city : e.suggestion.name,
       country: e.suggestion.country,
     });
   }

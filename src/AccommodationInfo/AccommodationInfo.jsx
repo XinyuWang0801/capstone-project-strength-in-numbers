@@ -1,7 +1,7 @@
 import React from 'react';
 import { Bed02, Toilet } from '../icons';
 import { BookingCard, Navbar } from '../@components';
-import { Icon } from 'antd';
+import { Icon, Spin } from 'antd';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as Actions from '../store/actions';
@@ -9,12 +9,13 @@ import './AccommodationInfo.scss';
 
 const BedIcon = props => <Icon component={Bed02} {...props} />;
 const ToiletIcon = props => <Icon component={Toilet} {...props} />;
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 class AccommodationInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      loading: false,
     };
   }
 
@@ -25,9 +26,13 @@ class AccommodationInfo extends React.Component {
     return `${location.street}, ${location.city} ${location.state} ${location.zipCode}`;
   };
 
-  handleRequestToBook = (dates, guests) => {
-    const { bookAccommodation } = this.props;
-    bookAccommodation(dates, guests);
+  handleRequestToBook = async (dates, guests) => {
+    const { bookAccommodation, history, navigateToAccountInfo } = this.props;
+    this.setState({ loading: true });
+
+    await bookAccommodation(dates, guests);
+
+    navigateToAccountInfo(history);
   }
 
   getNumberOfBeds = () => {
@@ -50,11 +55,13 @@ class AccommodationInfo extends React.Component {
   }
 
   render() {
-    const { accommodationInfo: { bathrooms, description, name, price, bookedDates, guests } } = this.props;
-    const { accommodationBooking } = this.props;
+    const { accommodationInfo: { bathrooms, description, name, price, bookedDates, guests }, accommodationBooking } = this.props;
+    const { loading } = this.state;
 
     return (
       <div className="AccommodationInfo">
+        {loading && <Spin indicator={antIcon} style={{ zIndex: 3, display: 'flex', position: 'absolute', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }} />}
+        {loading && <div className="SignUpPage__Loading" />}
         <div className="Explore__Nav"><Navbar /></div>
         <div className="AccommodationInfo__Images">
           {this.getPhotos()}
@@ -99,6 +106,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   bookAccommodation: Actions.bookAccommodation,
+  navigateToAccountInfo: Actions.navigateToAccountInfo,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccommodationInfo);

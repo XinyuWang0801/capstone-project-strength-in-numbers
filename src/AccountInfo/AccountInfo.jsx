@@ -1,9 +1,10 @@
 import React from 'react';
 import { Bed02, Calendar, Toilet } from '../icons';
-import { Icon, List } from 'antd';
+import { Divider, Empty, Icon, List } from 'antd';
 import { Navbar } from '../@components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as Actions from '../store/actions';
 import * as Services from '../store/services';
 
 import './AccountInfo.scss';
@@ -11,23 +12,6 @@ import './AccountInfo.scss';
 const BedIcon = props => <Icon component={Bed02} {...props} />;
 const CalendarIcon = props => <Icon component={Calendar} {...props} />;
 const ToiletIcon = props => <Icon component={Toilet} {...props} />;
-
-const listData = [];
-for (let i = 0; i < 4; i++) {
-  listData.push({
-    href: 'http://ant.design',
-    title: `Cottage at Alexandria ${i}`,
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    bathrooms: 2,
-    beds: 2,
-    dates: {
-      start: '15/05/2019',
-      end: '20/05/2019',
-    },
-    description:
-      'Just under two hours from Sydney, this exclusive country guesthouse has everything you need to escape the city and enjoy the beautiful Southern Highlands!\n\nStylish interiors, equipped with two bedrooms, a modern bathroom, laundry, kitchen, living & dining!\n\nThe property is also on Instagram if you\'d like to see more images sunnybank_kangaloon.\n\nSunday nights are available upon request.\n\n*** STRICTLY NO BRIDAL OR WEDDING PARTIES ***\n\nOther things to note\nPlease note that internet access is intermittent due to occasional storms.',
-  });
-}
 
 export class AccountInfo extends React.Component {
   constructor(props) {
@@ -37,12 +21,27 @@ export class AccountInfo extends React.Component {
     };
   }
 
-  renderBathroomsAndBeds = (bathrooms, beds, dates) => {
+  componentDidMount() {
+    const { getBookedAccommodations, id, history, navigateToLogin } = this.props;
+
+    if (!id) {
+      navigateToLogin(history);
+      return;
+    }
+
+    getBookedAccommodations();
+  }
+
+  getNumberOfBeds = (rooms) => {
+    return rooms ? rooms.reduce((acc, room) => acc + room.reduce((_acc, bed) => _acc + bed.numberOfBeds, 0), 0) : '';
+  }
+
+  renderBathroomsAndBeds = (bathrooms, rooms, dates) => {
     return (
       <div className="AccountInfo__BedBathrooms">
-        <span className="AccountInfo__FeatureIcons"><BedIcon style={{ fontSize: '2em', color: '#007bff' }} />{beds} beds</span>
+        <span className="AccountInfo__FeatureIcons"><BedIcon style={{ fontSize: '2em', color: '#007bff' }} />{this.getNumberOfBeds(rooms)} beds</span>
         <span className="AccountInfo__FeatureIcons"><ToiletIcon style={{ fontSize: '2em', color: '#007bff' }} />{bathrooms} bathrooms</span>
-        <span className="AccountInfo__FeatureIcons"><CalendarIcon style={{ fontSize: '2em', color: '#007bff' }} />{dates.start}</span>
+        <span className="AccountInfo__FeatureIcons"><CalendarIcon style={{ fontSize: '2em', color: '#007bff' }} />{`${dates[0]} - ${dates[1]}`}</span>
       </div>
     );
   }
@@ -50,14 +49,17 @@ export class AccountInfo extends React.Component {
   renderListItems = (item) => {
     return (
       <List.Item
-        key={item.title}
+        key={item.name}
         extra={
-          <img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />
+          item.photos ? <img width={272} alt="logo" src={item.photos[0]} /> : <Empty />
         }
+        actions={[
+          <div>{`${item.location.street}, ${item.location.city}, ${item.location.country}`}</div>,
+        ]}
       >
         <List.Item.Meta
-          title={<a href={item.href}>{item.title}</a>}
-          description={this.renderBathroomsAndBeds(item.bathrooms, item.beds, item.dates)}
+          title={<a href={item.href}>{item.name}</a>}
+          description={this.renderBathroomsAndBeds(item.bathrooms, item.roomArrangement, item.bookedDates)}
         />
         {Services.trimDescription(item.description)}
       </List.Item>
@@ -65,18 +67,18 @@ export class AccountInfo extends React.Component {
   }
 
   render() {
-    const { CMS } = this.props;
+    const { bookings, CMS } = this.props;
 
     return (
       <div className="AccountInfo">
         <Navbar />
         <div className="AccountInfo__BookedAccommodations">
-          <h4>{CMS.accountInfoHeader}</h4>
+          <Divider orientation="left"><h4>{CMS.accountInfoHeader}</h4></Divider>
           <List
             itemLayout="vertical"
             size="large"
             pagination={{ pageSize: 3 }}
-            dataSource={listData}
+            dataSource={bookings}
             renderItem={this.renderListItems}
           />
         </div>
@@ -88,11 +90,14 @@ export class AccountInfo extends React.Component {
 const mapStateToProps = (state) => {
   return {
     CMS: state.CMS.accountInfo,
+    bookings: state.accountState.bookings,
+    id: state.accountState.id,
   };
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-
+  getBookedAccommodations: Actions.getBookedAccommodations,
+  navigateToLogin: Actions.navigateToLogin,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo);
