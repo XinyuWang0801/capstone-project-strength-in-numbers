@@ -18,3 +18,4 @@ export { default as LandingPageVector } from './LandingPageVector';
 export { default as Key } from './Key';
 export { default as Key01 } from './Key01';
 export { default as CurvedImage } from './CurvedImage';
+export { default as Calendar } from './Calendar';

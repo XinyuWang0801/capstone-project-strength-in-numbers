@@ -7,6 +7,7 @@ export const bookAccommodation = (dates, guests) => {
     const { exploreState: { accommodationInfo: { id } } } = getState();
 
     await Services.bookAccommodation(id, dates, guests);
-    dispatch({ type: ACCOMMODATION_BOOKED });
+    const nDates = Services.convertArrayOfDatesToObjects(dates);
+    dispatch({ type: ACCOMMODATION_BOOKED, payload: nDates });
   };
 };

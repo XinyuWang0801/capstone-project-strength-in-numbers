@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Button, DatePicker, Select } from 'antd';
+import { Button, DatePicker, Select, message } from 'antd';
 import { ErrorMessage, StarRating } from '../../@components';
 import * as Services from '../../store/services';
 
@@ -53,15 +53,14 @@ export class BookingCard extends React.Component {
     if (hasGuestCapacityError || hasBookingDateError || hasEmptyGuestNumberError) { return; }
 
     bookingFunc(days, guests);
-  };
 
-  range = (start, end) => {
-    const result = [];
-    for (let i = start; i < end; i++) {
-      result.push(i);
-    }
-    return result;
-  }
+    message.config({
+      top: 100,
+    });
+
+    message.loading('Booking the accommodation...', 2.5)
+      .then(() => message.success('Accommodation booked!', 3));
+  };
 
   getBookedDates = (current) => {
     if (!current) { return false; }

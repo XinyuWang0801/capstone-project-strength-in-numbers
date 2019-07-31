@@ -1,6 +1,7 @@
 import React from 'react';
 import { AccommodationForm } from './AccommodationForm';
 import { AccommodationInfo } from './AccommodationInfo';
+import { AccountInfo } from './AccountInfo';
 import { Explore } from './Explore';
 import { LandingPage } from './LandingPage';
 import { LoginPage } from './LoginPage';
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/accommodation-info" component={AccommodationInfo} />
       <Route path="/signup" component={SignUpPage} />
       <Route path="/login" component={LoginPage} />
+      <Route path="/account-info" component={AccountInfo} />
     </Router>
   );
 };
