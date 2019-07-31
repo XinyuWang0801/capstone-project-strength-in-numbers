@@ -1,9 +1,18 @@
 .SignUpPage {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.082);
-  display: grid;
-  grid-template-columns: 15% auto 15%;
-  grid-template-rows: 30% 100px auto;
+  
+  &__Loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: slategrey;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    z-index: 2;
+  }
 
   &__Form {
     display: grid;

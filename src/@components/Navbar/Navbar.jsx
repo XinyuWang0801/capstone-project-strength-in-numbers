@@ -17,6 +17,12 @@ class Navbar extends React.Component {
     history.push('');
   }
 
+  navigateToLogin = () => {
+    const { history } = this.props;
+
+    history.push('login');
+  }
+
   render() {
     const { className, color } = this.props;
 
@@ -30,7 +36,7 @@ class Navbar extends React.Component {
             </span>
           </li>
           <li><span className="Navbar__Item" onClick={this.navigateToHostAccommodation}>Host a home</span></li>
-          <li><span className="Navbar__Item">Log in</span></li>
+          <li><span className="Navbar__Item" onClick={this.navigateToLogin}>Log in</span></li>
         </ol>
       </div>
     );

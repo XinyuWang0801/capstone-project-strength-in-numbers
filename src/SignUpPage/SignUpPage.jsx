@@ -1,10 +1,12 @@
-// import Alert from 'react-bootstrap/Alert';
 import React from 'react';
-import { Button, LoginTextbox } from '../@components';
+import { Button, LoginTextbox, Navbar } from '../@components';
+import { Icon, Spin } from 'antd';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import * as Action from '../store/actions';
+import * as Action from '../store/actions';
 import './SignUpPage.scss';
+
+const spinningIcon = <Icon type="loading" style={{ fontSize: 40 }} spin />;
 
 class SignUpPage extends React.Component {
   constructor(props) {
@@ -25,6 +27,7 @@ class SignUpPage extends React.Component {
         retypeEmpty: false,
         retypeMatch: false,
       },
+      loading: false,
     };
   }
 
@@ -177,27 +180,33 @@ class SignUpPage extends React.Component {
     }));
   };
 
-  handleClick = () => {
+  handleClick = async () => {
     try {
       this.validateInputs();
+
+      const { inputs: { firstname, lastname, email, password } } = this.state;
+      const { createUser } = this.props;
+
+      this.setState({ loading: true });
+
+      await createUser({ firstname, lastname, email, password });
+      const { history } = this.props;
+      history.push('/explore');
     } catch {
       // If error are detected
     }
   };
 
   render() {
-    const { inputs, errors } = this.state;
-    const {
-      firstnameEmpty,
-      lastnameEmpty,
-      usernameEmpty,
-      passwordEmpty,
-      retypeEmpty,
-      retypeMatch,
-    } = errors;
+    const { inputs, errors, loading } = this.state;
+    const { firstnameEmpty, lastnameEmpty, usernameEmpty, passwordEmpty, retypeEmpty, retypeMatch } = errors;
     const { firstname, lastname, email, password, retype } = inputs;
+
     return (
       <div className="SignUpPage">
+        {loading && <Spin className="SignUpPage__Spinner" indicator={spinningIcon} style={{ zIndex: 3, display: 'flex', position: 'absolute', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }} />}
+        {loading && <div className="SignUpPage__Loading" />}
+        <Navbar />
         <div className="SignUpPage__Form">
           <h1>Sign Up</h1>
           <div className="placeholder" /> {/* Need to remove this */}
@@ -276,7 +285,9 @@ const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  createUser: Action.createUser,
+}, dispatch);
 
 export default connect(
   mapStateToProps,
