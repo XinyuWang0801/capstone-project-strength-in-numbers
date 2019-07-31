@@ -10,7 +10,7 @@ export const bookAccommodation = (dates, guests) => {
 
     const nDates = Services.convertArrayOfDatesToObjects(dates);
     await Services.bookAccommodationForUser(id, accountState.id, nDates);
-  
+
     dispatch({ type: ACCOMMODATION_BOOKED, payload: nDates });
   };
 };
