@@ -3,20 +3,16 @@ import React from 'react';
 import './LoginTextbox.scss';
 
 export class LoginTextbox extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { id, label, exampleLabel, className, inputRef, type, value, onChange } = this.props;
 
     return (
       <div className={className}>
-        <label className="LoginTextbox__Label" htmlFor={id} >{label}</label>
+        <label className="LoginTextbox__Label" htmlFor={id}>{label}</label>
         <input
           id={id}
           name={`login-textbox-${label}`}
-          className='LoginTextbox__Input'
+          className="LoginTextbox__Input"
           placeholder={exampleLabel}
           type={type}
           ref={inputRef}
@@ -26,8 +22,7 @@ export class LoginTextbox extends React.Component {
       </div>
     );
   }
-  
-};
+}
 
 LoginTextbox.defaultProps = {
   label: '',
@@ -47,5 +42,4 @@ LoginTextbox.propTypes = {
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]),
   type: PropTypes.string,
-  value: PropTypes.string,
 };
