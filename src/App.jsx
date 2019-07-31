@@ -3,6 +3,7 @@ import { AccommodationForm } from './AccommodationForm';
 import { AccommodationInfo } from './AccommodationInfo';
 import { Explore } from './Explore';
 import { LandingPage } from './LandingPage';
+import { LoginPage } from './LoginPage';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './App.scss';
 
@@ -13,6 +14,7 @@ const App = () => {
       <Route path="/explore" component={Explore} />
       <Route path="/accommodation-posting" component={AccommodationForm} />
       <Route path="/accommodation-info" component={AccommodationInfo} />
+      <Route path="/login" component={LoginPage} />
     </Router>
   );
 };
