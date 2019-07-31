@@ -52,7 +52,7 @@ export class AccountInfo extends React.Component {
       <List.Item
         key={item.title}
         extra={
-          <img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"/>
+          <img width={272} alt="logo" src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png" />
         }
       >
         <List.Item.Meta
