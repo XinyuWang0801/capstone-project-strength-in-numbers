@@ -17,4 +17,3 @@ export * from './PropertyCard';
 export * from './Navbar';
 export * from './BookingCard';
 export * from './StarRating';
-export * from './LoginTextbox';
