@@ -20,7 +20,7 @@ class LoginPage extends React.Component {
     try {
       this.validateInputFilled();
     } catch {
-      return;
+      // Error exists
     }
   }
 
