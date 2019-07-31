@@ -1,8 +1,7 @@
 .LoginTextbox {
   display: flex;
   position: relative;
-  margin-bottom:  10px; 
-  // background-color: rgba(242, 246, 250, 0.541);
+  margin:  10px 5px; 
   background-color: #F2F6FA;
   box-sizing: border-box;
   flex-flow: column wrap;
@@ -20,9 +19,15 @@
 
   &__Input {
     border: none;
-    background: none;
+    background: none;  
+  }
 
-    
+  &__Input:focus {
+    outline: none;
+  }
+
+  &__Input::placeholder {
+    color: lightslategrey;
   }
 
   &__Label {
@@ -31,6 +36,5 @@
 }
 
 .LoginTextbox:hover {
-  // background-color: #F2F6FA;
   background-color: #EBF1F7;
 }

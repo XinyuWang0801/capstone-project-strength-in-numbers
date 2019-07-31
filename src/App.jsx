@@ -5,6 +5,7 @@ import { Explore } from './Explore';
 import { LandingPage } from './LandingPage';
 import { LoginPage } from './LoginPage';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { SignUpPage } from './SignUpPage';
 import './App.scss';
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Route path="/explore" component={Explore} />
       <Route path="/accommodation-posting" component={AccommodationForm} />
       <Route path="/accommodation-info" component={AccommodationInfo} />
+      <Route path="/signup" component={SignUpPage} />
       <Route path="/login" component={LoginPage} />
     </Router>
   );
