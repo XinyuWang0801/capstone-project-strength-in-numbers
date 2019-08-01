@@ -64,5 +64,13 @@
   },
   "accountInfo": {
     "accountInfoHeader": "These are the accommodations which you have booked:"
+  },
+  "login": {
+    "failedLogin": "One of the fields is incorrect",
+    "emptyUsername": "Username cannot be empty",
+    "emptyPassword": "Password cannot be empty",
+    "loginButton": "Log In",
+    "signUpButton": "Sign Up",
+    "loginHeader": "Log In"
   }
 }
