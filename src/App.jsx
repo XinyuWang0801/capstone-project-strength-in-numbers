@@ -3,15 +3,15 @@ import { AccommodationForm } from './AccommodationForm';
 import { AccommodationInfo } from './AccommodationInfo';
 import { AccountInfo } from './AccountInfo';
 import { Explore } from './Explore';
+import { HashRouter, Route } from 'react-router-dom';
 import { LandingPage } from './LandingPage';
 import { LoginPage } from './LoginPage';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { SignUpPage } from './SignUpPage';
 import './App.scss';
 
 const App = () => {
   return (
-    <Router>
+    <HashRouter basename="/">
       <Route path="/" exact component={LandingPage} />
       <Route path="/explore" component={Explore} />
       <Route path="/accommodation-posting" component={AccommodationForm} />
@@ -19,7 +19,7 @@ const App = () => {
       <Route path="/signup" component={SignUpPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/account-info" component={AccountInfo} />
-    </Router>
+    </HashRouter>
   );
 };
 
