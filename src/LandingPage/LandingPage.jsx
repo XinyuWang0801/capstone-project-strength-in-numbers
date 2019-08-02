@@ -16,11 +16,12 @@ class LandingPage extends React.Component {
     this.guestNumberRef = React.createRef();
   }
 
-  handleSearch = (location, checkIn, guestNumber) => {
-    const { getAccommodationListings, history } = this.props;
+  handleSearch = (location, checkIn, guestNumber, fullLocation) => {
+    const { getAccommodationListings, updateSearchLocation, history } = this.props;
     console.log(location, checkIn, guestNumber);
 
     getAccommodationListings(location);
+    updateSearchLocation(fullLocation);
     history.push('explore');
   }
 
@@ -53,6 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getAccommodationListings: Actions.getAccommodationListings,
+  updateSearchLocation: Actions.updateSearchLocation,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

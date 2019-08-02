@@ -1,0 +1,14 @@
+.AccountInfo {
+  &__BookedAccommodations {
+    padding: 100px;
+  }
+
+  &__BedBathrooms {
+    display: flex;
+  }
+
+  &__FeatureIcons {
+    // flex: 0.2;
+    margin-right: 15px;
+  }
+}

@@ -1,0 +1,77 @@
+.SignUpPage {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.082);
+  
+  &__Loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: slategrey;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    z-index: 2;
+  }
+
+  &__Form {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    // Sizing
+    width: 700px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    position: absolute;
+    padding: 70px 30px;
+
+    // Aesthetics
+    border-width: 2px;
+    border-style: solid;
+    border-color: #F2F6FA;
+    // border-color: rgba(47, 87, 247, 0.048);
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(78, 91, 141, 0.05), 0 15px 40px #F2F6FA; 
+    // box-shadow: 10px 10px 0 #ffd217, -20px 20px 0 #5ac7ff, 30px -30px 0 #ff0000, -40px -40px 0 #00ff00, 40px 30px 0 #440880;
+
+    flex-flow: row wrap;  
+
+    &__Buttons {
+      display: flex;
+      // background: #202D4A; 
+      justify-content: space-around;
+      width: 300px;
+      height: 40px;
+    }
+
+    &__Alert {
+      display: flex; 
+      width: 350px;
+      height: 50px;
+      font-weight: bold;
+    }
+    
+    h1 {
+      display: flex;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-weight: bold;
+      color: #202D4A;
+      text-shadow: rgba(78, 91, 141, 0.158) 0 5px 10px;
+      // , rgba(32, 45, 74, 0.479) 0 15px 40px;
+      // box-shadow: 0 5px 10px rgba(78, 91, 141, 0.05), 0 15px 40px rgba(47, 87, 247, 0.144); 
+    }
+    
+  }
+  
+}
+
+.Button {
+  &__Signup {
+    box-shadow: 0 5px 10px rgba(78, 91, 141, 0.05), 0 15px 40px rgba(44, 169, 73, 0.158);
+  }
+}
+  

@@ -55,14 +55,6 @@ export class BookingCard extends React.Component {
     bookingFunc(days, guests);
   };
 
-  range = (start, end) => {
-    const result = [];
-    for (let i = start; i < end; i++) {
-      result.push(i);
-    }
-    return result;
-  }
-
   getBookedDates = (current) => {
     if (!current) { return false; }
     const { bookedDates } = this.props;

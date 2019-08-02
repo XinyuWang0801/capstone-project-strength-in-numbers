@@ -61,5 +61,16 @@
     "emptyGuestNumberError": "Please state the number of guests that will be staying",
     "bookingDateError": "Please provide the dates for which you will be staying",
     "defaultDescription": "Boasting a Golden Triangle address, an elegant makeover blends contemporary style and Victorian charm over three spacious levels. Behind the classic terrace facade, high ceilings and hardwood floors unravel into the quintessential in/outdoor design. The Caesarstone kitchen is equipped for the gourmet host with Miele induction and connects to open-plan interiors via striking Concertina bifold doors. Escape the vibrancy just footsteps away in the privacy of your very own urban oasis with a timber entertainer deck and built-benches set against a landscaped backdrop and neighbouring trees. Nestled in one of Alexandria most distinguished streetscapes, explore a lifestyle of rich diversity on your doorstep. Enjoy just footsteps to Erskineville village and Alexandria dining precinct, and stroll to Newtown, Enmore, dog-friendly parks, esteemed schools, and superior transport."
+  },
+  "accountInfo": {
+    "accountInfoHeader": "These are the accommodations which you have booked:"
+  },
+  "login": {
+    "failedLogin": "One of the fields is incorrect",
+    "emptyUsername": "Username cannot be empty",
+    "emptyPassword": "Password cannot be empty",
+    "loginButton": "Log In",
+    "signUpButton": "Sign Up",
+    "loginHeader": "Log In"
   }
 }

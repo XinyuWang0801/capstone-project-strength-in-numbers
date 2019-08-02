@@ -59,5 +59,7 @@ module.exports = {
     "no-useless-path-segments": "off",
     "import/no-cycle": "off",
     "import/no-useless-path-segments": "off",
+    "no-await-in-loop": "off",
+    "no-restricted-syntax": "off",
   },
 };
