@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import firebaseApp from '../../firebase/index';
 import { Key } from '../../icons';
 import { withRouter } from 'react-router-dom';
 import './Navbar.scss';
@@ -31,6 +32,7 @@ class Navbar extends React.Component {
           </li>
           <li><span className="Navbar__Item" onClick={this.navigateToHostAccommodation}>Host a home</span></li>
           <li><span className="Navbar__Item">Log in</span></li>
+          <li><span className="Navbar__Item" onClick={() => firebaseApp.auth().signOut()}>Sign Out</span></li>
         </ol>
       </div>
     );
