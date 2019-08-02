@@ -17,6 +17,10 @@ class Explore extends React.Component {
     };
   }
 
+  getNumberOfBeds = (roomArrangement) => {
+    return roomArrangement ? roomArrangement.reduce((acc, room) => acc + room.reduce((_acc, bed) => _acc + bed.numberOfBeds, 0), 0) : '';
+  }
+
   displayAccommodationListings = () => {
     const { accommodations } = this.props;
 
@@ -27,9 +31,10 @@ class Explore extends React.Component {
         name={item.name}
         price={item.price}
         address={`${item.location.street}, ${item.location.city}, ${item.location.state}`}
-        beds={item.beds}
+        beds={this.getNumberOfBeds(item.roomArrangement)}
         bathrooms={item.bathrooms}
         onClick={this.handleAccommodationListingClicked}
+        photo={item.photos && item.photos.length > 0 ? item.photos[0] : null}
       />
     ));
   }
@@ -90,7 +95,7 @@ class Explore extends React.Component {
         </div>
         {this.displayFilterSection()}
         <div className="Explore__Results">
-          <p>{this.getNumberOfResults()}</p>
+          <p style={{ marginBottom: '0' }}>{this.getNumberOfResults()}</p>
           <div className="Explore__Results__Properties">
             {this.displayAccommodationListings()}
           </div>
