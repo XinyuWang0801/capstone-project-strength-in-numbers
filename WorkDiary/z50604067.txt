@@ -8,9 +8,12 @@ Set up CI/CD pipeline - integrating travis ci with github pull requests so that 
 Set up linting (for consistent code practices), initialized the react framework for the project and created the folder structure for easier development. 
 
 Week 3:
-Created base structure for the accommodation form, separating each question into their individual sections so that they can be worked on separately. 
-Started work on the first section of the form, i.e. providing name of property, number of guests and the type of accommodation it is. Also worked on the 
-second section which defines the number of rooms in the property.
+Created base structure for the accommodation form, separating each question into their individual sections so that they can be worked on separately. Separation 
+was done following the recommended guidelines from the React documentation page: https://reactjs.org/docs/faq-structure.html. Hence sectiosn are separated as such:
+name of accommodation and the type of accommodation, types and numbers of room, how many bathrooms, the price of the accommodation, the location, photos and description.
+Started work on the first section of the form, i.e. providing name of property, number of guests and the type of accommodation it is. Basically adding the fields for the 
+user to enter the required details and also adding validation to handle invalid data or unentered fields that would be required. Also worked on the second section 
+which defines the number of rooms in the property.
 
 Week 4: 
 No work done related to project.
@@ -19,4 +22,18 @@ Week 5-7:
 Worked on the landing page for the application, integrating a search function which returns results from the firebase db. Continuing on from that I integrated 
 the subsequent page from landing page which shows the results of the search in the UI, also worked on the page which shows further information of a specific accommodation.
 In particular this page shows photos of the accommodation, further descriptions and the ability to book as well. 
-Did a bit more work on the accommodation form, allowing users to add photos of the accommodation, provide a price and to add further details if desired. 
+Did a bit more work on the accommodation form, allowing users to add photos of the accommodation, provide a price and to add further details if desired. Main priority for
+this accommodation form was to be able to save the entered data into the firebase db, which is what I worked on as well following the documentation from
+https://firebase.google.com/docs/database/web/read-and-write. 
+
+Week 8: 
+Helped Yathu with processing the data from the sign up page and subsequently adding it to the firebase db. Fixed issues with the React Router where ghpages was not showing
+the application but when the application was run locally we could see the pages, reason was related to routing. Mainly followed the provided tips from this document:
+https://levelup.gitconnected.com/deploying-a-create-react-app-with-routing-to-github-pages-f386b6ce84c2. Fixed issues with the booking where you couldn't see the date component
+coming up when you click on it, this was caused by invalid data being sent to the respective function which handles the opening of this date panel. 
+
+Week 9:
+Created the account info page, which shows all the accommodations that the user has booked, if they have booked any. Also added logic to the account info page, where the page
+will only be shown if the account is logged in, if they are not then they will be redirect to the login page. This behaviour is also replicated when a not logged in user tries
+to book an accommodation. Fixed an issue where the uploaded photos were not being shown in the explore page, the issue was because static images were used and not the photos
+that were uploaded by the user. 
