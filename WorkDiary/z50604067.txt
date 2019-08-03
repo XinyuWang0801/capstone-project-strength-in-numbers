@@ -37,3 +37,4 @@ Created the account info page, which shows all the accommodations that the user 
 will only be shown if the account is logged in, if they are not then they will be redirect to the login page. This behaviour is also replicated when a not logged in user tries
 to book an accommodation. Fixed an issue where the uploaded photos were not being shown in the explore page, the issue was because static images were used and not the photos
 that were uploaded by the user. 
+Added feature to allow for dynamic filtering on the explore page. The user can filter the search results by min price, max price, bathroom numbers and property types. 

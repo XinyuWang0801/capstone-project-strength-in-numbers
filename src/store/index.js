@@ -8,25 +8,10 @@ import { persistReducer, persistStore } from 'redux-persist';
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['accountState'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// const store = createStore(persistedReducer, /* preloadedState, */
-//   composeWithDevTools(
-//     applyMiddleware(thunk),
-//   ));
-
-// const persistor = persistStore(store);
-
-// export default () => {
-//   const store = createStore(persistedReducer, /* preloadedState, */
-//     composeWithDevTools(
-//       applyMiddleware(thunk),
-//     ));
-//   const persistor = persistStore(store);
-//   return { store, persistor };
-// };
 
 export const store = createStore(persistedReducer, /* preloadedState, */
   composeWithDevTools(

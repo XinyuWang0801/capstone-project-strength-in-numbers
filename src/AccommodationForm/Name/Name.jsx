@@ -131,6 +131,7 @@ class Name extends React.Component {
 const mapStateToProps = (state) => {
   return {
     CMS: state.CMS.nameSection,
+    refData: state.refData,
   };
 };
 
