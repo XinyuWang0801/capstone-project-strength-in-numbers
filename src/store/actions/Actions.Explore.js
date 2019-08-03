@@ -5,17 +5,17 @@ export const ACCOMMODATION_INFO_RETRIEVED = 'ACCOMMODATION_INFO_RETRIEVED';
 export const ACCOMMODATION_SEARCH_LOCATION_UPDATED = 'ACCOMMODATION_SEARCH_LOCATION_UPDATED';
 export const ACCOMMODATION_LISTINGS_FILTERED = 'ACCOMMODATION_LISTINGS_FILTERED';
 export const ACCOMMODATION_GUEST_NUMBERS_UPDATED = 'ACCOMMODATION_GUEST_NUMBERS_UPDATED';
+export const ACCOMMODATION_SEARCH_DATES_UPADTED = 'ACCOMMODATION_SEARCH_DATES_UPADTED';
 
-export const getAccommodationListings = (location, checkIn, guestNumber, fullLocation) => {
-  return async (dispatch) => {
-    const listings = await Services.getAccommodationListings(location);
+export const getAccommodationListings = () => {
+  return async (dispatch, getState) => {
+    const { exploreState: { searchLocation: { city, administrativeRegion, country }, dates, guestNumber } } = getState();
+    const listings = await Services.getAccommodationListings({ city, administrativeRegion, country });
 
-    const filterListingsByDates = listings.filter(listing => !Object.values(listing.bookedDates).includes(checkIn));
+    const filterListingsByDates = listings.filter(listing => !Object.values(listing.bookedDates).includes(dates.checkInDate));
     const filterListingsByGuestNumber = filterListingsByDates.filter(listing => Number(listing.guests) >= guestNumber);
 
     dispatch({ type: ACCOMMODATION_LISTINGS_RETRIEVED, payload: filterListingsByGuestNumber });
-    dispatch({ type: ACCOMMODATION_SEARCH_LOCATION_UPDATED, payload: { ...location, fullLocation } });
-    dispatch({ type: ACCOMMODATION_GUEST_NUMBERS_UPDATED, payload: guestNumber });
   };
 };
 
@@ -24,6 +24,24 @@ export const showAccommodationInfo = (id) => {
     const { accommodations } = getState().exploreState;
     const accommodationInfo = accommodations.filter(item => item.id === id)[0];
     dispatch({ type: ACCOMMODATION_INFO_RETRIEVED, payload: accommodationInfo });
+  };
+};
+
+export const updateSearchDates = (dates) => {
+  return (dispatch) => {
+    dispatch({ type: ACCOMMODATION_SEARCH_DATES_UPADTED, payload: dates });
+  };
+};
+
+export const updateSearchLocation = (searchLocation) => {
+  return (dispatch) => {
+    dispatch({ type: ACCOMMODATION_SEARCH_LOCATION_UPDATED, payload: searchLocation });
+  };
+};
+
+export const updateGuestNumber = (guestNumber) => {
+  return (dispatch) => {
+    dispatch({ type: ACCOMMODATION_GUEST_NUMBERS_UPDATED, payload: guestNumber });
   };
 };
 

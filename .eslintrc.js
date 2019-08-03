@@ -61,5 +61,6 @@ module.exports = {
     "import/no-useless-path-segments": "off",
     "no-await-in-loop": "off",
     "no-restricted-syntax": "off",
+    "no-nested-ternary": "off",
   },
 };

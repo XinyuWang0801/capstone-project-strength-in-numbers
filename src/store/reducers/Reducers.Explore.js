@@ -1,6 +1,7 @@
 import {
-  ACCOMMODATION_BOOKED, ACCOMMODATION_GUEST_NUMBERS_UPDATED, ACCOMMODATION_INFO_RETRIEVED,
-  ACCOMMODATION_LISTINGS_FILTERED, ACCOMMODATION_LISTINGS_RETRIEVED, ACCOMMODATION_SEARCH_LOCATION_UPDATED,
+  ACCOMMODATION_BOOKED, ACCOMMODATION_GUEST_NUMBERS_UPDATED,
+  ACCOMMODATION_INFO_RETRIEVED, ACCOMMODATION_LISTINGS_FILTERED, ACCOMMODATION_LISTINGS_RETRIEVED,
+  ACCOMMODATION_SEARCH_DATES_UPADTED, ACCOMMODATION_SEARCH_LOCATION_UPDATED,
 } from '../actions';
 
 const initialState = {
@@ -21,7 +22,12 @@ const initialState = {
     country: '',
     fullLocation: '',
   },
-  dates: {},
+  dates: {
+    checkInDate: null,
+    checkOutDate: null,
+    iCheckInDate: null,
+    iCheckOutDate: null,
+  },
   guestNumber: null,
 };
 
@@ -46,6 +52,10 @@ export default (state = initialState, action) => {
   case ACCOMMODATION_SEARCH_LOCATION_UPDATED:
     return Object.assign({}, state, {
       searchLocation: action.payload,
+    });
+  case ACCOMMODATION_SEARCH_DATES_UPADTED:
+    return Object.assign({}, state, {
+      dates: action.payload,
     });
   case ACCOMMODATION_LISTINGS_FILTERED:
     return Object.assign({}, state, {
