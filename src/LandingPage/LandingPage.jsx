@@ -16,15 +16,14 @@ class LandingPage extends React.Component {
     this.guestNumberRef = React.createRef();
   }
 
-  handleSearch = (location, checkIn, guestNumber, fullLocation) => {
-    const { getAccommodationListings, history } = this.props;
+  navigateTo = () => {
+    const { history } = this.props;
 
-    getAccommodationListings(location, checkIn, guestNumber, fullLocation);
     history.push('explore');
   }
 
   render() {
-    const { CMS: { welcomeTitle, welcomeIntroduction }, SearchCMS, searchLocation, guestNumber } = this.props;
+    const { CMS: { welcomeTitle, welcomeIntroduction } } = this.props;
 
     return (
       <div className="LandingPage">
@@ -35,7 +34,7 @@ class LandingPage extends React.Component {
             <p>{welcomeIntroduction}</p>
           </div>
           <div className="LandingPage__Form">
-            <Search CMS={SearchCMS} searchFunc={this.handleSearch} searchLocation={searchLocation} guestNumber={guestNumber} />
+            <Search navigateTo={this.navigateTo} />
           </div>
         </div>
         <LandingPageVector width="25%" className="LandingPage__Vector" />

@@ -39,12 +39,6 @@ class Explore extends React.Component {
     history.push('accommodation-info');
   }
 
-  handleSearch = (location, checkIn, guestNumber, fullLocation) => {
-    const { getAccommodationListings } = this.props;
-
-    getAccommodationListings(location, checkIn, guestNumber, fullLocation);
-  }
-
   onMaxPriceEntered = (e) => {
     if (e.target.value === '') { return; }
     const { filterAccommodationsByMaxPrice } = this.props;
@@ -106,13 +100,11 @@ class Explore extends React.Component {
   }
 
   render() {
-    const { SearchCMS, searchLocation, guestNumber } = this.props;
-
     return (
       <div className="Explore">
         <Navbar className="Navbar" />
         <div className="Explore__Search">
-          <Search searchFunc={this.handleSearch} CMS={SearchCMS} searchLocation={searchLocation} guestNumber={guestNumber} />
+          <Search />
         </div>
         {this.displayFilterSection()}
         <div className="Explore__Results">
