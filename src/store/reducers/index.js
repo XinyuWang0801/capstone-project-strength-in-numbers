@@ -9,6 +9,7 @@ import locationState from './Reducers.Location';
 import nameState from './Reducers.Name';
 import photosState from './Reducers.Photos';
 import priceState from './Reducers.Price';
+import refData from './Reducers.RefData';
 import { combineReducers } from 'redux';
 
 const reducer = combineReducers({
@@ -18,6 +19,7 @@ const reducer = combineReducers({
   exploreState,
   bedsState,
   CMS,
+  refData,
   accommodationFormState,
   descriptionState,
   photosState,

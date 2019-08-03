@@ -10,13 +10,6 @@ import 'antd/dist/antd.css';
 const { Option } = Select;
 
 class Explore extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
   getNumberOfBeds = (roomArrangement) => {
     return roomArrangement ? roomArrangement.reduce((acc, room) => acc + room.reduce((_acc, bed) => _acc + bed.numberOfBeds, 0), 0) : '';
   }
@@ -46,25 +39,53 @@ class Explore extends React.Component {
     history.push('accommodation-info');
   }
 
-  handleSearch = (location, checkIn, guestNumber) => {
+  handleSearch = (location, checkIn, guestNumber, fullLocation) => {
     const { getAccommodationListings } = this.props;
-    console.log(checkIn, guestNumber);
-    getAccommodationListings(location);
+
+    getAccommodationListings(location, checkIn, guestNumber, fullLocation);
+  }
+
+  onMaxPriceEntered = (e) => {
+    if (e.target.value === '') { return; }
+    const { filterAccommodationsByMaxPrice } = this.props;
+
+    filterAccommodationsByMaxPrice(e.target.value);
+  }
+
+  onMinPriceEntered = (e) => {
+    if (e.target.value === '') { return; }
+    const { filterAccommodationsByMinPrice } = this.props;
+
+    filterAccommodationsByMinPrice(e.target.value);
+  }
+
+  onBathroomNumberSelected = (value) => {
+    const { filterAccommodationsByBathroomNum } = this.props;
+
+    filterAccommodationsByBathroomNum(value);
+  }
+
+  onAccommodationTypeSelected = (value) => {
+    const { filterAccommodationsByType } = this.props;
+
+    filterAccommodationsByType(value);
   }
 
   displayFilterSection = () => {
+    const { refData: { propertyTypes } } = this.props;
+
     return (
       <div className="Explore__Filter">
-        <p className="Explore__Filter__Item1">Refine search: </p>
-        <Input size="large" id="min-price-input" placeholder="Min price" />
-        <Input size="large" id="min-price-input" placeholder="Max price" />
-        <Select defaultValue="Bathrooms" size="large">
+        <p className="Explore__Filter__Header">Refine search: </p>
+        <Input className="Explore__Filter__Item" size="large" id="min-price-input" placeholder="Min price" onBlur={this.onMinPriceEntered} />
+        <Input className="Explore__Filter__Item" size="large" id="max-price-input" placeholder="Max price" onBlur={this.onMaxPriceEntered} />
+        <Select className="Explore__Filter__Item" defaultValue="Bathrooms" size="large" onChange={this.onBathroomNumberSelected}>
           <Option value="Bathrooms" disabled>Bathrooms</Option>
-          {[...Array(7).keys()].map(item => <Option value={item + 1}>{item + 1}</Option>)}
+          {[...Array(7).keys()].map(item => <Option value={item + 1} key={`bathroom_${item}`}>{item + 1}</Option>)}
         </Select>
-        <Select defaultValue="Property type" size="large">
+        <Select className="Explore__Filter__Item" defaultValue="Property type" size="large" onChange={this.onAccommodationTypeSelected}>
           <Option value="Property type" disabled>Property type</Option>
-          {[...Array(7).keys()].map(item => <Option value={item + 1}>{item + 1}</Option>)}
+          {propertyTypes.map(item => <Option value={item} key={item}>{item}</Option>)}
         </Select>
         <Button
           type="primary"
@@ -85,13 +106,13 @@ class Explore extends React.Component {
   }
 
   render() {
-    const { SearchCMS, searchLocation } = this.props;
+    const { SearchCMS, searchLocation, guestNumber } = this.props;
 
     return (
       <div className="Explore">
         <Navbar className="Navbar" />
         <div className="Explore__Search">
-          <Search searchFunc={this.handleSearch} CMS={SearchCMS} location={searchLocation} />
+          <Search searchFunc={this.handleSearch} CMS={SearchCMS} searchLocation={searchLocation} guestNumber={guestNumber} />
         </div>
         {this.displayFilterSection()}
         <div className="Explore__Results">
@@ -111,12 +132,18 @@ const mapStateToProps = (state) => {
     SearchCMS: state.CMS.MainSearch,
     accommodations: state.exploreState.accommodations,
     searchLocation: state.exploreState.searchLocation,
+    guestNumber: state.exploreState.guestNumber,
+    refData: state.refData,
   };
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getAccommodationListings: Actions.getAccommodationListings,
   showAccommodationInfo: Actions.showAccommodationInfo,
+  filterAccommodationsByMaxPrice: Actions.filterAccommodationsByMaxPrice,
+  filterAccommodationsByMinPrice: Actions.filterAccommodationsByMinPrice,
+  filterAccommodationsByBathroomNum: Actions.filterAccommodationsByBathroomNum,
+  filterAccommodationsByType: Actions.filterAccommodationsByType,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Explore);

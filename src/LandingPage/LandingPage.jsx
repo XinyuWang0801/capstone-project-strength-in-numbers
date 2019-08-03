@@ -17,26 +17,26 @@ class LandingPage extends React.Component {
   }
 
   handleSearch = (location, checkIn, guestNumber, fullLocation) => {
-    const { getAccommodationListings, updateSearchLocation, history } = this.props;
-    console.log(location, checkIn, guestNumber);
+    const { getAccommodationListings, history } = this.props;
 
-    getAccommodationListings(location);
-    updateSearchLocation(fullLocation);
+    getAccommodationListings(location, checkIn, guestNumber, fullLocation);
     history.push('explore');
   }
 
   render() {
-    const { CMS: { welcomeTitle, welcomeIntroduction }, SearchCMS } = this.props;
+    const { CMS: { welcomeTitle, welcomeIntroduction }, SearchCMS, searchLocation, guestNumber } = this.props;
 
     return (
       <div className="LandingPage">
         <Navbar className="Navbar--nobg" />
-        <div className="LandingPage__Heading">
-          <h1>{welcomeTitle}</h1>
-          <p>{welcomeIntroduction}</p>
-        </div>
-        <div className="LandingPage__Form">
-          <Search CMS={SearchCMS} searchFunc={this.handleSearch} />
+        <div className="LandingPage__FormContainer">
+          <div className="LandingPage__Heading">
+            <h1>{welcomeTitle}</h1>
+            <p>{welcomeIntroduction}</p>
+          </div>
+          <div className="LandingPage__Form">
+            <Search CMS={SearchCMS} searchFunc={this.handleSearch} searchLocation={searchLocation} guestNumber={guestNumber} />
+          </div>
         </div>
         <LandingPageVector width="25%" className="LandingPage__Vector" />
         <CurvedImage className="LandingPage__CurvedBG" width="30%" />
@@ -49,12 +49,13 @@ const mapStateToProps = (state) => {
   return {
     CMS: state.CMS.LandingPage,
     SearchCMS: state.CMS.MainSearch,
+    searchLocation: state.exploreState.searchLocation,
+    guestNumber: state.exploreState.guestNumber,
   };
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   getAccommodationListings: Actions.getAccommodationListings,
-  updateSearchLocation: Actions.updateSearchLocation,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

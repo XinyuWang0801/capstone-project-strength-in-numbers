@@ -3,18 +3,13 @@
   background-color: rgba(0, 0, 0, 0.082);
   display: grid;
   grid-template-columns: 15% auto 15%;
-  grid-template-rows: 30% 100px auto;
+  grid-template-rows: 30% auto auto;
   grid-template-areas:
     "header header header"
     "space search search"
     "footer footer footer";
 
-  &__Form {
-    grid-column-start: 2;
-    grid-row-start: 3;
-  }
-
-  &__Heading {    
+  &__FormContainer {
     grid-column-start: 2;
     grid-row-start: 2;
   }

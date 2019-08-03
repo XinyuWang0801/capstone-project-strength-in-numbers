@@ -11,14 +11,14 @@ import './App.scss';
 
 const App = () => {
   return (
-    <HashRouter basename="/">
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Route path="/" exact component={LandingPage} />
-      <Route path="/explore" component={Explore} />
-      <Route path="/accommodation-posting" component={AccommodationForm} />
-      <Route path="/accommodation-info" component={AccommodationInfo} />
-      <Route path="/signup" component={SignUpPage} />
-      <Route path="/login" component={LoginPage} />
-      <Route path="/account-info" component={AccountInfo} />
+      <Route path="/explore" exact component={Explore} />
+      <Route path="/accommodation-posting" exact component={AccommodationForm} />
+      <Route path="/accommodation-info" exact component={AccommodationInfo} />
+      <Route path="/signup" exact component={SignUpPage} />
+      <Route path="/login" exact component={LoginPage} />
+      <Route path="/account-info" exact component={AccountInfo} />
     </HashRouter>
   );
 };

@@ -20,7 +20,7 @@ export class Search extends React.Component {
       guestNumber: null,
       checkInDate: null,
       checkOutDate: null,
-      location: '',
+      fullLocation: '',
     };
   }
 
@@ -36,15 +36,20 @@ export class Search extends React.Component {
     placesAutocomplete.on('change', (e) => {
       this.handleSearchSuggestionCompleted(e);
       this.setState({
-        location: e.suggestion.value,
+        fullLocation: e.suggestion.value,
       });
     });
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (state.location === '' && props.location !== '') {
+    if (state.fullLocation === '' && props.searchLocation.fullLocation !== '') {
       return {
-        location: props.location,
+        ...props.searchLocation,
+      };
+    }
+    if (state.guestNumber === null && props.guestNumber !== null) {
+      return {
+        guestNumber: props.guestNumber,
       };
     }
     return null;
@@ -52,7 +57,7 @@ export class Search extends React.Component {
 
   handleSearchClicked = () => {
     const { CMS: { validation: { locationRequired, daysRequired, guestNumberRequired } }, searchFunc } = this.props;
-    const { administrativeRegion, city, country, checkInDate, checkOutDate, guestNumber, location } = this.state;
+    const { administrativeRegion, city, country, checkInDate, checkOutDate, guestNumber, fullLocation } = this.state;
 
     if (!city) {
       this.setState({ errorMessage: locationRequired });
@@ -76,7 +81,6 @@ export class Search extends React.Component {
       city,
       country,
     };
-    const fullLocation = location;
     searchFunc(locationDetails, checkInDate, guestNumber, fullLocation);
   }
 
@@ -107,21 +111,21 @@ export class Search extends React.Component {
   }
 
   handleLocationInputChange = (e) => {
-    this.setState({ location: e.target.value });
+    this.setState({ fullLocation: e.target.value });
   }
 
   render() {
     const { CMS: { searchPlaceholder } } = this.props;
-    const { errorMessage, location } = this.state;
+    const { errorMessage, fullLocation, guestNumber } = this.state;
 
     return (
       <div className="Search">
         <div className="Search__Input">
-          <Input size="large" id="location-input" placeholder={searchPlaceholder} onChange={this.handleLocationInputChange} value={location} />
+          <Input size="large" id="location-input" placeholder={searchPlaceholder} onChange={this.handleLocationInputChange} value={fullLocation} />
           <RangePicker size="large" onCalendarChange={this.updateDates} format="DD-MM-YYYY" placeholder={['Check in', 'Check out']} style={{ width: '250px' }} />
-          <Select defaultValue="Guests" onSelect={this.updateGuestNumber} size="large" className="Search__Dropdown">
+          <Select value={guestNumber || 'Guests'} onSelect={this.updateGuestNumber} size="large" className="Search__Dropdown" placeholder="Guests">
             <Option value="Guests" disabled>Guests</Option>
-            {[...Array(7).keys()].map(item => <Option value={item + 1}>{item + 1}</Option>)}
+            {[...Array(7).keys()].map(item => <Option key={item + 1} value={item + 1}>{item + 1}</Option>)}
           </Select>
           <Button
             type="primary"

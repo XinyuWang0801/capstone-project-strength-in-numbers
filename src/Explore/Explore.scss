@@ -26,8 +26,12 @@
     flex-direction: column;
     grid-area: nav;
 
-    > * {
+    &__Header {
       margin-bottom: 20px;
+    }
+
+    &__Item {
+      margin-bottom: 25px !important;
     }
   }
 
