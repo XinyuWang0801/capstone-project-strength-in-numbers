@@ -12,7 +12,7 @@ export const getAccommodationListings = () => {
     const { exploreState: { searchLocation: { city, administrativeRegion, country }, dates, guestNumber } } = getState();
     const listings = await Services.getAccommodationListings({ city, administrativeRegion, country });
 
-    const filterListingsByDates = listings.filter(listing => !Object.values(listing.bookedDates).includes(dates.checkInDate));
+    const filterListingsByDates = listings.filter(listing => (listing.hasOwnProperty('bookedDates') ? !Object.values(listing.bookedDates).includes(dates.checkInDate) : listing));
     const filterListingsByGuestNumber = filterListingsByDates.filter(listing => Number(listing.guests) >= guestNumber);
 
     dispatch({ type: ACCOMMODATION_LISTINGS_RETRIEVED, payload: filterListingsByGuestNumber });

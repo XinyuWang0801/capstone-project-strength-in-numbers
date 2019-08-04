@@ -10,3 +10,4 @@ export * from './Actions.Explore';
 export * from './Actions.AccommodationBooking';
 export * from './Actions.Account';
 export * from './Actions.Navigation';
+export * from './Actions.CMS';
