@@ -62,5 +62,6 @@ module.exports = {
     "no-await-in-loop": "off",
     "no-restricted-syntax": "off",
     "no-nested-ternary": "off",
+    "import/no-named-as-default": "off",
   },
 };
