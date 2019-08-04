@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import * as Actions from './store/actions';
 import './App.scss';
 
-class App extends React.Component {
+export class App extends React.Component {
   componentDidMount() {
     const { getCMSContent } = this.props;
     getCMSContent();
