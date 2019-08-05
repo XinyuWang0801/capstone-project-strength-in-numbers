@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Input, Select } from 'antd';
+import { Input, Select } from 'antd';
 import { Navbar, PropertyCard, Search } from '../@components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
