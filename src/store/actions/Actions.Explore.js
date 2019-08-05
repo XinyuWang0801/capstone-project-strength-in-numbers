@@ -47,9 +47,9 @@ export const updateGuestNumber = (guestNumber) => {
 
 export const filterAccommodationsByMaxPrice = (price) => {
   return (dispatch, getState) => {
-    const { accommodationsInitial } = getState().exploreState;
+    const { accommodations, accommodationsInitial } = getState().exploreState;
 
-    const filteredAccommodations = accommodationsInitial.filter(accommodation => Number(accommodation.price) <= price);
+    const filteredAccommodations = price !== '' ? accommodations.filter(accommodation => Number(accommodation.price) <= price) : accommodationsInitial;
 
     dispatch({ type: ACCOMMODATION_LISTINGS_FILTERED, payload: filteredAccommodations });
   };
@@ -57,9 +57,9 @@ export const filterAccommodationsByMaxPrice = (price) => {
 
 export const filterAccommodationsByMinPrice = (price) => {
   return (dispatch, getState) => {
-    const { accommodationsInitial } = getState().exploreState;
+    const { accommodations, accommodationsInitial } = getState().exploreState;
 
-    const filteredAccommodations = accommodationsInitial.filter(accommodation => Number(accommodation.price) >= price);
+    const filteredAccommodations = price !== '' ? accommodations.filter(accommodation => Number(accommodation.price) >= price) : accommodationsInitial;
 
     dispatch({ type: ACCOMMODATION_LISTINGS_FILTERED, payload: filteredAccommodations });
   };

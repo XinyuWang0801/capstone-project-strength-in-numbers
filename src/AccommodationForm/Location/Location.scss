@@ -1,7 +1,9 @@
 .LocationSection {
+    height: 100%;
+
     &__Map {
         width: auto;
-        height: 450px;
+        height: 60%;
         margin: 20px 0;
     }
 }

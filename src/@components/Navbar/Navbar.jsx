@@ -9,9 +9,9 @@ import './Navbar.scss';
 
 class Navbar extends React.Component {
   navigateToHostAccommodation = () => {
-    const { history } = this.props;
+    const { history, navigateToHostHome } = this.props;
 
-    history.push('accommodation-posting');
+    navigateToHostHome(history);
   };
 
   navigateToLandingPage = () => {
@@ -33,7 +33,7 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const { className, color } = this.props;
+    const { className, color, id } = this.props;
 
     return (
       <div className={`Navbar ${className}`}>
@@ -45,8 +45,8 @@ class Navbar extends React.Component {
             </span>
           </li>
           <li><span className="Navbar__Item" onClick={this.navigateToHostAccommodation}>Host a home</span></li>
-          <li><span className="Navbar__Item" onClick={this.navigateToAccount}>Account</span></li>
-          <li><span className="Navbar__Item" onClick={this.navigateToLogin}>Log in</span></li>
+          {id && <li><span className="Navbar__Item" onClick={this.navigateToAccount}>Account</span></li>}
+          {!id && <li><span className="Navbar__Item" onClick={this.navigateToLogin}>Log in</span></li>}
         </ol>
       </div>
     );
@@ -56,7 +56,15 @@ class Navbar extends React.Component {
 const mapDispatchToProps = dispatch => bindActionCreators({
   navigateToLogin: Actions.navigateToLogin,
   navigateToAccountInfo: Actions.navigateToAccountInfo,
+  navigateToHostHome: Actions.navigateToHostHome,
 }, dispatch);
+
+const mapStateToProps = (state) => {
+  return {
+    id: state.accountState.id,
+  };
+};
+
 
 Navbar.defaultProps = {
   color: 'White',
@@ -66,4 +74,4 @@ Navbar.propTypes = {
   color: PropTypes.string,
 };
 
-export default connect(null, mapDispatchToProps)(withRouter(Navbar));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar));
