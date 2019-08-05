@@ -15,6 +15,11 @@ class AccommodationForm extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    const { clearAccommodationForm } = this.props;
+    clearAccommodationForm();
+  }
+
   getNextSection = (name) => {
     const { sectionCompleted, disableProgressBar } = this.props;
 
@@ -83,6 +88,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   sectionCompleted: Actions.sectionCompleted,
   navigateToSection: Actions.navigateToSection,
   navigateToLogin: Actions.navigateToLogin,
+  clearAccommodationForm: Actions.clearAccommodationForm,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccommodationForm);

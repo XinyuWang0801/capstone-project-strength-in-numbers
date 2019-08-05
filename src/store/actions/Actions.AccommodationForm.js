@@ -2,6 +2,7 @@ import * as Services from '../services';
 
 export const ACCOMMODATION_FORM_ORDER_UPDATED = 'ACCOMMODATION_FORM_ORDER_UPDATED';
 export const ACCOMMODATION_FORM_COMPLETED = 'ACCOMMODATION_FORM_COMPLETED';
+export const ACCOMMODATION_FORM_CLEARED = 'ACCOMMODATION_FORM_CLEARED';
 
 const formCompleted = (dispatch, getState) => {
   const { accommodationFormState: { formOrder } } = getState();
@@ -63,5 +64,11 @@ export const navigateToSection = (name) => {
     const newSection = formOrder.findIndex(item => item.name === name);
 
     dispatch({ type: ACCOMMODATION_FORM_ORDER_UPDATED, payload: newSection });
+  };
+};
+
+export const clearAccommodationForm = () => {
+  return (dispatch) => {
+    dispatch({ type: ACCOMMODATION_FORM_CLEARED });
   };
 };
