@@ -40,14 +40,12 @@ class Explore extends React.Component {
   }
 
   onMaxPriceEntered = (e) => {
-    if (e.target.value === '') { return; }
     const { filterAccommodationsByMaxPrice } = this.props;
 
     filterAccommodationsByMaxPrice(e.target.value);
   }
 
   onMinPriceEntered = (e) => {
-    if (e.target.value === '') { return; }
     const { filterAccommodationsByMinPrice } = this.props;
 
     filterAccommodationsByMinPrice(e.target.value);
@@ -81,15 +79,6 @@ class Explore extends React.Component {
           <Option value="Property type" disabled>Property type</Option>
           {propertyTypes.map(item => <Option value={item} key={item}>{item}</Option>)}
         </Select>
-        <Button
-          type="primary"
-          icon="search"
-          size="large"
-          className="Search__Button"
-          onClick={this.handleSearchClicked}
-        >
-            Search
-        </Button>
       </div>
     );
   }

@@ -7,6 +7,14 @@ import * as Actions from '../store/actions';
 import './AccommodationForm.scss';
 
 class AccommodationForm extends React.Component {
+  componentDidMount() {
+    const { id, history, navigateToLogin } = this.props;
+
+    if (!id) {
+      navigateToLogin(history);
+    }
+  }
+
   getNextSection = (name) => {
     const { sectionCompleted, disableProgressBar } = this.props;
 
@@ -67,12 +75,14 @@ const mapStateToProps = (state) => {
     progress: state.accommodationFormState.progress,
     formOrder: state.accommodationFormState.formOrder,
     disableProgressBar: state.accommodationFormState.disableProgressBar,
+    id: state.accountState.id,
   };
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   sectionCompleted: Actions.sectionCompleted,
   navigateToSection: Actions.navigateToSection,
+  navigateToLogin: Actions.navigateToLogin,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccommodationForm);
