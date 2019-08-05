@@ -6,6 +6,7 @@ import { Explore } from './Explore';
 import { HashRouter, Route } from 'react-router-dom';
 import { LandingPage } from './LandingPage';
 import { LoginPage } from './LoginPage';
+import { NotFound } from './NotFound';
 import { SignUpPage } from './SignUpPage';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -28,6 +29,7 @@ export class App extends React.Component {
         <Route path="/signup" exact component={SignUpPage} />
         <Route path="/login" exact component={LoginPage} />
         <Route path="/account-info" exact component={AccountInfo} />
+        {/* <Route exact component={NotFound} /> */}
       </HashRouter>
     );
   }
