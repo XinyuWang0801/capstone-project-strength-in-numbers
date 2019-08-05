@@ -209,7 +209,7 @@ class SignUpPage extends React.Component {
         <Navbar />
         <div className="SignUpPage__Form">
           <h1>Sign Up</h1>
-          <div className="placeholder" /> {/* Need to remove this */}
+          <div className="placeholder" />
           <LoginTextbox
             id="firstname"
             className={firstnameEmpty ? 'LoginTextbox__Fail' : 'LoginTextbox'}

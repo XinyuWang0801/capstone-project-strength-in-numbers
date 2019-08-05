@@ -19,12 +19,9 @@
     border-width: 2px;
     border-style: solid;
     border-color: #F2F6FA;
-    // border-color: rgba(47, 87, 247, 0.048);
     border-radius: 25px;
     background-color: white;
     box-shadow: 0 5px 10px rgba(78, 91, 141, 0.05), 0 15px 40px #F2F6FA; 
-    // box-shadow: 10px 10px 0 #ffd217, -20px 20px 0 #5ac7ff, 30px -30px 0 #ff0000, -40px -40px 0 #00ff00, 40px 30px 0 #440880;
-    // box-shadow: 0 5px 10px rgba(78, 91, 141, 0.05), 0 15px 40px #007BFF;
     flex-flow: row wrap;  
 
     &__Buttons {
@@ -59,7 +56,7 @@
   &__Login {
     box-shadow: 0 5px 10px rgba(78, 91, 141, 0.05), 0 15px 40px rgba(0, 123, 255, 0.158);
   }
-  &__Signup {
+  &__LSignup {
     box-shadow: 0 5px 10px rgba(78, 91, 141, 0.05), 0 15px 40px rgba(108, 117, 125, 0.158);
   }
 }
