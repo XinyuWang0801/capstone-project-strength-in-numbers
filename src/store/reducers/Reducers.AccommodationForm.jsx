@@ -1,5 +1,5 @@
 import React from 'react';
-import { ACCOMMODATION_FORM_COMPLETED, ACCOMMODATION_FORM_ORDER_UPDATED } from '../actions';
+import { ACCOMMODATION_FORM_CLEARED, ACCOMMODATION_FORM_COMPLETED, ACCOMMODATION_FORM_ORDER_UPDATED } from '../actions';
 import {
   Bathroom, Bed01, Book, House01, MapLocation, MoneyBag, PictureAdd,
 } from '../../icons';
@@ -37,6 +37,8 @@ export default (state = initialState, action) => {
     return Object.assign({}, state, {
       disableProgressBar: true,
     });
+  case ACCOMMODATION_FORM_CLEARED:
+    return Object.assign({}, state, initialState);
   default:
     return state;
   }

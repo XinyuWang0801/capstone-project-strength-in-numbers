@@ -1,4 +1,5 @@
 import {
+  ACCOMMODATION_FORM_CLEARED,
   BED_SECTION_GUEST_NUMBER_ADDED,
   BED_SECTION_OPTIONS_RESETTED,
   BED_SECTION_OPTIONS_UPDATED,
@@ -38,6 +39,8 @@ export default (state = initialState, action) => {
     return Object.assign({}, state, {
       guestNumber: action.payload,
     });
+  case ACCOMMODATION_FORM_CLEARED:
+    return Object.assign({}, state, initialState);
   default:
     return state;
   }
