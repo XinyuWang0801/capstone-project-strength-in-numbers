@@ -209,7 +209,7 @@ class SignUpPage extends React.Component {
         <Navbar />
         <div className="SignUpPage__Form">
           <h1>Sign Up</h1>
-          <div className="placeholder" /> 
+          <div className="placeholder" />
           <LoginTextbox
             id="firstname"
             className={firstnameEmpty ? 'LoginTextbox__Fail' : 'LoginTextbox'}
@@ -270,7 +270,7 @@ class SignUpPage extends React.Component {
               variant="success"
               onClick={this.handleClick}
               className="Button__Signup"
-              block={true}
+              block
             >
               <p className="Button__TextSignUp">Sign up</p>
             </Button>
