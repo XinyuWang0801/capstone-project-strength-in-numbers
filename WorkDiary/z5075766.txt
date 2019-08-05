@@ -3,3 +3,35 @@ Week 1
 - Decided on a project to work on 
 - Decided on the technologies to use on our project
 - Got started with the student proposal
+
+Week 2
+- Started learning Raect with react tutorial from learnreactforbeginners.com, scrimba, tyler mcginnis and other resources
+- Courtney setup the Git repo on github
+- Familiarised ourselves with environment
+
+Week 3
+- Worked on the Request for Proposal
+- Topics that I worked on included: Background, Aim, Edited Epics
+- Created Firebase account and linked all team members
+- Helped make user stories for account creation
+
+Week 4
+- No project related work was done
+
+Week 5 - 7
+- Worked on the Accomodation hosting page
+- Implemented the 'Further Description' section of the page
+- Implemented 'Location' section of the page
+- Added additional user stories for the next stage: User creation and authentication -- this included login and sign up pages
+- User stories included the required components, such as email, password, firstname lastname. As well input validation, as in what would happen if user typed in email and no password and pressed sign-up
+
+Week 8
+- Worked in getting user authentication to work
+- Created and implemented the Login page
+- Added input validation into the page with custom made react components
+- Changed functioning of some already made react components to expand their functionality such as Buttons
+
+Week 9
+- Created and implemented Sign-up page
+- Added input validation and updated it such that it produces red outline on the component, making it more intuitive
+- Fixed some issues with the pages, such as shadows and sizing of some components
