@@ -85,7 +85,7 @@ class LoginPage extends React.Component {
             <Button onClick={this.handleClick} className="Button__Login">
               <p className="Button__TextLogIn">{CMS.loginButton}</p>
             </Button>
-            <Button variant="secondary" className="Button__Signup" onClick={this.onSignUpClicked}>
+            <Button variant="secondary" className="Button__LSignup" onClick={this.onSignUpClicked}>
               <p className="Button__TextSignUp">{CMS.signUpButton}</p>
             </Button>
           </div>
