@@ -2,6 +2,7 @@ import React from 'react';
 import { AccommodationForm } from './AccommodationForm';
 import { AccommodationInfo } from './AccommodationInfo';
 import { AccountInfo } from './AccountInfo';
+import { ErrorPage } from './ErrorPage';
 import { Explore } from './Explore';
 import { HashRouter, Route } from 'react-router-dom';
 import { LandingPage } from './LandingPage';
@@ -28,6 +29,7 @@ export class App extends React.Component {
         <Route path="/signup" exact component={SignUpPage} />
         <Route path="/login" exact component={LoginPage} />
         <Route path="/account-info" exact component={AccountInfo} />
+        <Route path="/error" exact component={ErrorPage} />
       </HashRouter>
     );
   }
