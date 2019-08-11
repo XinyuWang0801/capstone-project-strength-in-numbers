@@ -35,6 +35,12 @@
   </head>
   <body>
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFh-6hlJZ4jd_tP7r3BbctDFyWQQP2Axo&libraries=places"></script>
+      <script type="text/javascript">
+        window.onerror = function (event) {
+          window.location.href = '#/error'
+          return true;
+        };
+        </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
