@@ -2,3 +2,25 @@ Week 1
 - Formed group.
 - Discussed with teammates to choose the 3rd project.
 - Started to search information related to the proposal.
+
+Week 2
+- Started learning React with some tutorial materials.
+- Familiarised ourselves with the environment.
+
+Week 3
+- Worked on the Request for Proposal.
+
+Week 4
+- No project related work was done.
+
+Week 5 - 7
+- Worked on the Accomodation hosting page.
+- Tried to implemented the 'Price' section of the page.
+
+Week 8
+- Started working on the report.
+- Tried to implemented the "Login" page.
+
+Week 9
+- Made some modifications on the report according to tutor's advice.
+- Helped in implementing "Comments" page.
