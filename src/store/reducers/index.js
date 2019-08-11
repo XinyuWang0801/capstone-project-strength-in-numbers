@@ -10,6 +10,7 @@ import nameState from './Reducers.Name';
 import photosState from './Reducers.Photos';
 import priceState from './Reducers.Price';
 import refData from './Reducers.RefData';
+import reviewState from './Reducers,Review';
 import { combineReducers } from 'redux';
 
 const reducer = combineReducers({
@@ -25,6 +26,7 @@ const reducer = combineReducers({
   photosState,
   priceState,
   bathroomState,
+  reviewState,
 });
 
 export default reducer;
