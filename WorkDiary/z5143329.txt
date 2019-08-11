@@ -3,3 +3,30 @@ Week 1
 - Choose a project topic to work on.
 - Got familiar with React framework.
 - Got started with the student proposal.
+
+Week 2
+- Started learning React framwork on scrimba and some other tutorials.
+- Started learning Firebase realtime database and cloud storage.
+
+Week 3
+- Worked on the Request for Proposal.
+- Created Firebase account.
+
+Week 4
+- No project related work was done
+
+Week 5 - 7
+- Worked on the "Adding Photo" section of the posting host page.
+- Since we need firebase cloud storage to store actual image, the previous one does not work, I created another data entry for firebase cloud storage.
+- Specified things that need to be improved in future report, based on tutorial class.
+
+Week 8
+- Started Working on final report.
+
+Week 9
+- Worked on final report, completed draft report.
+- Started working on review section.
+
+Week 10
+- Implemented review section.
+- Finished final report.
