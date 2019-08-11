@@ -24,3 +24,6 @@ Week 8
 Week 9
 - Made some modifications on the report according to tutor's advice.
 - Helped in implementing "Comments" page.
+
+Week 10
+- Worked on the final report.
